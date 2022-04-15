@@ -24,8 +24,10 @@ export class ApiService {
   constructor(private http: HttpClient) {
     this.rootUrl =
       'https://auth.whitecoats.com/auth/realms/whitecoats/protocol/openid-connect/token';
+    // this.baseUrl =
+    //   'https://appointments-sandbox.whitecoats.com/';
     this.baseUrl =
-      'https://appointments-sandbox.whitecoats.com/';
+    'http://13.234.100.92:9999/';
   }
 
   changeapi(x) {

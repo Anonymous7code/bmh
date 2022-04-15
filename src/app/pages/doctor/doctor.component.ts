@@ -11,6 +11,7 @@ import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 })
 export class DoctorComponent implements OnInit {
   @ViewChild('search') search!: ElementRef;
+  doctorList:any
   constructor(
     private api: ApiService,
     private router: Router,
@@ -30,7 +31,10 @@ export class DoctorComponent implements OnInit {
     };
     this.api.DoctorSearch(obj).subscribe((res) => {
       if (res) {
-        console.log('res', res);
+    
+        this.doctorList=res
+        console.log("doctorlist",this.doctorList);
+        
       }
     });
   }

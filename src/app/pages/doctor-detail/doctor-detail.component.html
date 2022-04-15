@@ -273,7 +273,7 @@
               <div class="dc-searchvtwo col-md-6">
                 <figure class="dc-docpostimg">
                   <img
-                    src="assets/doctor single image/small images.jpg"
+                    src="{{doctor_detail.image_url}}"
                     alt="img description"
                   />
                   <figcaption>
@@ -299,38 +299,38 @@
                   </h3>
                   <ul class="dc-docinfo">
                     <li>
-                      <em>MBBS, MCPS, MSc (Immunology)</em>
+                      <em>{{doctor_detail.qualification }}</em>
                     </li>
                     <li>
                       <span class="dc-stars"><span></span></span
-                      ><em>2100 Feedback</em>
+                      ><em>{{doctor_detail.speciality}}</em>
                     </li>
                   </ul>
                 </div>
                 <div class="dc-tags">
                   <ul>
-                    <li>
-                      <a href="javascript:void(0);">Artificial Teeth</a>
+                    <li *ngFor="let ser of doctor_detail.services">
+                      <a href="javascript:void(0);">{{ser}}</a>
                     </li>
-                    <li>
+                    <!-- <li>
                       <a href="javascript:void(0);">Conservative Dentistry</a>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                       <a href="javascript:void(0);">Crowns Fixing</a>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                       <a href="javascript:void(0);">Endosurgery</a>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                       <a href="javascript:void(0);"
                         >Fixed Partial Denture (FPD)</a
                       >
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                       <a href="javascript:void(0);" class="dc-tagviewall"
                         >View all</a
                       >
-                    </li>
+                    </li> -->
                   </ul>
                 </div>
               </div>
