@@ -25,7 +25,7 @@ export class ApiService {
     this.rootUrl =
       'https://auth.whitecoats.com/auth/realms/whitecoats/protocol/openid-connect/token';
     this.baseUrl =
-      'https://appointments-sendbox.whitecoats.com/';
+      'https://appointments-sandbox.whitecoats.com/';
   }
 
   changeapi(x) {
@@ -78,7 +78,7 @@ export class ApiService {
     return this.http.get(this.rootUrl + x, this.headersDef())
   }
 
-  DoctorSearch(object): any {
+  DoctorSearch(object?:any): any {
     return this.http.post(this.baseUrl+'v1/search', object, this.headers())
   }
 
