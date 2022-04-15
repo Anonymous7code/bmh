@@ -76,13 +76,20 @@ export class ApiService {
     return this.http.post(this.baseUrl+'v1/user/register', object, this.headers())
   }
 
+  // getHeader(x): any {
+  //   return this.http.get(this.rootUrl + x, this.headersDef())
+  // }
   getHeader(x): any {
-    return this.http.get(this.rootUrl + x, this.headersDef())
+    return this.http.get(this.baseUrl+'v1/doctor/services/list{doctorId}', this.headersDef())
   }
 
   DoctorSearch(object?:any): any {
     return this.http.post(this.baseUrl+'v1/search', object, this.headers())
   }
+
+  // DoctorServiceApi(object?:any): any {
+  //   return this.http.get(this.baseUrl+'v1/doctor/services/list', object)
+  // }
 
   docId:any
   setDocId(x){
