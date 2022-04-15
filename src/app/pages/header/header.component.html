@@ -1,0 +1,218 @@
+<!-- Header Start -->
+<header id="dc-header" class="dc-header dc-haslayout">
+  <!-- NAV BAR  -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <button
+        class="navbar-toggler mobile-menu-btn"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"
+          ><img src="assets/icons/list.svg" class="menu-icon" alt=""
+        /></span>
+      </button>
+      <div class="logo-container">
+        <a class="navbar-brand" href="#"
+          ><img src="assets/logo/heart logo.png" style="width: 3.5rem" alt=""
+        /></a>
+      </div>
+      <div class="cart-profile-container">
+        <div class="cart-container">
+          <a href="">
+            <img
+              src="assets/icons/cart-line.svg"
+              class="navbar-icons"
+              alt=""
+            />Cart</a
+          >
+        </div>
+        <div class="profile-container" style="margin-right: 10px">
+          <span class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img
+                src="assets/icons/person-circle.svg"
+                class="navbar-icons"
+                alt=""
+              />
+              Profile
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </li>
+            </ul>
+          </span>
+        </div>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              >Health Packages</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              >Radiology</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              >Our Labs & Network</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              >Contact Us</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">FAQs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="doctor-dashboard">
+              Doctor Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="patient-dashboard"> Patient </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="admin-dashboard"> Admin </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="lab-dashboard"> Lab </a>
+          </li>
+        </ul>
+        <form class="d-flex search-field-container">
+          <span class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Select City
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </li>
+            </ul>
+          </span>
+          <input
+            class="form-control search-box"
+            type="search"
+            placeholder="Search for health packages or tests"
+            aria-label="Search"
+          />
+
+          <a href="#" class="search-box-a">
+            <img src="assets/icons/search.svg" class="search-box-img" alt=""
+          /></a>
+        </form>
+      </div>
+      <div class="call-container">
+        <p>Call us at</p>
+        <p class="number-p">958572828</p>
+      </div>
+    </div>
+  </nav>
+  <!-- SMALL NAV  -->
+  <nav class="small-nav-containr-main">
+    <div class="small-nav-container container">
+      <div class="small-nav">
+        <p><a href=""> Home </a></p>
+      </div>
+      <div class="small-nav">
+        <p><a routerLink="doctor"> Doctors </a></p>
+      </div>
+      <div class="small-nav">
+        <p><a href=""> Pathology </a></p>
+      </div>
+      <div class="small-nav">
+        <p><a href=""> Radiology </a></p>
+      </div>
+      <div class="small-nav">
+        <p><a href="">Medicines </a></p>
+      </div>
+      <div class="small-nav">
+        <p><a href=""> Contact Us </a></p>
+      </div>
+      <!-- <div class="small-nav">
+        <p><a routerLink="/doctor-dashboard"> Doctor Dashboard </a></p>
+      </div>
+      <div class="small-nav">
+        <p><a routerLink="/patient-dashboard"> Patient </a></p>
+      </div>
+      <div class="small-nav">
+        <p><a routerLink="/admin-dashboard"> Admin </a></p>
+      </div>
+      <div class="small-nav">
+        <p><a routerLink="/lab-dashboard"> Lab </a></p>
+      </div> -->
+    </div>
+  </nav>
+  <form class="container d-flex search-field-container-2">
+    <input
+      class="form-control search-box"
+      type="search"
+      placeholder="Search for health packages or tests"
+      aria-label="Search"
+    />
+
+    <a href="#" class="search-box-a">
+      <img src="/icons/search.svg" class="search-box-img" alt=""
+    /></a>
+  </form>
+  <span class="nav-item dropdown dropdown-2">
+    <a
+      class="nav-link container dropdown-toggle"
+      href="#"
+      id="navbarDropdown"
+      role="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Select City
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><hr class="dropdown-divider" /></li>
+      <li>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </li>
+    </ul>
+  </span>
+</header>
+<!-- Header End -->

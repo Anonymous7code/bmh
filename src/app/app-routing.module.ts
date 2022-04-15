@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './authentication/login/login.component';
-import { DemopageComponent } from './pages/demopage/demopage.component';
-import { NewdemoComponent } from './pages/newdemo/newdemo.component';
+// import { LoginComponent } from './authentication/login/login.component';
+// import { DemopageComponent } from './pages/demopage/demopage.component';
+// import { NewdemoComponent } from './pages/newdemo/newdemo.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DoctorComponent } from './pages/doctor/doctor.component';
 import { DoctorDetailComponent } from './pages/doctor-detail/doctor-detail.component';
@@ -36,11 +36,16 @@ import { MedicinesComponent } from './admin-dashboard/medicines/medicines.compon
 import { TransactionComponent } from './admin-dashboard/transaction/transaction.component';
 import { UserPurchasingDetailsComponent } from './admin-dashboard/user-purchasing-details/user-purchasing-details.component';
 import { AdminTransactionDetailsComponent } from './admin-dashboard/admin-dashboard-home/admin-transaction-details/admin-transaction-details.component';
+import { AppoinmentsComponent } from './lab-dashboard/appoinments/appoinments.component';
+import { LabInvoiceComponent } from './lab-dashboard/lab-invoice/lab-invoice.component';
+import { LabDashboardHomeComponent } from './lab-dashboard/lab-dashboard-home/lab-dashboard-home.component';
+import { LabDashboardComponent } from './lab-dashboard/lab-dashboard.component';
+import { LabViewDetailsComponent } from './lab-dashboard/lab-dashboard-home/lab-view-details/lab-view-details.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'demopage', component: DemopageComponent },
-  { path: 'newdemo', component: NewdemoComponent },
+  // { path: 'login', component: LoginComponent },
+  // { path: 'demopage', component: DemopageComponent },
+  // { path: 'newdemo', component: NewdemoComponent },
   { path: '', component: HomeComponent },
   { path: 'doctor', component: DoctorComponent },
   { path: 'doctor-detail', component: DoctorDetailComponent },
@@ -124,12 +129,10 @@ const routes: Routes = [
       {
         path: 'admin-dashboard-home',
         component: AdminDashboardHomeComponent,
-        children: [
-          {
-            path: 'admin-transaction-details',
-            component: AdminTransactionDetailsComponent,
-          },
-        ],
+      },
+      {
+        path: 'admin-transaction-details',
+        component: AdminTransactionDetailsComponent,
       },
       {
         path: 'medicines',
@@ -139,6 +142,31 @@ const routes: Routes = [
       {
         path: 'user-purchasing-details',
         component: UserPurchasingDetailsComponent,
+      },
+    ],
+  },
+  {
+    path: 'lab-dashboard',
+    component: LabDashboardComponent,
+    children: [
+      {
+        redirectTo: 'lab-dashboard-home',
+        path: '',
+        pathMatch: 'full',
+      },
+      {
+        path: 'lab-dashboard-home',
+        component: LabDashboardHomeComponent,
+      },
+      {
+        path: 'lab-view-details',
+        component: LabViewDetailsComponent,
+      },
+
+      { path: 'lab-invoice', component: LabInvoiceComponent },
+      {
+        path: 'appointments',
+        component: AppoinmentsComponent,
       },
     ],
   },

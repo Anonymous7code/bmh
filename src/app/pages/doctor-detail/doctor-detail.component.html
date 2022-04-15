@@ -1,509 +1,396 @@
-	<!-- Banner Start -->
-    <div class="dc-innerbanner-holder dc-haslayout">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="dc-innerbanner">
-                        <form class="dc-formtheme dc-form-advancedsearch dc-innerbannerform">
-                            <fieldset>
-                                <div class="form-group">
-                                    <input type="text" name="search" class="form-control" placeholder="Search doctors">
-                                </div>
-                                <div class="form-group">
-                                    <div class="dc-select">
-                                        <select>
-                                        <option selected="" value="">All Specialties</option>
-<option value="arthoscopy-and-sports-medicine">Arthoscopy and Sports Medicine</option>
-<option value="cardiology-and-cardiac-surgery">CARDIOLOGY AND CARDIAC SURGERY</option>
-<option value="cosmetic-plastic-surgery">Cosmetic &amp; Plastic Surgery</option>
-<option value="dental-treatment">Dental Treatment</option>
-<option value="endocrinology">ENDOCRINOLOGY</option>
-<option value="ent-surgery">ENT Surgery</option>
-<option value="gastroenterology">GASTROENTEROLOGY</option>
-<option value="general-surgeon">General Surgeon</option>
-<option value="gynaecology">Gynaecology</option>
-<option value="gynaecology-and-obstetrics">Gynaecology and Obstetrics</option>
-<option value="hematology">Hematology</option>
-<option value="infertility-specialist">Infertility Specialist</option>
-<option value="interventional-cardiologist">Interventional Cardiologist</option>
-<option value="interventional-radiologist">Interventional Radiologist</option>
-<option value="medical-gastroenterologist">Medical Gastroenterologist</option>
-<option value="medical-oncologist">Medical Oncologist</option>
-<option value="minimal-access-and-bariatric-surgeon">Minimal Access and Bariatric Surgeon</option>
-<option value="neonatologist">Neonatologist</option>
-<option value="nephrologist">Nephrologist</option>
-<option value="neurologist">Neurologist</option>
-<option value="neurology-and-neurosurgery">Neurology And Neurosurgery</option>
-<option value="neurosurgeon">Neurosurgeon</option>
-<option value="obesity-and-bariatric-surgeon">Obesity and Bariatric Surgeon</option>
-<option value="oncologist">Oncologist</option>
-<option value="oncology-and-oncosurgery">ONCOLOGY AND ONCOSURGERY</option>
-<option value="opthalmology">Opthalmology</option>
-<option value="orthopaedic-and-joint-replacement-surgeon">Orthopaedic and Joint Replacement Surgeon</option>
-<option value="orthopedics">Orthopedics</option>
-<option value="paediatric-orthopedecian">Paediatric Orthopedecian</option>
-<option value="pediatric-cardiologist">Pediatric Cardiologist</option>
-<option value="pediatrics">Pediatrics</option>
-<option value="pediatrics-and-pediatric-surgery">PEDIATRICS AND PEDIATRIC SURGERY</option>
-<option value="radiation-oncologist">Radiation Oncologist</option>
-<option value="rheumatology">Rheumatology</option>
-<option value="spine-surgery">SPINE SURGERY</option>
-<option value="surgical-gastroenterologist">Surgical Gastroenterologist</option>
-<option value="surgical-oncologist">Surgical Oncologist</option>
-<option value="transplant-surgery">Transplant Surgery</option>
-<option value="urologist">Urologist</option>
-<option value="urologist-and-andrologist">Urologist and Andrologist</option>
-<option value="urology-treatment">Urology Treatment</option>
-</select>
-                                    </div>
-                                </div>
-                                <div class="dc-btnarea">
-                                    <a href="javascript:void(0);" class="dc-btn">Search</a>
-                                </div>
-                            </fieldset>
-                        </form>
-                        <a href="javascript:void(0);" class="dc-docsearch"><span class="dc-advanceicon"><i></i> <i></i> <i></i></span><span>Advanced <br>Search</span></a>
-                    </div>
+<!-- HEADER  -->
+<app-header></app-header>
+<!-- Main Start -->
+<main id="dc-main" class="dc-main dc-haslayout mt-4">
+  <!-- About Welcome Start -->
+  <!-- About Welcome Start -->
+  <div class="dc-haslayout dc-main-section pt-0">
+    <!-- User Listing Start-->
+    <div class="container">
+      <div class="row">
+        <div id="dc-twocolumns" class="dc-twocolumns dc-haslayout">
+          <div
+            class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-9 float-left"
+          >
+            <div class="dc-docsingle-header">
+              <figure class="dc-docsingleimg">
+                <img
+                  src="{{ doctor_detail.full_image }}"
+                  onError="this.src='assets/images/doctors/img-04.jpg';"
+                  alt="img description"
+                />
+                <figcaption>
+                  <span class="dc-featuredtag"><i class="fa fa-bolt"></i></span>
+                </figcaption>
+              </figure>
+              <div class="dc-docsingle-content">
+                <div class="dc-title">
+                  <a href="javascript:void(0)" class="dc-docstatus">{{
+                    doctor_detail.cat_name
+                  }}</a>
+                  <h2>
+                    <a href="javascript:void(0);"
+                      >Dr.{{ doctor_detail.doc_name }}</a
+                    >
+                    <i class="fa fa-award dc-awardtooltip"
+                      ><em>Medical Registration Verified</em></i
+                    >
+                    <i class="fa fa-check-circle dc-awardtooltip"
+                      ><em>Medical Registration Verified</em></i
+                    >
+                  </h2>
+                  <ul class="dc-docinfo">
+                    <li>
+                      <!-- <em>MBBS(Gold Medalist), MS, MCh(Neurosurgery), FRCS(Ed), Neurosurgery(UK)</em> -->
+                      <em
+                        *ngFor="
+                          let de of doctor_detail.degree_details;
+                          let i = index
+                        "
+                        >{{ de.degree_name }},</em
+                      >
+                    </li>
+                    <li>
+                      <span class="dc-stars"><span></span></span>
+                    </li>
+                  </ul>
+                  <a href="javascript:void(0);" class="dc-like"
+                    ><i class="fa fa-heart"></i
+                  ></a>
                 </div>
-            </div>
-        </div>
-        <div class="dc-advancedsearch-holder">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="dc-advancedsearchs">
-                            <form class="dc-formtheme dc-form-advancedsearchs">
-                                <fieldset>
-                                    <div class="form-group">
-                                        <div class="dc-select">
-                                            <select name="doctor-country" class="form-control" id="doctor-country"> <option selected="" value="">All Countries</option>
-<option value="india">India</option>
-<option value="turkey">Turkey</option>
-<option value="united-arab-emirates">United Arab Emirates</option>
-</select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="dc-select">
-                                        <select name="doctor-city" class="form-control" id="doctor-city"> <option selected="" value="">All Cities</option>
-<option value="abu-dhabi">Abu Dhabi</option>
-<option value="ahmedabad">Ahmedabad</option>
-<option value="amritsar">Amritsar</option>
-<option value="ankara">Ankara</option>
-<option value="bangalore">Bangalore</option>
-<option value="chennai">Chennai</option>
-<option value="dubai">Dubai</option>
-<option value="faridabad">Faridabad</option>
-<option value="gaziabad">Gaziabad</option>
-<option value="gurgaon">Gurgaon</option>
-<option value="hyderabad">Hyderabad</option>
-<option value="istanbul">Istanbul</option>
-<option value="kochi">Kochi</option>
-<option value="kolkata">Kolkata</option>
-<option value="mathura">Mathura</option>
-<option value="mumbai">Mumbai</option>
-<option value="new-delhi">New Delhi</option>
-<option value="noida">Noida</option>
-</select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="dc-typeoptions">
-                                            <select name="doctor-hospital" class="form-control" id="doctor-hospital"> <option selected="" value="">All Hospitals</option>
-<option value="6345">Asian Heart Institute, Mumbai</option>
-<option value="6347">S. L. Raheja Hospital Mumbai</option>
-<option value="6322">Fortis La Femme, New Delhi</option>
-<option value="6316">Primus Super Speciality Hospital, New Delhi</option>
-<option value="6330">Wockhardt Hospitals, Mumbai Central</option>
-<option value="6333">Fortis Hiranandani Hospital, Vashi</option>
-<option value="6336">Apollo Hospital, Navi Mumbai</option>
-<option value="6307">World Infertility and IVF Centre, New Delhi</option>
-<option value="6301">Medicover Fertility Center, Delhi</option>
-<option value="6292">Delhi IVF and Fertility Centre, New Delhi</option>
-<option value="6276">Pushpawati Singhania Research Institute, New Delhi</option>
-<option value="6284">IBS Institute of Brain and Spine, New Delhi</option>
-<option value="6267">Fortis Hospital Delhi Shalimar Bagh</option>
-<option value="6264">Max Hospital Shalimar Bagh</option>
-<option value="6171">KIMS GEMS Hospital ,Srikakulam</option>
-<option value="6162">Sheba Medical Center, Israel</option>
-<option value="6168">KIMS Hospital, Kurnool</option>
-<option value="6152">KIMS Hospital, Nellore</option>
-<option value="6146">KIMS Hospital, Secunderabad</option>
-<option value="5857">Tajmeel Medical Center, Abu Dhabi</option>
-<option value="6008">HCG Cancer Centre, Bangalore</option>
-<option value="6031">HCG EKO Cancer Centre, Kolkata</option>
-<option value="6033">HCG Cancer Centre, Mumbai</option>
-<option value="6063">Fortis Hospital, Bangalore (Bannerghatta Road)</option>
-<option value="5424">Fortis Escorts Hospital New Delhi</option>
-<option value="5852">Life Care Hospital, Abu Dhabi</option>
-<option value="5850">Lifeline Hospital, Abu Dhabi</option>
-<option value="5848">Medeor 24×7 Hospital, Abu Dhabi</option>
-<option value="5843">Burjeel Specialty Hospital, Sharjah</option>
-<option value="5845">Medeor Hospital 24×7, Dubai</option>
-<option value="5840">Burjeel Medical City, Abu Dhabi</option>
-<option value="5838">Burjeel Hospital, Abu Dhabi</option>
-<option value="5836">Burjeel Hospital, Dubai</option>
-<option value="5663">Medical Park Group, İstanbul</option>
-<option value="5659">Kolan International Hospital, Istanbul</option>
-<option value="5647">Emsey Hospital, Pendik, Turkey</option>
-<option value="5521">The Ajou University Hospital, Suwon-si</option>
-<option value="5519">Kangbuk Samsung Hospital, Seoul</option>
-<option value="5472">El Manar Clinic, Tunis</option>
-<option value="5473">Polyclinique les Jasmins, Tunis</option>
-<option value="5475">Chonbuk National University Hospital</option>
-<option value="5474">Pasteur Clinic, Tunis</option>
-<option value="5517">Gachon University – Gil Medical Center</option>
-<option value="5520">Kosin University – Gospel Hospital</option>
-<option value="5522">Chung-Ang University Hospital, Seoul</option>
-<option value="5527">Konkuk University Medical Centre</option>
-<option value="5525">Inha University Hospital</option>
-<option value="5528">Pusan National University – Yangsan Hospital</option>
-<option value="5529">Inje University – Haeundae Paik Hospital</option>
-<option value="5530">Gangnam Severance Hospital – Yonsei University</option>
-<option value="5532">Samsung Medical Center</option>
-<option value="5524">Chonnam National University Hospital</option>
-<option value="5467">Clinique De L`espoir</option>
-<option value="5468">Ennasr Clinic, Ariana</option>
-<option value="5465">Clinique Avicenne, Tunis</option>
-<option value="5460">Eureka Esthetique, Marsa, Tunisia</option>
-<option value="5265">American Hospital, Istanbul</option>
-<option value="5263">Acibadem Hospitals Group, Istanbul, Turkey</option>
-<option value="4016">Yatharth Super Specialty Hospital, Greater Noida</option>
-<option value="4014">Kidwai Memorial Institute of Oncology, Bangalore</option>
-<option value="4010">Apollo Spectra Hospital, Mumbai</option>
-<option value="4008">Fortis Hospital, Mulund, Mumbai</option>
-<option value="4006">Brains Neuro Spine Centre, Bangalore</option>
-<option value="4004">Max Super Speciality Hospital, Vaishali</option>
-<option value="3987">Aster Prime Hospital, Hyderabad</option>
-<option value="3985">Sharda Hospital, Greater Noida</option>
-<option value="3983">Aster MIMS, Calicut</option>
-<option value="3981">SRCC Children’s Hospital, Mumbai</option>
-<option value="3979">Rainbow Children’s Hospital, Hyderabad</option>
-<option value="3977">Aster RV Hospital, Bangalore</option>
-<option value="3975">Medeor Hospital, Qutab, New Delhi</option>
-<option value="3967">CK Birla Hospital, Gurgaon</option>
-<option value="3965">Venkateshwar Hospital, New Delhi</option>
-<option value="3963">Susrut Eye Foundation and Research Centre, Kolkata</option>
-<option value="3960">Nayati Medicity, Mathura</option>
-<option value="3958">Global Hospitals, Hyderabad</option>
-<option value="3269">VPS Lakeshore Hospital, Kochi</option>
-<option value="3267">Nanavati Super Specialty Hospital, Mumbai</option>
-<option value="3250">Hemas Hospital, Wattala</option>
-<option value="3247">Nawaloka Hospital, Colombo</option>
-<option value="3245">Durdans Hospital, Colombo</option>
-<option value="3243">Lanka Hospital, Colombo</option>
-<option value="3221">Asiri Central Hospital, Colombo</option>
-<option value="3017">Hosmat Hospital, Bangalore</option>
-<option value="3015">Moolchand Hospital, Delhi</option>
-<option value="3009">MGM Healthcare, Chennai</option>
-<option value="3006">Metro Hospital Noida</option>
-<option value="3004">Fortis Hospital, Noida</option>
-<option value="2698">Columbia Asia Hospital Bangalore</option>
-<option value="2696">KIMS Global, Trivandrum</option>
-<option value="2685">Aravind Eye Hospital, Madurai</option>
-<option value="2681">Continental Hospitals, Hyderabad</option>
-<option value="2678">Care Hospitals, Banjara Hills, Hyderabad</option>
-<option value="2669">P.D Hinduja Hospital &amp; Medical Research Centre, Mumbai</option>
-<option value="2675">KIMS Hospital, Hyderabad</option>
-<option value="2503">Shalby Hospital, Ahmedabad</option>
-<option value="2500">Dayanand Medical College and Hospital, Ludhiana</option>
-<option value="2498">Seven Hills Hospital, Mumbai</option>
-<option value="2492">Sparsh Hospital, Bangalore</option>
-<option value="2490">Vijaya Hospital, Chennai</option>
-<option value="2489">Dr. L H Hiranandani Hospital, Mumbai</option>
-<option value="2486">SIMS Hospital, Chennai</option>
-<option value="2478">Breach Candy Hospital, Mumbai</option>
-<option value="2474">Kokilaben Dhirubhai Ambani Hospital Mumbai</option>
-<option value="2472">Jaslok Hospital Mumbai</option>
-<option value="2470">Rajagiri Hospital, Kochi</option>
-<option value="2307">Kailash Hospital and Heart Institute, Noida</option>
-<option value="2310">Bombay Hospital &amp; Medical Research Center, Mumbai</option>
-<option value="2304">Yashoda Hospitals, Hyderabad</option>
-<option value="2269">Rainbow Hospital, Bangalore</option>
-<option value="2224">Aster Medcity Kochi</option>
-<option value="2218">Sir Ganga Ram Hospital, New Delhi</option>
-<option value="2212">Saifee Hospital, Mumbai</option>
-<option value="2203">MIOT International, Chennai</option>
-<option value="2201">Manipal Hospitals Dwarka, Delhi</option>
-<option value="2191">Fortis Hospital Kolkata West Bengal</option>
-<option value="2182">Sankara Nethralaya, Chennai</option>
-<option value="2174">Apollo Gleneagles Hospital Kolkata</option>
-<option value="2170">Global Hospital Chennai</option>
-<option value="2168">Apollo Hospitals, Greams Road, Chennai</option>
-<option value="2159">Global Hospital Mumbai</option>
-<option value="2157">Jaypee Hospital, Noida</option>
-<option value="1900">Indraprastha Apollo Hospital New Delhi</option>
-<option value="1898">BLK Super Specialty Hospital New Delhi</option>
-<option value="1896">Max Super Speciality Hospital, Saket, New Delhi</option>
-<option value="1904">Narayana Multispeciality Hospital Bangalore</option>
-<option value="1890">Narayana Superspeciality Hospital, Gurgaon</option>
-<option value="1888">Columbia Asia Hospital Gurgaon</option>
-<option value="1886">Rockland Hospital, Manesar, Gurgaon</option>
-<option value="1881">Artemis Hospital Gurgaon</option>
-<option value="1868">Paras Hospitals, Gurgaon</option>
-<option value="1866">Max Super Specialty Hospital Gurgaon</option>
-<option value="1862">Medanta – The Medicity Hospital, Gurgaon</option>
-<option value="1844">Fortis Hospital Gurgaon</option>
-</select>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="dc-btnarea">
-                                        <a href="javascript:void(0);" class="dc-btn dc-resetbtn">Reset Filters</a>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Home Slider End -->
-    <!-- breadcrumbarea start -->
-    <div class="dc-breadcrumbarea">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <ol class="dc-breadcrumb">
-                        <li><a href="assets/index.html">Home</a></li>
-                        <li>Search Result</li>
-                        <li>Doctor Detail</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- breadcrumbarea End -->
-    <!-- Main Start -->
-    <main id="dc-main" class="dc-main dc-haslayout">
-        <!-- About Welcome Start -->
-        <!-- About Welcome Start -->
-        <div class="dc-haslayout dc-main-section pt-0">
-            <!-- User Listing Start-->
-            <div class="container">
-                <div class="row">
-                    <div id="dc-twocolumns" class="dc-twocolumns dc-haslayout">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-9 float-left">
-                            <div class="dc-docsingle-header">
-                                <figure class="dc-docsingleimg">
-                                    <img   src="{{doctor_detail.full_image}}"  onError="this.src='assets/images/doctors/img-04.jpg';" alt="img description">
-                                    <figcaption>
-                                        <span class="dc-featuredtag"><i class="fa fa-bolt"></i></span>
-                                    </figcaption>
-                                </figure>
-                                <div class="dc-docsingle-content">
-                                    <div class="dc-title">
-                                        <a href="javascript:void(0)" class="dc-docstatus">{{ doctor_detail.cat_name }}</a>
-                                        <h2><a href="javascript:void(0);">Dr.{{ doctor_detail.doc_name }}</a> <i class="fa fa-award dc-awardtooltip"><em>Medical Registration Verified</em></i> <i class="fa fa-check-circle dc-awardtooltip"><em>Medical Registration Verified</em></i></h2>
-                                        <ul class="dc-docinfo">
-                                            <li>
-                                                <!-- <em>MBBS(Gold Medalist), MS, MCh(Neurosurgery), FRCS(Ed), Neurosurgery(UK)</em> -->
-                          <em *ngFor="let de of  doctor_detail.degree_details;let i=index">{{de.degree_name}},</em>
-                                            </li>
-                                            <li>
-                                                <span class="dc-stars"><span></span></span>
-                                            </li>
-                                        </ul>
-                                        <a href="javascript:void(0);" class="dc-like"><i class="fa fa-heart"></i></a>
-                                    </div>
-                                    <!-- <div class="dc-description">
+                <!-- <div class="dc-description">
                                         <p>Dr. Anurag Saxena is HOD, Neurosurgery at Manipal hospitals Dwarka, New Delhi. Dr Saxena has been one of the few neurosurgeons who have been extensively trained and qualified in India and abroad.</p>
                                     </div> -->
-                                    <div class="dc-btnarea">
-                                        <a href="javascript:void(0);" class="dc-btn" data-toggle="modal" data-target="#feedbackmodal">Add Feedback</a>
-                                        <a href="javascript:void(0);" class="dc-btn" data-toggle="modal" data-target="#appointment">Book Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dc-docsingle-holder">
-                                <ul class="dc-navdocsingletab nav navbar-nav">
-                                    
-                                    <li class="nav-item">
-                                        <a id="userdetails-tab" class="active show" data-toggle="tab" href="#userdetails">User Details</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a id="consultation-tab" data-toggle="tab" href="#consultation">Membership</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a id="feedback-tab" data-toggle="tab" href="#feedback">Field of Expertise</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a id="articles-tab" data-toggle="tab" href="#articles">Fellowship & Awards</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content dc-haslayout">
-                                    
-                                    <div class="dc-contentdoctab dc-userdetails-holder tab-pane fade active show" id="userdetails">
-                                       
-                                    </div>
-                                    <div class="dc-contentdoctab dc-consultation-holder tab-pane" id="consultation">
-                                        <div class="dc-consultation">
-                                            <div class="">
-                                                <div class="dc-title"><h4>“Dr. Anurag Saxena” memberships</h4></div>
-                                                <div class="mt-2">
-                                                        <ul class="dc-specializationslist d-block">
-                                                <li><span>Society of British Neurological Surgeries</span></li>
-<li><span>Royal College of Surgeries of Edinburgh (U.K)</span></li>
-<li><span>Neurological Society of India</span></li>
-<li><span>Delhi Neurological Association</span></li>
-<li><span>Indian Society of Paediatric Neurosurgery</span></li>
-                                            </ul>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="dc-contentdoctab dc-feedback-holder tab-pane" id="feedback">
-                                    <div class="dc-title"><h4>“Dr. Anurag Saxena” Field of Expertise</h4></div>
-                                        <div class="mt-2">
-                                                        <ul class="dc-specializationslist d-block">
-                                                <li><span>Micro-neurosurgery</span></li>
-<li><span>Minimally invasive brain surgeries</span></li>
-<li><span>Minimally invasive spine surgeries</span></li>
-<li><span>Hydrocephalus treatment (Endoscopic and CSF diversion)</span></li>
-<li><span>Paediatric neurosurgery (brain, spine and CVJ craniofacial)</span></li>
-<li><span>Neuro-Oncology (brain and spine tumours)</span></li>
-<li><span>Cerebrovascular Surgeries</span></li>
-<li><span>Functional & complex spine surgeries</span></li>
-<li><span>Motion preservation spine surgeries</span></li>
-<li><span>Endoscopic brain surgeries</span></li>
-<li><span>Endoscopic spine surgeries</span></li>
-<li><span>Skull base neurosurgery</span></li>
-<li><span>Peripheral nerve surgeries</span></li>
-<li><span>Pain management</span></li>
-<li><span>Trigeminal Neuralgia</span></li>
-                                            </ul>
-                                                </div>
-                                        
-                                    </div>
-                                    <div class="dc-contentdoctab dc-articles-holder tab-pane" id="articles">
-                                        <div class="dc-title"><h4>“Dr. Anurag Saxena” Fellowship & Awards</h4></div>
-                                        <div class="mt-2">
-                                                        <ul class="dc-specializationslist d-block">
-                                                <li><span>Fellowship in Spine surgery, Lancashire Teaching Hospital, Preston (UK)</span></li>
-<li><span>Fellowship in Paediatric Neurosurgery, Royal Liverpool Alde Hey Children's Hospital. Liverpool (U.K)</span></li>
-<li><span>Fellowship in Neurosurgery, Royal College of Surgeons of Edinburgh (U.K)</span></li>
-<li><span>Senior Clinical Fellow Neurosurgery, University Hospital of Wales, Cardiff, U.K</span></li>
-<li><span>Research work published as original research article by British Journal Neurosurgery</span></li>
-<li><span>"Excellence in Health Care Award” in Neurosurgery 2018</span></li>
-<li><span>Expert Panel for neurosurgery- Educational Society of Bedside Intensive Care Medicine (ESBICM)</span></li>
-                                            </ul>
-                                                </div>
-                                        
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        <div class="dc-shareprofile">
-                            <ul class="dc-simplesocialicons dc-socialiconsborder">
-                                <li class="dc-facebook"><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
-                        <li class="dc-instagram"><a href="javascript:void(0);"><i class="fab fa-instagram"></i></a></li>
-                        <li class="dc-twitter"><a href="javascript:void(0);"><i class="fab fa-twitter"></i></a></li>
-                        <li class="dc-linkedin"><a href="javascript:void(0);"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li class="dc-youtube"><a href="javascript:void(0);"><i class="fab fa-youtube"></i></a></li>
-                            </ul>
-                        </div>
-                        </div>
+                <div class="dc-btnarea">
+                  <a
+                    href="javascript:void(0);"
+                    class="dc-btn"
+                    data-toggle="modal"
+                    data-target="#feedbackmodal"
+                    >Add Feedback</a
+                  >
+                  <a
+                    href="javascript:void(0);"
+                    class="dc-btn"
+                    data-toggle="modal"
+                    data-target="#appointment"
+                    >Book Now</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="dc-docsingle-holder">
+              <ul class="dc-navdocsingletab nav navbar-nav">
+                <li class="nav-item">
+                  <a
+                    id="userdetails-tab"
+                    class="active show"
+                    data-toggle="tab"
+                    href="#userdetails"
+                    >User Details</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    id="consultation-tab"
+                    data-toggle="tab"
+                    href="#consultation"
+                    >Membership</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a id="feedback-tab" data-toggle="tab" href="#feedback"
+                    >Field of Expertise</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a id="articles-tab" data-toggle="tab" href="#articles"
+                    >Fellowship & Awards</a
+                  >
+                </li>
+              </ul>
+              <div class="tab-content dc-haslayout">
+                <div
+                  class="dc-contentdoctab dc-userdetails-holder tab-pane fade active show"
+                  id="userdetails"
+                ></div>
+                <div
+                  class="dc-contentdoctab dc-consultation-holder tab-pane"
+                  id="consultation"
+                >
+                  <div class="dc-consultation">
+                    <div class="">
+                      <div class="dc-title">
+                        <h4>“Dr. Anurag Saxena” memberships</h4>
+                      </div>
+                      <div class="mt-2">
+                        <ul class="dc-specializationslist d-block">
+                          <li>
+                            <span
+                              >Society of British Neurological Surgeries</span
+                            >
+                          </li>
+                          <li>
+                            <span
+                              >Royal College of Surgeries of Edinburgh
+                              (U.K)</span
+                            >
+                          </li>
+                          <li><span>Neurological Society of India</span></li>
+                          <li><span>Delhi Neurological Association</span></li>
+                          <li>
+                            <span
+                              >Indian Society of Paediatric Neurosurgery</span
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="dc-contentdoctab dc-feedback-holder tab-pane"
+                  id="feedback"
+                >
+                  <div class="dc-title">
+                    <h4>“Dr. Anurag Saxena” Field of Expertise</h4>
+                  </div>
+                  <div class="mt-2">
+                    <ul class="dc-specializationslist d-block">
+                      <li><span>Micro-neurosurgery</span></li>
+                      <li><span>Minimally invasive brain surgeries</span></li>
+                      <li><span>Minimally invasive spine surgeries</span></li>
+                      <li>
+                        <span
+                          >Hydrocephalus treatment (Endoscopic and CSF
+                          diversion)</span
+                        >
+                      </li>
+                      <li>
+                        <span
+                          >Paediatric neurosurgery (brain, spine and CVJ
+                          craniofacial)</span
+                        >
+                      </li>
+                      <li>
+                        <span>Neuro-Oncology (brain and spine tumours)</span>
+                      </li>
+                      <li><span>Cerebrovascular Surgeries</span></li>
+                      <li><span>Functional & complex spine surgeries</span></li>
+                      <li><span>Motion preservation spine surgeries</span></li>
+                      <li><span>Endoscopic brain surgeries</span></li>
+                      <li><span>Endoscopic spine surgeries</span></li>
+                      <li><span>Skull base neurosurgery</span></li>
+                      <li><span>Peripheral nerve surgeries</span></li>
+                      <li><span>Pain management</span></li>
+                      <li><span>Trigeminal Neuralgia</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div
+                  class="dc-contentdoctab dc-articles-holder tab-pane"
+                  id="articles"
+                >
+                  <div class="dc-title">
+                    <h4>“Dr. Anurag Saxena” Fellowship & Awards</h4>
+                  </div>
+                  <div class="mt-2">
+                    <ul class="dc-specializationslist d-block">
+                      <li>
+                        <span
+                          >Fellowship in Spine surgery, Lancashire Teaching
+                          Hospital, Preston (UK)</span
+                        >
+                      </li>
+                      <li>
+                        <span
+                          >Fellowship in Paediatric Neurosurgery, Royal
+                          Liverpool Alde Hey Children's Hospital. Liverpool
+                          (U.K)</span
+                        >
+                      </li>
+                      <li>
+                        <span
+                          >Fellowship in Neurosurgery, Royal College of Surgeons
+                          of Edinburgh (U.K)</span
+                        >
+                      </li>
+                      <li>
+                        <span
+                          >Senior Clinical Fellow Neurosurgery, University
+                          Hospital of Wales, Cardiff, U.K</span
+                        >
+                      </li>
+                      <li>
+                        <span
+                          >Research work published as original research article
+                          by British Journal Neurosurgery</span
+                        >
+                      </li>
+                      <li>
+                        <span
+                          >"Excellence in Health Care Award” in Neurosurgery
+                          2018</span
+                        >
+                      </li>
+                      <li>
+                        <span
+                          >Expert Panel for neurosurgery- Educational Society of
+                          Bedside Intensive Care Medicine (ESBICM)</span
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 float-left">
-                            <aside id="dc-sidebar" class="dc-sidebar dc-sidebar-grid float-left mt-xl-0">
-                                <div class="dc-widget dc-onlineoptions">
-                                    <figure class="dc-onlinuserimg">
-                                        <img src="assets/images/doctors/img-11.jpg">
-                                        <figcaption><span>Live</span></figcaption>
-                                    </figure>
-                                    <div class="dc-onlineoption-content">
-                                        <div class="dc-title">
-                                            <h3><span>Stop Waiting in Queue</span> Ask Query Online</h3>
-                                        </div>
-                                        <div class="dc-btnarea">
-                                            <a href="javascript:void(0);" class="dc-btn dc-btnactive">Book Audio / Video Call</a>
-                                            <span>50,000+<em>Consultation Served </em></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                
-                            
-                            </aside>
-                        </div>
-                    </div>
-                </div>
+            <div class="dc-shareprofile">
+              <ul class="dc-simplesocialicons dc-socialiconsborder">
+                <li class="dc-facebook">
+                  <a href="javascript:void(0);"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                </li>
+                <li class="dc-instagram">
+                  <a href="javascript:void(0);"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </li>
+                <li class="dc-twitter">
+                  <a href="javascript:void(0);"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                </li>
+                <li class="dc-linkedin">
+                  <a href="javascript:void(0);"
+                    ><i class="fab fa-linkedin-in"></i
+                  ></a>
+                </li>
+                <li class="dc-youtube">
+                  <a href="javascript:void(0);"
+                    ><i class="fab fa-youtube"></i
+                  ></a>
+                </li>
+              </ul>
             </div>
-            <!-- User Listing End-->
+          </div>
+
+          <div
+            class="col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 float-left"
+          >
+            <aside
+              id="dc-sidebar"
+              class="dc-sidebar dc-sidebar-grid float-left mt-xl-0"
+            >
+              <div class="dc-widget dc-onlineoptions">
+                <figure class="dc-onlinuserimg">
+                  <img src="assets/images/doctors/img-11.jpg" />
+                  <figcaption><span>Live</span></figcaption>
+                </figure>
+                <div class="dc-onlineoption-content">
+                  <div class="dc-title">
+                    <h3><span>Stop Waiting in Queue</span> Ask Query Online</h3>
+                  </div>
+                  <div class="dc-btnarea">
+                    <a href="javascript:void(0);" class="dc-btn dc-btnactive"
+                      >Book Audio / Video Call</a
+                    >
+                    <span>50,000+<em>Consultation Served </em></span>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
         </div>
-        <!-- Emerging Clients End -->
-        <!--Skills Start-->
-        <section class="dc-haslayaout dc-footeraboutus dc-bgcolor">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-                        <div class="dc-widgetskills">
-                            <div class="dc-fwidgettitle">
-                                <h3>Top Doctors by Speciality</h3>
-                            </div>
-                            <ul class="dc-fwidgetcontent">
-                                <li><a href="javascript:void(0);">Allergy Specialist</a></li>
-                                <li><a href="javascript:void(0);">Andrologist</a></li>
-                                <li><a href="javascript:void(0);">Anesthetist</a></li>
-                                <li><a href="javascript:void(0);">Audiologist</a></li>
-                                <li><a href="javascript:void(0);">Dietitian/Nutritionist</a></li>
-                                <li class="dc-viewmore"><a href="javascript:void(0);">View All</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-                        <div class="dc-widgetskill">
-                            <div class="dc-fwidgettitle">
-                                <h3>Top Treatments in India</h3>
-                            </div>
-                            <ul class="dc-fwidgetcontent">
-                                <li><a href="javascript:void(0);">Laproscopic Surgeon</a></li>
-                                <li><a href="javascript:void(0);">Oral And Maxillofacial Surgeon</a></li>
-                                <li><a href="javascript:void(0);">Orthopedic Surgeon</a></li>
-                                <li><a href="javascript:void(0);">Pediatric Cardiac Surgeon</a></li>
-                                <li><a href="javascript:void(0);">Pediatric Orthopedic Surgeon</a></li>
-                                <li class="dc-viewmore"><a href="javascript:void(0);">View All</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-                        <div class="dc-footercol dc-widgetcategories">
-                            <div class="dc-fwidgettitle">
-                                <h3>Top Hospitals in India</h3>
-                            </div>
-                            <ul class="dc-fwidgetcontent">
-                                <li><a href="javascript:void(0);">Cosmetic Surgeon</a></li>
-                                <li><a href="javascript:void(0);">Eye Specialist</a></li>
-                                <li><a href="javascript:void(0);">Gastroenterologist</a></li>
-                                <li><a href="javascript:void(0);">General Physician</a></li>
-                                <li><a href="javascript:void(0);">General Practitioner</a></li>
-                                <li class="dc-viewmore"><a href="javascript:void(0);">View All</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-                        <div class="dc-widgetbylocation">
-                            <div class="dc-fwidgettitle">
-                                <h3>Best Hospitals for top Treatments</h3>
-                            </div>
-                            <ul class="dc-fwidgetcontent">
-                                <li><a href="javascript:void(0);">Chennai</a></li>
-                                <li><a href="javascript:void(0);">Mumbai</a></li>
-                                <li><a href="javascript:void(0);">New Delhi</a></li>
-                                <li><a href="javascript:void(0);">Bangalore</a></li>
-                                <li><a href="javascript:void(0);">Vellore</a></li>
-                                <li class="dc-viewmore"><a href="javascript:void(0);">View All</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+      </div>
+    </div>
+    <!-- User Listing End-->
+  </div>
+  <!-- Emerging Clients End -->
+  <!--Skills Start-->
+  <section class="dc-haslayaout dc-footeraboutus dc-bgcolor">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <div class="dc-widgetskills">
+            <div class="dc-fwidgettitle">
+              <h3>Top Doctors by Speciality</h3>
             </div>
-        </section>
-        <!--Skills End-->
-        
-    </main>
-    <!-- Main End -->
+            <ul class="dc-fwidgetcontent">
+              <li><a href="javascript:void(0);">Allergy Specialist</a></li>
+              <li><a href="javascript:void(0);">Andrologist</a></li>
+              <li><a href="javascript:void(0);">Anesthetist</a></li>
+              <li><a href="javascript:void(0);">Audiologist</a></li>
+              <li><a href="javascript:void(0);">Dietitian/Nutritionist</a></li>
+              <li class="dc-viewmore">
+                <a href="javascript:void(0);">View All</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <div class="dc-widgetskill">
+            <div class="dc-fwidgettitle">
+              <h3>Top Treatments in India</h3>
+            </div>
+            <ul class="dc-fwidgetcontent">
+              <li><a href="javascript:void(0);">Laproscopic Surgeon</a></li>
+              <li>
+                <a href="javascript:void(0);">Oral And Maxillofacial Surgeon</a>
+              </li>
+              <li><a href="javascript:void(0);">Orthopedic Surgeon</a></li>
+              <li>
+                <a href="javascript:void(0);">Pediatric Cardiac Surgeon</a>
+              </li>
+              <li>
+                <a href="javascript:void(0);">Pediatric Orthopedic Surgeon</a>
+              </li>
+              <li class="dc-viewmore">
+                <a href="javascript:void(0);">View All</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <div class="dc-footercol dc-widgetcategories">
+            <div class="dc-fwidgettitle">
+              <h3>Top Hospitals in India</h3>
+            </div>
+            <ul class="dc-fwidgetcontent">
+              <li><a href="javascript:void(0);">Cosmetic Surgeon</a></li>
+              <li><a href="javascript:void(0);">Eye Specialist</a></li>
+              <li><a href="javascript:void(0);">Gastroenterologist</a></li>
+              <li><a href="javascript:void(0);">General Physician</a></li>
+              <li><a href="javascript:void(0);">General Practitioner</a></li>
+              <li class="dc-viewmore">
+                <a href="javascript:void(0);">View All</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+          <div class="dc-widgetbylocation">
+            <div class="dc-fwidgettitle">
+              <h3>Best Hospitals for top Treatments</h3>
+            </div>
+            <ul class="dc-fwidgetcontent">
+              <li><a href="javascript:void(0);">Chennai</a></li>
+              <li><a href="javascript:void(0);">Mumbai</a></li>
+              <li><a href="javascript:void(0);">New Delhi</a></li>
+              <li><a href="javascript:void(0);">Bangalore</a></li>
+              <li><a href="javascript:void(0);">Vellore</a></li>
+              <li class="dc-viewmore">
+                <a href="javascript:void(0);">View All</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Skills End-->
+</main>
+<!-- Main End -->
+<!-- FOOTER  -->
+<app-footer></app-footer>
