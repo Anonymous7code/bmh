@@ -22,8 +22,8 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.get_doctor_category();
-    this.treatetment_list_only();
+    // this.get_doctor_category();
+    // this.treatetment_list_only();
   }
 
   get_doctor_category() {
@@ -47,13 +47,13 @@ export class AppComponent implements OnInit {
     });
   }
   route_doctor(data) {
-    this.api.set_doctor_list(data);
+    // this.api.set_doctor_list(data);
     this.router.navigate(['/doctor']);
 
     console.log(data);
   }
   route_hospital(data) {
-    this.api.set_hospital_list(data);
+    // this.api.set_hospital_list(data);
     this.router.navigate(['/hospitals']);
 
     console.log(data);
@@ -77,7 +77,7 @@ export class AppComponent implements OnInit {
     });
   }
   route_treatment_detail(data) {
-    this.api.set_treatement_detail(data.t_id);
+    // this.api.set_treatement_detail(data.t_id);
     this.router.navigate(['/treatment-detail']);
   }
 }

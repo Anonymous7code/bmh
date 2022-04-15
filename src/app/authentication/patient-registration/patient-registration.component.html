@@ -20,56 +20,40 @@
 											<li><a href="javascrip:void(0);">03</a></li> -->
                 <!-- <li><a href="javascrip:void(0);">04</a></li> -->
               </ul>
-              <form
-                method="post"
-                action="register.php"
+              <form [formGroup]="patientForm"
+              
                 class="dc-formtheme dc-formregister"
               >
                 <fieldset class="dc-registerformgroup">
                   <div
                     class="form-group dc-form-group-dropdown form-group-half"
                   >
-                    <span class="dc-select">
-                      <select>
-                        <option>mr.</option>
-                        <option>mrs</option>
-                      </select>
-                    </span>
-                    <input
+                    
+                    <input formControlName="user_name"
                       type="text"
-                      name="First_Name"
+                      name="user_name"
                       class="form-control"
-                      placeholder="First Name"
+                      placeholder="user_name"
                     />
                   </div>
                   <div class="form-group form-group-half">
-                    <input
+                    <input formControlName="first_name"
+                      type="text"
+                      name="first_name"
+                      class="form-control"
+                      placeholder="Frist Name"
+                    />
+                  </div>
+                  <div class="form-group form-group-half">
+                    <input formControlName="last_name"
                       type="text"
                       name="Last_Name"
                       class="form-control"
                       placeholder="Last Name"
                     />
                   </div>
-                  <div class="form-group form-group-half">
-                    <select
-                      class="form-select"
-                      aria-label="Default select example"
-                    >
-                      <option selected disabled>Select Gender</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
-                    </select>
-                  </div>
-                  <div class="form-group form-group-half">
-                    <input
-                      type="text"
-                      name="Mobile_Number"
-                      class="form-control"
-                      placeholder="Mobile Number"
-                    />
-                  </div>
                   <div class="form-group">
-                    <input
+                    <input formControlName="email"
                       type="text"
                       name="Email"
                       class="form-control"
@@ -77,7 +61,7 @@
                     />
                   </div>
                   <div class="form-group form-group-half">
-                    <input
+                    <input formControlName="password"
                       type="password"
                       name="password"
                       class="form-control"
@@ -85,7 +69,7 @@
                     />
                   </div>
                   <div class="form-group form-group-half">
-                    <input
+                    <input formControlName="cpassword"
                       type="password"
                       name="password"
                       class="form-control"
@@ -94,29 +78,13 @@
                   </div>
 
                   <div class="form-group">
-                    <div class="dc-select">
-                      <select
-                        class="chosen-select locations"
-                        data-placeholder="Country"
-                        name="locations"
-                      >
-                        <option value="Location">Location*</option>
-                        <option value="Mumbai">Mumbai</option>
-                        <option value="Pune">Pune</option>
-                        <option value="Goa">Goa</option>
-                        <option value="Indore">Indore</option>
-                        <option value="Nagpur">Nagpur</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <input
+                    <!-- <input
                       type="submit"
                       class="dc-btn"
                       name="submit"
                       value="Create Account"
-                    />
+                    /> -->
+                    <button class="dc-btn" type="submit" (click)="patientRegistration()">Registration Now</button>
                   </div>
                 </fieldset>
               </form>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { SharedataService } from '../../services/sharedata.service';
 import { HtmlParser, XmlParser } from '@angular/compiler';
@@ -10,6 +10,7 @@ import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
   styleUrls: ['./doctor.component.scss'],
 })
 export class DoctorComponent implements OnInit {
+  @ViewChild('search') search!: ElementRef;
   constructor(
     private api: ApiService,
     private router: Router,
@@ -19,6 +20,30 @@ export class DoctorComponent implements OnInit {
   ngOnInit(): void {
     this.get_doctor_data();
   }
+  // routerLink="/doctor-detail"
+  searchDoctors() {
+    let obj = {
+      search_type: this.search.nativeElement.value,
+      keyword: 'D*',
+      pg_num: 1,
+      pg_size: 100,
+    };
+    this.api.DoctorSearch(obj).subscribe((res) => {
+      if (res) {
+        console.log('res', res);
+      }
+    });
+  }
+
+  doctorDetail(id){
+    this.api.setDocId(id)
+    this.router.navigate(['/doctor-detail'])
+  }
+
+
+
+
+
   doctor_list: any = [];
   htmlDoc: any;
   get_doctor_data() {

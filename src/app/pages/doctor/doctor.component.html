@@ -13,7 +13,7 @@
             >
               <fieldset>
                 <div class="form-group">
-                  <input
+                  <input #search
                     type="text"
                     name="search"
                     class="form-control"
@@ -115,7 +115,7 @@
                   </div>
                 </div>
                 <div class="dc-btnarea">
-                  <a href="javascript:void(0);" class="dc-btn">Search</a>
+                  <span class="dc-btn" (click)="searchDoctors()" >Search</span>
                 </div>
               </fieldset>
             </form>
@@ -593,7 +593,7 @@
                     data-target="#appointment"
                     >Book Now</a
                   ><a
-                    routerLink="/doctor-detail"
+                   (click)="doctorDetail(0)"
                     class="dc-btn"
                     data-toggle="modal"
                     data-target="#appointment"
