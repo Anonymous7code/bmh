@@ -273,7 +273,7 @@
               <div class="dc-searchvtwo col-md-6">
                 <figure class="dc-docpostimg">
                   <img
-                    src="{{doctor_detail.image_url}}"
+                    src="{{ doctor_detail.image_url }}"
                     alt="img description"
                   />
                   <figcaption>
@@ -299,18 +299,18 @@
                   </h3>
                   <ul class="dc-docinfo">
                     <li>
-                      <em>{{doctor_detail.qualification }}</em>
+                      <em>{{ doctor_detail.qualification }}</em>
                     </li>
                     <li>
                       <span class="dc-stars"><span></span></span
-                      ><em>{{doctor_detail.speciality}}</em>
+                      ><em>{{ doctor_detail.speciality }}</em>
                     </li>
                   </ul>
                 </div>
                 <div class="dc-tags">
                   <ul>
                     <li *ngFor="let ser of doctor_detail.services">
-                      <a href="javascript:void(0);">{{ser}}</a>
+                      <a href="javascript:void(0);">{{ ser }}</a>
                     </li>
                     <!-- <li>
                       <a href="javascript:void(0);">Conservative Dentistry</a>
@@ -383,6 +383,32 @@
             </aside>
           </div> -->
         </div>
+      </div>
+      <div class="table-responsive mt-5">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
     <!-- User Listing End-->
