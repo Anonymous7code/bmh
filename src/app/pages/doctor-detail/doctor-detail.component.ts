@@ -18,20 +18,25 @@ export class DoctorDetailComponent implements OnInit {
   ) {}
 
   doctor_detail: any = {};
+  doctorService: any = [];
   ngOnInit(): void {
     this.doctor_detail=this.api.getDocId()
 
     // this.doctor_detail = this.share.get_doc_wise_detail();
-    console.log('this.doctor_detail', this.doctor_detail);
-    if (this.doctor_detail){
-      let obj={
-        "doctorId":this.doctor_detail.id
-      }
-      this.api.getHeader(obj).subscribe(res=>{
-        console.log("res",res);
+    console.log('this.doctor_detail', this.doctor_detail.id);
+  
+    console.log('this.doctor_detail.id', this.doctor_detail.id);
+    this.api.DoctorServiceApi().subscribe(res=>{
+      console.log("res",res);
+      this.doctorService= res.data
+    })
+    // if (this.doctor_detail){
+    //   console.log('this.doctor_detail.id', this.doctor_detail.id);
+    //   this.api.DoctorServiceApi(this.doctor_detail.id).subscribe(res=>{
+    //     console.log("res",res);
         
-      })
-    }
+    //   })
+    // }
   
   
   }

@@ -79,8 +79,8 @@ export class ApiService {
   // getHeader(x): any {
   //   return this.http.get(this.rootUrl + x, this.headersDef())
   // }
-  getHeader(x): any {
-    return this.http.get(this.baseUrl+'v1/doctor/services/list{doctorId}', this.headersDef())
+  DoctorServiceApi(): any {
+    return this.http.get(this.baseUrl+`v1/doctor/services/list?doctorId=${this.docId.id}`, this.headers())
   }
 
   DoctorSearch(object?:any): any {
