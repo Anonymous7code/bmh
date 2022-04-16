@@ -49,6 +49,7 @@ import { LabDashboardHomeComponent } from './lab-dashboard/lab-dashboard-home/la
 import { LabViewDetailsComponent } from './lab-dashboard/lab-dashboard-home/lab-view-details/lab-view-details.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { FooterComponent } from './pages/footer/footer.component';
+import { PatientListComponent } from './doctor-dashboard/patient-list/patient-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,6 +95,7 @@ import { FooterComponent } from './pages/footer/footer.component';
     LabViewDetailsComponent,
     HeaderComponent,
     FooterComponent,
+    PatientListComponent,
   ],
   imports: [
     BrowserModule,

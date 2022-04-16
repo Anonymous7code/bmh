@@ -41,6 +41,7 @@ import { LabInvoiceComponent } from './lab-dashboard/lab-invoice/lab-invoice.com
 import { LabDashboardHomeComponent } from './lab-dashboard/lab-dashboard-home/lab-dashboard-home.component';
 import { LabDashboardComponent } from './lab-dashboard/lab-dashboard.component';
 import { LabViewDetailsComponent } from './lab-dashboard/lab-dashboard-home/lab-view-details/lab-view-details.component';
+import { PatientListComponent } from './doctor-dashboard/patient-list/patient-list.component';
 
 const routes: Routes = [
   // { path: 'login', component: LoginComponent },
@@ -74,6 +75,7 @@ const routes: Routes = [
         path: 'service',
         component: ServiceComponent,
       },
+      { path: 'patient-list', component: PatientListComponent },
       { path: 'appointment-list', component: AppointmentListComponent },
       { path: 'clinic-setting', component: ClinicSettingComponent },
       { path: 'hospital-setting', component: HospitalSettingComponent },
