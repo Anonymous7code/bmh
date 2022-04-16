@@ -25,6 +25,7 @@ export class PatientRegistrationComponent implements OnInit {
       user_name: ['', [Validators.required]],
       first_name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
+      mobile: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
       cpassword: ['', [Validators.required]],
@@ -33,18 +34,21 @@ export class PatientRegistrationComponent implements OnInit {
   }
 
   patientRegistration() {
+    
     console.log('patientForm', this.patientForm.value);
     let obj = {
       user_name: this.patientForm.value.user_name,
       email: this.patientForm.value.email,
-      first_name: this.patientForm.value.first_name,
+      name: this.patientForm.value.first_name,
       last_name: this.patientForm.value.last_name,
+      mobile: this.patientForm.value.mobile,
       password: this.patientForm.value.password,
       'interface-id': 2835,
     };
     this.api.patientRegistration(obj).subscribe((res) => {
       if (res) {
         console.log('res', res);
+        this.route.navigate(['patient-dashboard/patient-dashboard-home'])
       }
     });
   }
