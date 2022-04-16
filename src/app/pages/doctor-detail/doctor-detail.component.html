@@ -334,24 +334,66 @@
                   </ul>
                 </div>
               </div>
-              <div class="dc-doclocation dc-doclocationvtwo col-md-6">
-                <span><i class="ti-direction-alt"></i> Manchester, UK</span>
+              <div class="dc-doclocation dc-doclocationvtwo col-md-6" >
+                <!-- <span  *ngFor="let item of doctorService; let i = index"><i class="ti-direction-alt"></i> Mode: {{ item.mode }}
                 <span
-                  ><i class="ti-calendar"></i> Mo, Tu,
-                  <em class="dc-dayon">We</em>, Th, Fr, Sa</span
+                  ><i class="ti-calendar"></i> productDesc: {{ item.productDesc }}</span
                 >
-                <span><i class="ti-thumb-up"></i> 345 Votes</span>
-                <span><i class="ti-wallet"></i> Starting From $50</span>
+                <span><i class="ti-thumb-up"></i>price: {{ item.price | currency: "INR" }}</span>
+                <span><i class="ti-wallet"></i> address: {{ item.service.address }}</span>
                 <span
                   ><i class="ti-calendar"></i>
-                  <em class="dc-available">Available Today</em></span
+                  available_days: {{ item.service.available_days }}</span
                 >
-                <div class="dc-btnarea">
-                  <a href="javascript:void(0);" class="dc-btn">Book Now</a>
-                  <a href="javascript:void(0);" class="dc-like dc-liked"
-                    ><i class="fa fa-heart"></i
-                  ></a>
-                </div>
+                <span
+                  ><i class="ti-calendar"></i>
+                  consultationTime: {{ item.service.consultationTime }}</span
+                >
+                <span
+                  ><i class="ti-calendar"></i>
+                  name: {{ item.service.name }}</span
+                >
+                <span
+                  ><i class="ti-calendar"></i>
+                  needApproval: {{ item.service.needApproval }}</span
+                >
+               
+              </span>
+              <div class="dc-btnarea">
+                <a href="javascript:void(0);" class="dc-btn">Book Now</a>
+                <a href="javascript:void(0);" class="dc-like dc-liked"
+                  ><i class="fa fa-heart"></i
+                ></a>
+              </div> -->
+
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">S</th>
+                    <th scope="col">Mode</th>
+                    <th scope="col">productDesc</th>
+                    <th scope="col">price</th>
+                    <th scope="col">address</th>
+                    <th scope="col">available_days</th>
+                    <th scope="col">consultationTime</th>
+                    <th scope="col">name</th>
+                    <th scope="col">needApproval</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of doctorService; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ item.mode }}</td>
+                    <td>{{ item.productDesc }}</td>
+                    <td>{{ item.price | currency: "INR" }}</td>
+                    <td>{{ item.service.address }}</td>
+                    <td>{{ item.service.available_days }}</td>
+                    <td>{{ item.service.consultationTime }}</td>
+                    <td>{{ item.service.name }}</td>
+                    <td>{{ item.service.needApproval }}</td>
+                  </tr>
+                </tbody>
+              </table>
               </div>
             </div>
           </div>
@@ -385,7 +427,7 @@
         </div>
       </div>
       <div class="table-responsive mt-5">
-        <table class="table table-hover">
+        <!-- <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col">S</th>
@@ -412,7 +454,7 @@
               <td>{{ item.service.needApproval }}</td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
       </div>
     </div>
     <!-- User Listing End-->

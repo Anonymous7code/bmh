@@ -26,10 +26,10 @@ export class ApiService {
       'https://auth.whitecoats.com/auth/realms/whitecoats/protocol/openid-connect/token';
     // this.baseUrl =
     //   'https://appointments-sandbox.whitecoats.com/';
-    this.baseUrl =
-      'https://appointments-sandbox.whitecoats.com/';
     // this.baseUrl =
-    // 'http://13.234.100.92:9999/';
+    //   'https://appointments-sandbox.whitecoats.com/';
+    this.baseUrl =
+    'http://13.234.100.92:9999/';
   }
 
   changeapi(x) {
@@ -37,6 +37,7 @@ export class ApiService {
   }
 
   loginData: any
+  doctorlist: any
   setLogindata(x) {
     sessionStorage.setItem('loginData', x)
     this.loginData = x
@@ -45,6 +46,17 @@ export class ApiService {
   getLogindata() {
     let loginData = sessionStorage.getItem('loginData')
     return loginData
+
+  }
+
+  setDoctordata(x) {
+    sessionStorage.setItem('doctorlist', x)
+    this.doctorlist = x
+  }
+
+  getDoctordata() {
+    let doctorlist = sessionStorage.getItem('doctorlist')
+    return doctorlist
 
   }
 
@@ -75,7 +87,7 @@ export class ApiService {
   }
 
  patientRegistration(object): any {
-    return this.http.post(this.baseUrl+'v1/user/register', object, this.headers())
+    return this.http.post(this.baseUrl+'v1/register/patient', object, this.headers())
   }
 
   // getHeader(x): any {
@@ -83,6 +95,10 @@ export class ApiService {
   // }
   DoctorServiceApi(): any {
     return this.http.get(this.baseUrl+`v1/doctor/services/list?doctorId=${this.docId.id}`, this.headers())
+  }
+
+  parientlistApi(): any {
+    return this.http.get(this.baseUrl+`v1/patients/list?phone=${this.docId.id}`, this.headers())
   }
 
   DoctorSearch(object?:any): any {
