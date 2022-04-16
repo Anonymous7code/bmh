@@ -22,13 +22,24 @@ a {
   border-radius: 4px;
   background: #f7f7f7;
 }
+
+ul {
+  padding-left: 0;
+}
+
 .tab-pane ul li:before {
   content: "";
   font-family: "themify";
   margin-right: 15px;
   font-size: 90%;
 }
+
+.search-bar-btn {
+  color: white !important;
+}
+
 .dc-btn {
+  cursor: pointer;
   text-decoration: none;
 }
 .dc-docpostcontent .dc-title h3 a {

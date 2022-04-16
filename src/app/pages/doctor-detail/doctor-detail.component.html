@@ -400,18 +400,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of doctorService; let i= index">
-              <th scope="row">{{i+1}}</th>
-              <td>{{item.mode}}</td>
-              <td>{{item.productDesc}}</td>
-              <td>{{item.price}}</td>
-              <td>{{item.service.address}}</td>
-              <td>{{item.service.available_days}}</td>
-              <td>{{item.service.consultationTime}}</td>
-              <td>{{item.service.name}}</td>
-              <td>{{item.service.needApproval}}</td>
+            <tr *ngFor="let item of doctorService; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ item.mode }}</td>
+              <td>{{ item.productDesc }}</td>
+              <td>{{ item.price | currency: "INR" }}</td>
+              <td>{{ item.service.address }}</td>
+              <td>{{ item.service.available_days }}</td>
+              <td>{{ item.service.consultationTime }}</td>
+              <td>{{ item.service.name }}</td>
+              <td>{{ item.service.needApproval }}</td>
             </tr>
-         
           </tbody>
         </table>
       </div>

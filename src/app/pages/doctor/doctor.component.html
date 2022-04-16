@@ -116,7 +116,9 @@
                   </div>
                 </div>
                 <div class="dc-btnarea">
-                  <span class="dc-btn" (click)="searchDoctors()">Search</span>
+                  <span class="dc-btn search-bar-btn" (click)="searchDoctors()"
+                    >Search</span
+                  >
                 </div>
               </fieldset>
             </form>
@@ -537,21 +539,22 @@
           <div class="col-12">
             <div class="dc-docsingle-header" *ngFor="let item of doctorList">
               <figure class="dc-docsingleimg">
-                <img style="height: 100px;width: 100px;"
-                  src="{{item.image_url}}"
+                <img
+                  style="height: 100px; width: 100px"
+                  src="{{ item.image_url }}"
                   alt="img description"
                 />
                 <figcaption>
                   <span class="dc-featuredtag"><i class="fa fa-bolt"></i></span>
                 </figcaption>
               </figure>
-              <div class="dc-docsingle-content" >
+              <div class="dc-docsingle-content">
                 <div class="dc-title">
-                  <a href="javascript:void(0)" class="dc-docstatus"
-                    >{{item.speciality}}</a
-                  >
+                  <a href="javascript:void(0)" class="dc-docstatus">{{
+                    item.speciality
+                  }}</a>
                   <h2>
-                    <a href="javascript:void(0);">{{item.name}} </a>
+                    <a href="javascript:void(0);">{{ item.name }} </a>
                     <i class="fa fa-award dc-awardtooltip"
                       ><em>Medical Registration Verified</em></i
                     >
@@ -561,7 +564,7 @@
                   </h2>
                   <ul class="dc-docinfo">
                     <li>
-                      <em>{{item.qualification}}</em>
+                      <em>{{ item.qualification }}</em>
                     </li>
                     <li>
                       <span class="dc-stars"><span></span></span
@@ -574,7 +577,7 @@
                 </div>
                 <div class="dc-description">
                   <p *ngFor="let ser of item.services">
-                   {{ser}}
+                    {{ ser }}
                   </p>
                 </div>
                 <div class="dc-btnarea">
