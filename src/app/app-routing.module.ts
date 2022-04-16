@@ -42,6 +42,7 @@ import { LabDashboardHomeComponent } from './lab-dashboard/lab-dashboard-home/la
 import { LabDashboardComponent } from './lab-dashboard/lab-dashboard.component';
 import { LabViewDetailsComponent } from './lab-dashboard/lab-dashboard-home/lab-view-details/lab-view-details.component';
 import { PatientListComponent } from './doctor-dashboard/patient-list/patient-list.component';
+import { DoctorRegistrationComponent } from './authentication/doctor-registration/doctor-registration.component';
 
 const routes: Routes = [
   // { path: 'login', component: LoginComponent },
@@ -58,6 +59,7 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'patient-registration', component: PatientRegistrationComponent },
+  { path: 'doctor-registration', component: DoctorRegistrationComponent },
   {
     path: 'doctor-dashboard',
     component: DoctorDashboardComponent,

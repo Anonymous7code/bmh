@@ -2,28 +2,18 @@
 <header id="dc-header" class="dc-header dc-haslayout">
   <!-- NAV BAR  -->
   <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <button
-        class="navbar-toggler mobile-menu-btn"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"
-          ><img src="assets/icons/list.svg" class="menu-icon" alt=""
-        /></span>
-      </button>
+    <div class="container justify-content-center">
       <div class="logo-container">
         <a class="navbar-brand" href="#"
-          ><img src="assets/logo/heart logo.png" style="width: 3.5rem" alt=""
+          ><img
+            src="assets/doctor dashboard assets/dashboard logo.png"
+            style="width: 15rem"
+            alt=""
         /></a>
       </div>
       <div class="cart-profile-container">
         <div class="cart-container">
-          <a href="">
+          <a href="" class="d-flex">
             <img
               src="assets/icons/cart-line.svg"
               class="navbar-icons"
@@ -49,16 +39,34 @@
               Profile
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider" /></li>
               <li>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" routerLink="patient-registration"
+                  >Patient Login</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="doctor-registration"
+                  >Doctor Login</a
+                >
               </li>
             </ul>
           </span>
         </div>
+        <button
+          class="navbar-toggler mobile-menu-btn"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"
+            ><img src="assets/icons/list.svg" class="menu-icon" alt=""
+          /></span>
+        </button>
       </div>
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
@@ -118,32 +126,34 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Select City
+              Select Pincode
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">482002</a></li>
+
+              <li><a class="dropdown-item" href="#">230252</a></li>
               <li>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#">400001</a>
               </li>
             </ul>
           </span>
-          <input
-            class="form-control search-box"
-            type="search"
-            placeholder="Search for health packages or tests"
-            aria-label="Search"
-          />
+          <div class="dc-btnarea input-field-container">
+            <input
+              class="form-control search-box"
+              type="search"
+              placeholder="Search for health packages or tests"
+              aria-label="Search"
+            />
 
-          <a href="#" class="search-box-a">
-            <img src="assets/icons/search.svg" class="search-box-img" alt=""
-          /></a>
+            <a href="#" class="search-bar-btn"
+              ><img src="assets/icons/search 33px.svg" alt=""
+            /></a>
+          </div>
         </form>
       </div>
       <div class="call-container">
         <p>Call us at</p>
-        <p class="number-p">958572828</p>
+        <p class="number-p">09168668383</p>
       </div>
     </div>
   </nav>
@@ -168,51 +178,54 @@
       <div class="small-nav">
         <p><a href=""> Contact Us </a></p>
       </div>
-      <!-- <div class="small-nav">
-        <p><a routerLink="/doctor-dashboard"> Doctor Dashboard </a></p>
-      </div>
-      <div class="small-nav">
-        <p><a routerLink="/patient-dashboard"> Patient </a></p>
-      </div>
-      <div class="small-nav">
-        <p><a routerLink="/admin-dashboard"> Admin </a></p>
-      </div>
-      <div class="small-nav">
-        <p><a routerLink="/lab-dashboard"> Lab </a></p>
-      </div> -->
     </div>
   </nav>
   <form class="container d-flex search-field-container-2">
-    <input
-      class="form-control search-box"
-      type="search"
-      placeholder="Search for health packages or tests"
-      aria-label="Search"
-    />
+    <span class="nav-item dropdown">
+      <a
+        style="
+          position: absolute;
+          z-index: 99;
+          top: 0px;
+          height: 48px;
+          padding: 0.8rem 1rem;
+          box-shadow: 0 3px 6px #00000029;
+        "
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="navbarDropdown"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Select Pincode
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="#">482002</a></li>
 
-    <a href="#" class="search-box-a">
-      <img src="/icons/search.svg" class="search-box-img" alt=""
-    /></a>
+        <li><a class="dropdown-item" href="#">230252</a></li>
+        <li>
+          <a class="dropdown-item" href="#">400001</a>
+        </li>
+      </ul>
+    </span>
+    <div class="dc-btnarea input-field-container">
+      <input
+        style="
+          padding-left: 160px;
+          box-shadow: 0 3px 6px #00000029;
+          padding-right: 40px;
+        "
+        class="form-control search-box"
+        type="search "
+        placeholder="Search for health packages or tests"
+        aria-label="Search"
+      />
+
+      <a href="#" class="search-bar-btn-2"
+        ><img src="assets/icons/search 33px.svg" alt=""
+      /></a>
+    </div>
   </form>
-  <span class="nav-item dropdown dropdown-2">
-    <a
-      class="nav-link container dropdown-toggle"
-      href="#"
-      id="navbarDropdown"
-      role="button"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
-      Select City
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><hr class="dropdown-divider" /></li>
-      <li>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </li>
-    </ul>
-  </span>
 </header>
 <!-- Header End -->

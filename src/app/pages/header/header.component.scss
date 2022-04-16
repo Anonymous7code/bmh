@@ -1,6 +1,23 @@
 .dc-btn {
   text-decoration: none;
 }
+
+.input-field-container {
+  position: relative;
+}
+
+.search-bar-btn {
+  position: absolute;
+  right: 10px;
+  top: 3px;
+}
+
+.search-bar-btn-2 {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
 .dc-docpostcontent .dc-title h3 a {
   float: left;
   width: 175px;
@@ -150,13 +167,14 @@ body {
   border: 1px solid #dcdcdc;
   border-radius: 0px 6px 6px 0px;
   box-shadow: 0 3px 6px #00000029;
-  width: 70%;
+  width: 80%;
   height: 40px;
 
   .search-box {
     font-family: "Jost", sans-serif !important;
     border-radius: 0px 6px 6px 0px;
     height: 40px;
+    padding-right: 40px;
   }
 }
 

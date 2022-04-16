@@ -7,27 +7,26 @@
           <div class="dc-registerformmain">
             <div class="dc-registerhead">
               <div class="dc-title">
-                <h3>Registration For Patients</h3>
+                <h3>Registration For Doctors</h3>
               </div>
-              <div class="dc-description">
-                <!-- <p>Consectetur adipisicing elit sed dotem eiusmod tempor incune utnaem labore etdolore maigna aliqua enim poskina</p> -->
-              </div>
+              <div class="dc-description"></div>
             </div>
             <div class="dc-joinforms">
-              <ul class="dc-joinsteps">
-                <!-- <li class="dc-active"><a href="javascrip:void(0);">01</a></li>
-											<li><a href="javascrip:void(0);">02</a></li>
-											<li><a href="javascrip:void(0);">03</a></li> -->
-                <!-- <li><a href="javascrip:void(0);">04</a></li> -->
-              </ul>
+              <ul class="dc-joinsteps"></ul>
               <form
                 [formGroup]="patientForm"
                 class="dc-formtheme dc-formregister"
               >
                 <fieldset class="dc-registerformgroup">
                   <div
-                    class="form-group dc-form-group-dropdown form-group-half"
+                    class="form-group dc-form-group-dropdown form-group-full"
                   >
+                    <span class="dc-select">
+                      <select>
+                        <option>mr.</option>
+                        <option>mrs</option>
+                      </select>
+                    </span>
                     <input
                       formControlName="user_name"
                       type="text"
@@ -81,6 +80,22 @@
                       placeholder="Retype Password*"
                     />
                   </div>
+                  <div class="form-group">
+                    <div class="dc-select">
+                      <select
+                        class="chosen-select locations"
+                        data-placeholder="Country"
+                        name="locations"
+                      >
+                        <option value="Location">Location*</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Pune">Pune</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Indore">Indore</option>
+                        <option value="Nagpur">Nagpur</option>
+                      </select>
+                    </div>
+                  </div>
 
                   <div class="form-group">
                     <!-- <input
@@ -89,31 +104,12 @@
                       name="submit"
                       value="Create Account"
                     /> -->
-                    <button
-                      class="dc-btn"
-                      type="submit"
-                      (click)="patientRegistration()"
-                    >
+                    <button class="dc-btn" type="submit">
                       Registration Now
                     </button>
                   </div>
                 </fieldset>
               </form>
-              <!-- <div class="dc-joinnowholder">
-											<div class="dc-title">
-												<h4>Join Now With</h4>
-											</div>
-											<div class="dc-description">
-												<p>Use a social account for faster login or easy registration to directly get in to your account and start a good business</p>
-											</div>
-											<ul class="dc-socialicons dc-iconwithtext">
-												<li class="dc-facebook"><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i><em>Facebook</em></a>
-												</li>
-												<li class="dc-twitter"><a href="javascript:void(0);"><i class="fab fa-twitter"></i><em>Twitter</em></a></li>
-												<li class="dc-googleplus"><a href="javascript:void(0);"><i class="fab fa-google-plus-g"></i><em>Google</em></a></li>
-												<li class="dc-instagram"><a href="javascript:void(0);"><i class="fab fa-instagram"></i><em>Instagram</em></a></li>
-											</ul>
-										</div> -->
             </div>
           </div>
           <div class="dc-registerformfooter">
