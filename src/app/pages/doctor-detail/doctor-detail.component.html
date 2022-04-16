@@ -270,7 +270,7 @@
               </ul>
             </div> -->
             <div class="dc-docpostcontent row justify-content-between">
-              <div class="dc-searchvtwo col-md-6">
+              <div class="col-md-5">
                 <figure class="dc-docpostimg">
                   <img
                     src="{{ doctor_detail.image_url }}"
@@ -334,7 +334,7 @@
                   </ul>
                 </div>
               </div>
-              <div class="dc-doclocation dc-doclocationvtwo col-md-6" >
+              <div class="dc-doclocation dc-doclocationvtwo col-md-7">
                 <!-- <span  *ngFor="let item of doctorService; let i = index"><i class="ti-direction-alt"></i> Mode: {{ item.mode }}
                 <span
                   ><i class="ti-calendar"></i> productDesc: {{ item.productDesc }}</span
@@ -365,35 +365,37 @@
                   ><i class="fa fa-heart"></i
                 ></a>
               </div> -->
-
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">S</th>
-                    <th scope="col">Mode</th>
-                    <th scope="col">productDesc</th>
-                    <th scope="col">price</th>
-                    <th scope="col">address</th>
-                    <th scope="col">available_days</th>
-                    <th scope="col">consultationTime</th>
-                    <th scope="col">name</th>
-                    <th scope="col">needApproval</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let item of doctorService; let i = index">
-                    <th scope="row">{{ i + 1 }}</th>
-                    <td>{{ item.mode }}</td>
-                    <td>{{ item.productDesc }}</td>
-                    <td>{{ item.price | currency: "INR" }}</td>
-                    <td>{{ item.service.address }}</td>
-                    <td>{{ item.service.available_days }}</td>
-                    <td>{{ item.service.consultationTime }}</td>
-                    <td>{{ item.service.name }}</td>
-                    <td>{{ item.service.needApproval }}</td>
-                  </tr>
-                </tbody>
-              </table>
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead class="doc-detail-table-head">
+                      <tr>
+                        <th scope="col">Mode</th>
+                        <th scope="col">productDesc</th>
+                        <th scope="col">price</th>
+                        <th scope="col">address</th>
+                        <th scope="col">AvailableDays</th>
+                        <th scope="col">consultationTime</th>
+                        <th scope="col">name</th>
+                        <th scope="col">needApproval</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        class="doc-detail-table-row"
+                        *ngFor="let item of doctorService"
+                      >
+                        <td>{{ item.mode }}</td>
+                        <td>{{ item.productDesc }}</td>
+                        <td>{{ item.price | currency: "INR" }}</td>
+                        <td>{{ item.service.address }}</td>
+                        <td>{{ item.service.available_days }}</td>
+                        <td>{{ item.service.consultationTime }}</td>
+                        <td>{{ item.service.name }}</td>
+                        <td>{{ item.service.needApproval }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>

@@ -18,3 +18,19 @@ ul {
 a {
   text-decoration: none;
 }
+
+.table-responsive {
+  .table {
+    .doc-detail-table-head {
+      background-color: #55acee;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      font-size: 1rem;
+    }
+    tbody {
+      .doc-detail-table-row {
+        font-family: "Poppins", Arial, Helvetica, sans-serif !important;
+      }
+    }
+  }
+}
