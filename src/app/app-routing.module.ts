@@ -11,7 +11,7 @@ import { HospitalDetailComponent } from './pages/hospital-detail/hospital-detail
 import { TreatmentComponent } from './pages/treatment/treatment.component';
 import { TreatmentDetailComponent } from './pages/treatment-detail/treatment-detail.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
-import { PatientRegistrationComponent } from './authentication/patient-registration/patient-registration.component';
+import { PatientRegistrationComponent } from './pages/patient-registration/patient-registration.component';
 import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
 import { AppointmentListComponent } from './doctor-dashboard/appointment-list/appointment-list.component';
 import { ClinicSettingComponent } from './doctor-dashboard/clinic-setting/clinic-setting.component';
@@ -40,7 +40,7 @@ import { LabDashboardHomeComponent } from './lab-dashboard/lab-dashboard-home/la
 import { LabDashboardComponent } from './lab-dashboard/lab-dashboard.component';
 import { LabViewDetailsComponent } from './lab-dashboard/lab-dashboard-home/lab-view-details/lab-view-details.component';
 import { PatientListComponent } from './doctor-dashboard/patient-list/patient-list.component';
-import { DoctorRegistrationComponent } from './authentication/doctor-registration/doctor-registration.component';
+import { DoctorRegistrationComponent } from './pages/doctor-registration/doctor-registration.component';
 import { PathologyComponent } from './pages/pathology/pathology.component';
 import { ViewPathologyComponent } from './pages/pathology/view-pathology/view-pathology.component';
 import { PathologyHomeComponent } from './pages/pathology/pathology-home/pathology-home.component';

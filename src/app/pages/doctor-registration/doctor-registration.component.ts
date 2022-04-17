@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoctorRegistrationComponent implements OnInit {
   patientForm: any;
+
   constructor() {}
 
   ngOnInit(): void {}

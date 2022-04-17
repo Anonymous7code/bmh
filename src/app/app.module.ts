@@ -57,6 +57,9 @@ import { RadiologyComponent } from './pages/radiology/radiology.component';
 import { RadiologyHomeComponent } from './pages/radiology/radiology-home/radiology-home.component';
 import { ViewRadiologyComponent } from './pages/radiology/radiology-home/view-radiology/view-radiology.component';
 import { ProductMedicinesComponent } from './pages/product-medicines/product-medicines.component';
+import { DoctorRegistrationComponent } from './pages/doctor-registration/doctor-registration.component';
+import { PatientRegistrationComponent } from './pages/patient-registration/patient-registration.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,6 +106,8 @@ import { ProductMedicinesComponent } from './pages/product-medicines/product-med
     RadiologyHomeComponent,
     ViewRadiologyComponent,
     ProductMedicinesComponent,
+    DoctorRegistrationComponent,
+    PatientRegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -110,6 +115,7 @@ import { ProductMedicinesComponent } from './pages/product-medicines/product-med
     HttpClientModule,
     AuthenticationModule,
     RouterModule,
+    ReactiveFormsModule,
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
