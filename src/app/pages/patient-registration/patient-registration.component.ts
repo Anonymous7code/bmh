@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validator,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 @Component({
@@ -20,7 +14,8 @@ export class PatientRegistrationComponent implements OnInit {
     private route: Router
   ) {}
   patientForm: FormGroup;
-  ngOnInit(): void {
+
+  ngOnInit() {
     this.patientForm = this.fb.group({
       user_name: ['', [Validators.required]],
       first_name: ['', [Validators.required]],
@@ -34,7 +29,6 @@ export class PatientRegistrationComponent implements OnInit {
   }
 
   patientRegistration() {
-    
     console.log('patientForm', this.patientForm.value);
     let obj = {
       user_name: this.patientForm.value.user_name,
@@ -48,7 +42,7 @@ export class PatientRegistrationComponent implements OnInit {
     this.api.patientRegistration(obj).subscribe((res) => {
       if (res) {
         console.log('res', res);
-        this.route.navigate(['patient-dashboard/patient-dashboard-home'])
+        this.route.navigate(['patient-dashboard/patient-dashboard-home']);
       }
     });
   }
