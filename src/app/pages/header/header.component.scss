@@ -8,8 +8,8 @@
 
 .search-bar-btn {
   position: absolute;
-  right: 10px;
-  top: 3px;
+  right: 5px;
+  top: 5px;
 }
 
 .search-bar-btn-2 {
@@ -130,16 +130,36 @@ body {
 }
 .navbar-collapse {
   justify-content: center;
+
   .navbar-nav {
     li {
       list-style: none;
     }
     margin: 10px 0;
     .nav-item {
+      margin: 10px 0;
       a {
+        text-decoration: none;
+        padding: 10px;
         color: grey;
+        border-radius: 30px;
+        &:hover {
+          background-color: #0d6efd;
+          color: white;
+        }
       }
     }
+  }
+}
+
+.nav-bar-mobile-container {
+  .nav-bar-ul-mobile {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    box-shadow: 0px 0px 10px #00000029;
   }
 }
 

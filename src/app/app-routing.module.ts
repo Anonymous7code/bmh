@@ -10,8 +10,6 @@ import { HospitalsComponent } from './pages/hospitals/hospitals.component';
 import { HospitalDetailComponent } from './pages/hospital-detail/hospital-detail.component';
 import { TreatmentComponent } from './pages/treatment/treatment.component';
 import { TreatmentDetailComponent } from './pages/treatment-detail/treatment-detail.component';
-import { TestimonialsComponent } from './pages/testimonials/testimonials.component';
-import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { PatientRegistrationComponent } from './authentication/patient-registration/patient-registration.component';
 import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
@@ -43,6 +41,12 @@ import { LabDashboardComponent } from './lab-dashboard/lab-dashboard.component';
 import { LabViewDetailsComponent } from './lab-dashboard/lab-dashboard-home/lab-view-details/lab-view-details.component';
 import { PatientListComponent } from './doctor-dashboard/patient-list/patient-list.component';
 import { DoctorRegistrationComponent } from './authentication/doctor-registration/doctor-registration.component';
+import { PathologyComponent } from './pages/pathology/pathology.component';
+import { ViewPathologyComponent } from './pages/pathology/view-pathology/view-pathology.component';
+import { PathologyHomeComponent } from './pages/pathology/pathology-home/pathology-home.component';
+import { RadiologyHomeComponent } from './pages/radiology/radiology-home/radiology-home.component';
+import { ViewRadiologyComponent } from './pages/radiology/radiology-home/view-radiology/view-radiology.component';
+import { ProductMedicinesComponent } from './pages/product-medicines/product-medicines.component';
 
 const routes: Routes = [
   // { path: 'login', component: LoginComponent },
@@ -55,11 +59,48 @@ const routes: Routes = [
   { path: 'hospital-detail', component: HospitalDetailComponent },
   { path: 'treatment', component: TreatmentComponent },
   { path: 'treatment-detail', component: TreatmentDetailComponent },
-  { path: 'testimonials', component: TestimonialsComponent },
-  { path: 'about-us', component: AboutUsComponent },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'patient-registration', component: PatientRegistrationComponent },
   { path: 'doctor-registration', component: DoctorRegistrationComponent },
+  { path: 'product-medicines', component: ProductMedicinesComponent },
+  {
+    path: 'pathology',
+    component: PathologyComponent,
+    children: [
+      {
+        redirectTo: 'pathology-home',
+        path: '',
+        pathMatch: 'full',
+      },
+      {
+        path: 'pathology-home',
+        component: PathologyHomeComponent,
+      },
+      {
+        path: 'view-pathology',
+        component: ViewPathologyComponent,
+      },
+    ],
+  },
+  {
+    path: 'radiology',
+    component: PathologyComponent,
+    children: [
+      {
+        redirectTo: 'radiology-home',
+        path: '',
+        pathMatch: 'full',
+      },
+      {
+        path: 'radiology-home',
+        component: RadiologyHomeComponent,
+      },
+      {
+        path: 'view-radiology',
+        component: ViewRadiologyComponent,
+      },
+    ],
+  },
   {
     path: 'doctor-dashboard',
     component: DoctorDashboardComponent,

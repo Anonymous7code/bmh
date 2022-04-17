@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DemopageComponent } from './demopage.component';
+import { ViewPathologyComponent } from './view-pathology.component';
 
-describe('DemopageComponent', () => {
-  let component: DemopageComponent;
-  let fixture: ComponentFixture<DemopageComponent>;
+describe('ViewPathologyComponent', () => {
+  let component: ViewPathologyComponent;
+  let fixture: ComponentFixture<ViewPathologyComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DemopageComponent ]
+      declarations: [ ViewPathologyComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DemopageComponent);
+    fixture = TestBed.createComponent(ViewPathologyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

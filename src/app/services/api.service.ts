@@ -5,7 +5,6 @@ import {
   HttpClient,
   HttpHeaders,
   HttpClientModule,
-
 } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -28,94 +27,100 @@ export class ApiService {
     //   'https://appointments-sandbox.whitecoats.com/';
     // this.baseUrl =
     //   'https://appointments-sandbox.whitecoats.com/';
-    this.baseUrl =
-    'http://13.234.100.92:9999/';
+    this.baseUrl = 'http://13.234.100.92:9999/';
   }
 
   changeapi(x) {
     this.rootUrl = x;
   }
 
-  loginData: any
-  doctorlist: any
+  loginData: any;
+  doctorlist: any;
   setLogindata(x) {
-    sessionStorage.setItem('loginData', x)
-    this.loginData = x
+    sessionStorage.setItem('loginData', x);
+    this.loginData = x;
   }
 
   getLogindata() {
-    let loginData = sessionStorage.getItem('loginData')
-    return loginData
-
+    let loginData = sessionStorage.getItem('loginData');
+    return loginData;
   }
 
   setDoctordata(x) {
-    sessionStorage.setItem('doctorlist', x)
-    this.doctorlist = x
+    sessionStorage.setItem('doctorlist', x);
+    this.doctorlist = x;
   }
 
   getDoctordata() {
-    let doctorlist = sessionStorage.getItem('doctorlist')
-    return doctorlist
-
+    let doctorlist = sessionStorage.getItem('doctorlist');
+    return doctorlist;
   }
-
 
   headersDef() {
     let header = new HttpHeaders({
-      'Content-Type': "application/x-www-form-urlencoded",
-      "Authorization": "Bearer " + this.getLogindata(),
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Bearer ' + this.getLogindata(),
       // "x-interface-id": '2835'
     });
     // To be edited
-    const requestOptions = { headers: header }
+    const requestOptions = { headers: header };
     return requestOptions;
   }
   headers() {
     let header = new HttpHeaders({
-      'Content-Type': "application/json",
-      "Authorization": "Bearer " + this.getLogindata(),
-      "x-interface-id": '2835'
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + this.getLogindata(),
+      'x-interface-id': '2835',
     });
     // To be edited
-    const requestOptions = { headers: header }
+    const requestOptions = { headers: header };
     return requestOptions;
   }
 
   postHeader(object): any {
-    return this.http.post(this.rootUrl , object, this.headersDef())
+    return this.http.post(this.rootUrl, object, this.headersDef());
   }
 
- patientRegistration(object): any {
-    return this.http.post(this.baseUrl+'v1/register/patient', object, this.headers())
+  patientRegistration(object): any {
+    return this.http.post(
+      this.baseUrl + 'v1/register/patient',
+      object,
+      this.headers()
+    );
   }
 
   // getHeader(x): any {
   //   return this.http.get(this.rootUrl + x, this.headersDef())
   // }
   DoctorServiceApi(): any {
-    return this.http.get(this.baseUrl+`v1/doctor/services/list?doctorId=${this.docId.id}`, this.headers())
+    return this.http.get(
+      this.baseUrl + `v1/doctor/services/list?doctorId=${this.docId.id}`,
+      this.headers()
+    );
   }
 
   parientlistApi(): any {
-    return this.http.get(this.baseUrl+`v1/patients/list?phone=${this.docId.id}`, this.headers())
+    return this.http.get(
+      this.baseUrl + `v1/patients/list?phone=${this.docId.id}`,
+      this.headers()
+    );
   }
 
-  DoctorSearch(object?:any): any {
-    return this.http.post(this.baseUrl+'v1/search', object, this.headers())
+  DoctorSearch(object?: any): any {
+    return this.http.post(this.baseUrl + 'v1/search', object, this.headers());
   }
 
   // DoctorServiceApi(object?:any): any {
   //   return this.http.get(this.baseUrl+'v1/doctor/services/list', object)
   // }
 
-  docId:any
-  setDocId(x){
-    this.docId=x
+  docId: any;
+  setDocId(x) {
+    this.docId = x;
   }
 
- getDocId(){
-    return this.docId
+  getDocId() {
+    return this.docId;
   }
 
   // ObtendoToken(): Observable<string> {
@@ -170,7 +175,12 @@ export class ApiService {
   //   });
   // }
   postapi(body): any {
-    return this.http.post('https://auth.whitecoats.com/auth/realms/whitecoats/protocol/openid-connect/token', body).pipe(map((res) => res));
+    return this.http
+      .post(
+        'https://auth.whitecoats.com/auth/realms/whitecoats/protocol/openid-connect/token',
+        body
+      )
+      .pipe(map((res) => res));
   }
 
   getapi(x): Observable<any> {

@@ -13,7 +13,7 @@ import { HospitalDetailComponent } from './pages/hospital-detail/hospital-detail
 // import { TreatmentDetailComponent } from './pages/treatment-detail/treatment-detail.component';
 // import { TestimonialsComponent } from './pages/testimonials/testimonials.component';
 // import { AboutUsComponent } from './pages/about-us/about-us.component';
-// import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { HttpClientModule } from '@angular/common/http';
 //import {NgxPaginationModule} from 'ngx-pagination';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
@@ -50,26 +50,25 @@ import { LabViewDetailsComponent } from './lab-dashboard/lab-dashboard-home/lab-
 import { HeaderComponent } from './pages/header/header.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { PatientListComponent } from './doctor-dashboard/patient-list/patient-list.component';
+import { PathologyComponent } from './pages/pathology/pathology.component';
+import { ViewPathologyComponent } from './pages/pathology/view-pathology/view-pathology.component';
+import { PathologyHomeComponent } from './pages/pathology/pathology-home/pathology-home.component';
+import { RadiologyComponent } from './pages/radiology/radiology.component';
+import { RadiologyHomeComponent } from './pages/radiology/radiology-home/radiology-home.component';
+import { ViewRadiologyComponent } from './pages/radiology/radiology-home/view-radiology/view-radiology.component';
+import { ProductMedicinesComponent } from './pages/product-medicines/product-medicines.component';
 @NgModule({
   declarations: [
     AppComponent,
-    // DemopageComponent,
-    // NewdemoComponent,
     HomeComponent,
     DoctorComponent,
     DoctorDetailComponent,
     HospitalsComponent,
     HospitalDetailComponent,
-    // TreatmentComponent,
-    // TreatmentDetailComponent,
-    // TestimonialsComponent,
-    // AboutUsComponent,
-    // ContactUsComponent,
     DoctorDashboardComponent,
     AppointmentListComponent,
     ClinicSettingComponent,
     HospitalSettingComponent,
-    // InvoiceComponent,
     PayoutSettingComponent,
     ProfileSettingComponent,
     ServiceComponent,
@@ -96,6 +95,14 @@ import { PatientListComponent } from './doctor-dashboard/patient-list/patient-li
     HeaderComponent,
     FooterComponent,
     PatientListComponent,
+    PathologyComponent,
+    ViewPathologyComponent,
+    ContactUsComponent,
+    PathologyHomeComponent,
+    RadiologyComponent,
+    RadiologyHomeComponent,
+    ViewRadiologyComponent,
+    ProductMedicinesComponent,
   ],
   imports: [
     BrowserModule,
