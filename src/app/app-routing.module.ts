@@ -140,13 +140,12 @@ const routes: Routes = [
       {
         path: 'patient-dashboard-home',
         component: PatientDashboardHomeComponent,
-        children: [
-          {
-            path: 'appointment-view-details',
-            component: AppointmentViewDetailsComponent,
-          },
-        ],
       },
+      {
+        path: 'appointment-view-details',
+        component: AppointmentViewDetailsComponent,
+      },
+
       {
         path: 'your-appointment',
         component: YourAppointmentComponent,
