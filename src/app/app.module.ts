@@ -1,19 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { HomeComponent } from './pages/home/home.component';
 import { DoctorComponent } from './pages/doctor/doctor.component';
 import { DoctorDetailComponent } from './pages/doctor-detail/doctor-detail.component';
 import { HospitalsComponent } from './pages/hospitals/hospitals.component';
 import { HospitalDetailComponent } from './pages/hospital-detail/hospital-detail.component';
-
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
-
 //import {NgxPaginationModule} from 'ngx-pagination';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AuthenticationModule } from './authentication/authentication.module';
@@ -57,6 +56,8 @@ import { ViewRadiologyComponent } from './pages/radiology/radiology-home/view-ra
 import { ProductMedicinesComponent } from './pages/product-medicines/product-medicines.component';
 import { DoctorRegistrationComponent } from './pages/doctor-registration/doctor-registration.component';
 import { PatientRegistrationComponent } from './pages/patient-registration/patient-registration.component';
+import { environment } from 'src/environments/environment';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -109,6 +110,8 @@ import { PatientRegistrationComponent } from './pages/patient-registration/patie
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
     AppRoutingModule,
     HttpClientModule,
     AuthenticationModule,
@@ -116,7 +119,10 @@ import { PatientRegistrationComponent } from './pages/patient-registration/patie
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    ApiService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

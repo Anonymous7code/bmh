@@ -16,7 +16,7 @@
             <div class="dc-joinforms">
               <ul class="dc-joinsteps"></ul>
               <form
-                [formGroup]="patientForm"
+                [formGroup]="DoctorForm"
                 class="dc-formtheme dc-formregister"
               >
                 <fieldset class="dc-registerformgroup">
@@ -24,9 +24,9 @@
                     class="form-group dc-form-group-dropdown form-group-full"
                   >
                     <span class="dc-select">
-                      <select>
-                        <option>mr.</option>
-                        <option>mrs</option>
+                      <select formControlName="gender">
+                        <option value="male">mr</option>
+                        <option value="female">mrs</option>
                       </select>
                     </span>
                     <input
@@ -39,20 +39,20 @@
                   </div>
                   <div class="form-group form-group-half">
                     <input
-                      formControlName="first_name"
+                      formControlName="full_name"
                       type="text"
-                      name="first_name"
+                      name="full_name"
                       class="form-control"
-                      placeholder="First Name"
+                      placeholder="Full Name"
                     />
                   </div>
                   <div class="form-group form-group-half">
                     <input
-                      formControlName="last_name"
+                      formControlName="mobile_number"
                       type="text"
-                      name="Last_Name"
+                      name="mobile_number"
                       class="form-control"
-                      placeholder="Last Name"
+                      placeholder="Mobile Number"
                     />
                   </div>
                   <div class="form-group">
@@ -82,23 +82,25 @@
                       placeholder="Retype Password*"
                     />
                   </div>
+
                   <div class="form-group">
                     <div class="dc-select">
-                      <select
-                        class="chosen-select locations"
-                        data-placeholder="Country"
-                        name="locations"
-                      >
-                        <option value="Location">Location*</option>
-                        <option value="Mumbai">Mumbai</option>
-                        <option value="Pune">Pune</option>
-                        <option value="Goa">Goa</option>
-                        <option value="Indore">Indore</option>
-                        <option value="Nagpur">Nagpur</option>
-                      </select>
+                      <input
+                        formControlName="location"
+                        class="form-control country-dropdown"
+                        list="datalistOptions"
+                        id="exampleDataList"
+                        placeholder="Country"
+                      />
+                      <datalist id="datalistOptions">
+                        <option value="San Francisco"></option>
+                        <option value="New York"></option>
+                        <option value="Seattle"></option>
+                        <option value="Los Angeles"></option>
+                        <option value="Chicago"></option>
+                      </datalist>
                     </div>
                   </div>
-
                   <div class="form-group">
                     <!-- <input
                       type="submit"
@@ -106,7 +108,7 @@
                       name="submit"
                       value="Create Account"
                     /> -->
-                    <button class="dc-btn" type="submit">
+                    <button class="dc-btn" type="submit" (click)="testsubmit()">
                       Registration Now
                     </button>
                   </div>

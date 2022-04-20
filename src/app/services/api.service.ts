@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-
 import {
-  HttpClient,
-  HttpHeaders,
-  HttpClientModule,
-} from '@angular/common/http';
+  AngularFirestore,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument,
+} from '@angular/fire/firestore';
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
+  DoctorCollection!: AngularFirestoreCollection<any>;
+  Items: Observable<any[]>;
   rootUrl;
   baseUrl;
   doctor_array: any = [];
@@ -20,7 +23,8 @@ export class ApiService {
   doctor_list = new BehaviorSubject(this.doctor_array);
   hospital_list = new BehaviorSubject(this.hospital_array);
   treatment_detail = new BehaviorSubject(this.treatment_detail_obj);
-  constructor(private http: HttpClient) {
+  constructor(private _FireStore: AngularFirestore, private http: HttpClient) {
+    this.DoctorCollection = this._FireStore.collection('Doctors');
     this.rootUrl =
       'https://auth.whitecoats.com/auth/realms/whitecoats/protocol/openid-connect/token';
     // this.baseUrl =
@@ -29,6 +33,10 @@ export class ApiService {
     //   'https://appointments-sandbox.whitecoats.com/';
     // this.baseUrl = 'http://13.234.100.92:9999/';
     this.baseUrl = 'https://appointments-sandbox.whitecoats.com/';
+  }
+
+  DocRegistration(data: any) {
+    this.DoctorCollection.add(data);
   }
 
   changeapi(x) {
