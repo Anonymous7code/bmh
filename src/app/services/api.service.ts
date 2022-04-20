@@ -27,7 +27,8 @@ export class ApiService {
     //   'https://appointments-sandbox.whitecoats.com/';
     // this.baseUrl =
     //   'https://appointments-sandbox.whitecoats.com/';
-    this.baseUrl = 'http://13.234.100.92:9999/';
+    // this.baseUrl = 'http://13.234.100.92:9999/';
+    this.baseUrl = 'https://appointments-sandbox.whitecoats.com/';
   }
 
   changeapi(x) {
