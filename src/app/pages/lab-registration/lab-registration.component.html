@@ -1,5 +1,4 @@
 <app-header></app-header>
-
 <!--Register Form Start-->
 <div class="dc-haslayout dc-main-section">
   <div class="container">
@@ -9,47 +8,24 @@
           <div class="dc-registerformmain">
             <div class="dc-registerhead">
               <div class="dc-title">
-                <h3>Registration For Doctors</h3>
+                <h3>Registration For Labs</h3>
               </div>
               <div class="dc-description"></div>
             </div>
             <div class="dc-joinforms">
               <ul class="dc-joinsteps"></ul>
-              <form
-                [formGroup]="DoctorForm"
-                class="dc-formtheme dc-formregister"
-              >
+              <form [formGroup]="LabForm" class="dc-formtheme dc-formregister">
                 <fieldset class="dc-registerformgroup">
                   <div
                     class="form-group dc-form-group-dropdown form-group-full"
-                  >
-                    <span class="dc-select">
-                      <select
-                        class="form-select"
-                        aria-label="Default select example"
-                        formControlName="gender"
-                        placeholder="Gender"
-                      >
-                        <option selected disabled>Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                      </select>
-                    </span>
+                  ></div>
+                  <div class="form-group form-group-full">
                     <input
-                      formControlName="user_name"
+                      formControlName="lab_name"
                       type="text"
-                      name="user_name"
+                      name="lab_name"
                       class="form-control"
-                      placeholder="User Name"
-                    />
-                  </div>
-                  <div class="form-group form-group-half">
-                    <input
-                      formControlName="full_name"
-                      type="text"
-                      name="full_name"
-                      class="form-control"
-                      placeholder="Full Name"
+                      placeholder="Lab Name"
                     />
                   </div>
                   <div class="form-group form-group-half">
@@ -61,34 +37,15 @@
                       placeholder="Mobile Number"
                     />
                   </div>
-                  <div class="form-group">
+                  <div class="form-group form-group-half">
                     <input
                       formControlName="email"
-                      type="text"
+                      type="email"
                       name="Email"
                       class="form-control"
                       placeholder="Email"
                     />
                   </div>
-                  <div class="form-group form-group-half">
-                    <input
-                      formControlName="password"
-                      type="password"
-                      name="password"
-                      class="form-control"
-                      placeholder="Password*"
-                    />
-                  </div>
-                  <div class="form-group form-group-half">
-                    <input
-                      formControlName="cpassword"
-                      type="password"
-                      name="password"
-                      class="form-control"
-                      placeholder="Retype Password*"
-                    />
-                  </div>
-
                   <div class="form-group form-group-half">
                     <div class="dc-select">
                       <input
@@ -125,35 +82,22 @@
                       </datalist>
                     </div>
                   </div>
-                  <div class="form-group form-group-full">
-                    <div class="dc-select">
-                      <input
-                        formControlName="city"
-                        class="form-control country-dropdown"
-                        list="datalistOptions"
-                        id="exampleDataList"
-                        placeholder="City"
-                      />
-                      <datalist id="datalistOptions">
-                        <option value="San Francisco"></option>
-                        <option value="New York"></option>
-                        <option value="Seattle"></option>
-                        <option value="Los Angeles"></option>
-                        <option value="Chicago"></option>
-                      </datalist>
-                    </div>
+
+                  <div class="mb-3 form-group">
+                    <textarea
+                      formControlName="address"
+                      class="form-control address-area"
+                      id="exampleFormControlTextarea1"
+                      rows="3"
+                      placeholder="Address"
+                    ></textarea>
                   </div>
+
                   <div class="form-group">
-                    <!-- <input
-                      type="submit"
-                      class="dc-btn"
-                      name="submit"
-                      value="Create Account"
-                    /> -->
                     <button
                       class="dc-btn"
                       type="submit"
-                      (click)="RegisterDoc()"
+                      (click)="RegisterLab()"
                     >
                       Registration Now
                     </button>

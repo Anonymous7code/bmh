@@ -47,11 +47,13 @@ import { PathologyHomeComponent } from './pages/pathology/pathology-home/patholo
 import { RadiologyHomeComponent } from './pages/radiology/radiology-home/radiology-home.component';
 import { ViewRadiologyComponent } from './pages/radiology/radiology-home/view-radiology/view-radiology.component';
 import { ProductMedicinesComponent } from './pages/product-medicines/product-medicines.component';
+import { LabRegistrationComponent } from './pages/lab-registration/lab-registration.component';
 
 const routes: Routes = [
   // { path: 'login', component: LoginComponent },
   // { path: 'demopage', component: DemopageComponent },
   // { path: 'newdemo', component: NewdemoComponent },
+
   { path: '', component: HomeComponent },
   { path: 'doctor', component: DoctorComponent },
   { path: 'doctor-detail', component: DoctorDetailComponent },
@@ -62,6 +64,7 @@ const routes: Routes = [
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'patient-registration', component: PatientRegistrationComponent },
   { path: 'doctor-registration', component: DoctorRegistrationComponent },
+  { path: 'lab-registration', component: LabRegistrationComponent },
   { path: 'product-medicines', component: ProductMedicinesComponent },
   {
     path: 'pathology',
@@ -165,6 +168,13 @@ const routes: Routes = [
     path: 'admin-dashboard',
     component: AdminDashboardComponent,
     children: [
+      {
+        path: 'admin-list',
+        loadChildren: () =>
+          import('./admin-dashboard/admin-list/admin-list.module').then(
+            (m) => m.AdminListModule
+          ),
+      },
       {
         redirectTo: 'admin-dashboard-home',
         path: '',

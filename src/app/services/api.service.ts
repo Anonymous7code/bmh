@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   DoctorCollection!: AngularFirestoreCollection<any>;
-  Items: Observable<any[]>;
+  LabCollection!: AngularFirestoreCollection<any>;
   rootUrl;
   baseUrl;
   doctor_array: any = [];
@@ -25,6 +25,7 @@ export class ApiService {
   treatment_detail = new BehaviorSubject(this.treatment_detail_obj);
   constructor(private _FireStore: AngularFirestore, private http: HttpClient) {
     this.DoctorCollection = this._FireStore.collection('Doctors');
+    this.LabCollection = this._FireStore.collection('Labs');
     this.rootUrl =
       'https://auth.whitecoats.com/auth/realms/whitecoats/protocol/openid-connect/token';
     // this.baseUrl =
@@ -37,6 +38,9 @@ export class ApiService {
 
   DocRegistration(data: any) {
     this.DoctorCollection.add(data);
+  }
+  LabRegistration(data: any) {
+    this.LabCollection.add(data);
   }
 
   changeapi(x) {
