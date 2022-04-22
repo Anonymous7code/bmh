@@ -43,7 +43,9 @@ export class PatientRegistrationComponent implements OnInit {
     this.api.patientRegistration(obj).subscribe((res) => {
       if (res) {
         console.log('res', res);
-        this.route.navigate(['patient-dashboard/patient-dashboard-home']);
+        this.api.setpatientlist(res)
+        this.api.setpatientDetail(obj.mobile)
+        this.route.navigate(['doctor-dashboard/patient-list']);
       }
     });
   }

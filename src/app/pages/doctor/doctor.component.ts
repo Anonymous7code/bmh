@@ -34,7 +34,8 @@ export class DoctorComponent implements OnInit {
     
         this.doctorList=res
         console.log("doctorlist",this.doctorList);
-        this.api.setDoctordata(res)
+        this.api.setDoctordata(res[0].id)
+     
       }
     });
   }

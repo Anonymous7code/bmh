@@ -66,6 +66,8 @@ export class ApiService {
 
   getDoctordata() {
     let doctorlist = sessionStorage.getItem('doctorlist');
+    console.log("docid" ,doctorlist[0]);
+    
     return doctorlist;
   }
 
@@ -114,10 +116,12 @@ export class ApiService {
 
   parientlistApi(): any {
     return this.http.get(
-      this.baseUrl + `v1/patients/list?phone=${this.docId.id}`,
+      this.baseUrl + `v1/patients/list?phone=${this.patientDetail}interfaceId?=55112`,
       this.headers()
     );
   }
+
+ 
 
   DoctorSearch(object?: any): any {
     return this.http.post(this.baseUrl + 'v1/search', object, this.headers());
@@ -128,6 +132,7 @@ export class ApiService {
   // }
 
   docId: any;
+  patientDetail: any;
   setDocId(x) {
     this.docId = x;
   }
@@ -135,6 +140,29 @@ export class ApiService {
   getDocId() {
     return this.docId;
   }
+
+  setpatientDetail(x) {
+    sessionStorage.setItem('patientDetail', x);
+    this.patientDetail = x;
+  }
+
+  getpatientDetail() {
+    let patientDetail = sessionStorage.getItem('patientDetail');
+    return patientDetail;
+  }
+
+  patientlist:any
+  setpatientlist(x) {
+    // sessionStorage.setItem('patientlist', x);
+    this.patientlist = x;
+  }
+
+  getpatientlist() {
+    // let patientlist = sessionStorage.getItem('patientlist');
+    return this.patientlist;
+  }
+
+
 
   // ObtendoToken(): Observable<string> {
   //   const headers = new Headers();
