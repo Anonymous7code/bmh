@@ -14,6 +14,8 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   DoctorCollection!: AngularFirestoreCollection<any>;
+  Docs: Observable<any[]>;
+  Lab: Observable<any[]>;
   LabCollection!: AngularFirestoreCollection<any>;
   rootUrl;
   baseUrl;
@@ -26,6 +28,9 @@ export class ApiService {
   constructor(private _FireStore: AngularFirestore, private http: HttpClient) {
     this.DoctorCollection = this._FireStore.collection('Doctors');
     this.LabCollection = this._FireStore.collection('Labs');
+    this.Docs = this._FireStore.collection('Doctors').valueChanges();
+    this.Lab = this._FireStore.collection('Labs').valueChanges();
+
     this.rootUrl =
       'https://auth.whitecoats.com/auth/realms/whitecoats/protocol/openid-connect/token';
     // this.baseUrl =
@@ -36,11 +41,18 @@ export class ApiService {
     this.baseUrl = 'https://appointments-sandbox.whitecoats.com/';
   }
 
+  GetDocDetails() {
+    return this.Docs;
+  }
+  GetLabDetails() {
+    return this.Lab;
+  }
+
   DocRegistration(data: any) {
-    this.DoctorCollection.add(data);
+    return this.DoctorCollection.add(data);
   }
   LabRegistration(data: any) {
-    this.LabCollection.add(data);
+    return this.LabCollection.add(data);
   }
 
   changeapi(x) {
