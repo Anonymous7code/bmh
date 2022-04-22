@@ -22,6 +22,7 @@ export class LabRegistrationComponent implements OnInit {
       mobile_number: '',
       email: '',
       country: '',
+      city: '',
       state: '',
       address: '',
     });
