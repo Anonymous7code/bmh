@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { SharedataService } from '../../services/sharedata.service';
 import { HtmlParser, XmlParser } from '@angular/compiler';
-import { LoginComponent } from 'src/app/authentication/login/login.component';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 @Component({
   selector: 'app-doctor',
@@ -11,7 +10,7 @@ import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 })
 export class DoctorComponent implements OnInit {
   @ViewChild('search') search!: ElementRef;
-  doctorList:any
+  doctorList: any;
   constructor(
     private api: ApiService,
     private router: Router,
@@ -31,23 +30,17 @@ export class DoctorComponent implements OnInit {
     };
     this.api.DoctorSearch(obj).subscribe((res) => {
       if (res) {
-    
-        this.doctorList=res
-        console.log("doctorlist",this.doctorList);
-        this.api.setDoctordata(res[0].id)
-     
+        this.doctorList = res;
+        console.log('doctorlist', this.doctorList);
+        this.api.setDoctordata(res[0].id);
       }
     });
   }
 
-  doctorDetail(id){
-    this.api.setDocId(id)
-    this.router.navigate(['/doctor-detail'])
+  doctorDetail(id) {
+    this.api.setDocId(id);
+    this.router.navigate(['/doctor-detail']);
   }
-
-
-
-
 
   doctor_list: any = [];
   htmlDoc: any;

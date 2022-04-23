@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { SharedataService } from '../../services/sharedata.service';
 import { HtmlParser, XmlParser } from '@angular/compiler';
-import { LoginComponent } from 'src/app/authentication/login/login.component';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 
 @Component({
@@ -20,26 +19,24 @@ export class DoctorDetailComponent implements OnInit {
   doctor_detail: any = {};
   doctorService: any = [];
   ngOnInit(): void {
-    this.doctor_detail=this.api.getDocId()
-    this.doctor_detail=this.api.getDoctordata()
+    this.doctor_detail = this.api.getDocId();
+    this.doctor_detail = this.api.getDoctordata();
 
     // this.doctor_detail = this.share.get_doc_wise_detail();
     console.log('this.doctor_detail', this.doctor_detail.id);
-  
+
     console.log('this.doctor_detail.id', this.doctor_detail.id);
-    this.api.DoctorServiceApi().subscribe(res=>{
-      console.log("res",res);
-      this.doctorService= res.data
-    })
+    this.api.DoctorServiceApi().subscribe((res) => {
+      console.log('res', res);
+      this.doctorService = res.data;
+    });
     // if (this.doctor_detail){
     //   console.log('this.doctor_detail.id', this.doctor_detail.id);
     //   this.api.DoctorServiceApi(this.doctor_detail.id).subscribe(res=>{
     //     console.log("res",res);
-        
+
     //   })
     // }
-  
-  
   }
   get_doctor_wise_detail() {
     let obj = {

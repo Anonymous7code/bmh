@@ -15,7 +15,6 @@ import { HospitalDetailComponent } from './pages/hospital-detail/hospital-detail
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 //import {NgxPaginationModule} from 'ngx-pagination';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { AuthenticationModule } from './authentication/authentication.module';
 import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
 import { AppointmentListComponent } from './doctor-dashboard/appointment-list/appointment-list.component';
 import { ClinicSettingComponent } from './doctor-dashboard/clinic-setting/clinic-setting.component';
@@ -116,7 +115,6 @@ import { LabRegistrationComponent } from './pages/lab-registration/lab-registrat
     AngularFirestoreModule,
     AppRoutingModule,
     HttpClientModule,
-    AuthenticationModule,
     RouterModule,
     ReactiveFormsModule,
     FormsModule,

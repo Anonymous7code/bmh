@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import { LoginComponent } from './authentication/login/login.component';
 // import { DemopageComponent } from './pages/demopage/demopage.component';
 // import { NewdemoComponent } from './pages/newdemo/newdemo.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -50,10 +49,13 @@ import { ProductMedicinesComponent } from './pages/product-medicines/product-med
 import { LabRegistrationComponent } from './pages/lab-registration/lab-registration.component';
 
 const routes: Routes = [
-  // { path: 'login', component: LoginComponent },
-  // { path: 'demopage', component: DemopageComponent },
-  // { path: 'newdemo', component: NewdemoComponent },
-
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./authentication/authentication.module').then(
+        (m) => m.AuthenticationModule
+      ),
+  },
   { path: '', component: HomeComponent },
   { path: 'doctor', component: DoctorComponent },
   { path: 'doctor-detail', component: DoctorDetailComponent },
