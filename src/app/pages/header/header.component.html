@@ -40,17 +40,31 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
-                <a class="dropdown-item" routerLink="../auth/login-doctor"
+                <a
+                  href=""
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                  class="dropdown-item"
                   >Login Doctor</a
                 >
               </li>
               <li>
-                <a class="dropdown-item" routerLink="../auth/login-patient"
+                <a
+                  class="dropdown-item"
+                  href=""
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop2"
+                  class="dropdown-item"
                   >Login Patient</a
                 >
               </li>
               <li>
-                <a class="dropdown-item" routerLink="../auth/login-lab"
+                <a
+                  class="dropdown-item"
+                  href=""
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop3"
+                  class="dropdown-item"
                   >Login Lab</a
                 >
               </li>
@@ -213,3 +227,189 @@
   </form>
 </header>
 <!-- Header End -->
+
+<!-- Modal DOCTOR-->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <section class="login_container modal-content">
+      <form class="form-container">
+        <div class="text-end">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="form">
+          <div class="logo">
+            <img
+              alt="logo Amazon"
+              src="assets/doctor dashboard assets/dashboard logo.png"
+            />
+            <h3 class="logo_text">Please login to your "Doctors" account</h3>
+          </div>
+          <div class="login_row">
+            <label class="login_label">Username</label>
+            <input type="text" class="form-control" placeholder="Username" />
+          </div>
+          <div class="login_row">
+            <label class="login_label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+            />
+          </div>
+          <div class="login_row">
+            <button class="btn loginSubmitbtn ml-0" routerLink="/demopage">
+              Sign in
+            </button>
+          </div>
+          <div class="login_row">
+            <p class="login-row-p" data-bs-dismiss="modal">
+              Don't Have An Account?,<a
+                class="login-row-a"
+                routerLink="/doctor-registration"
+                >Register Here.</a
+              >
+            </p>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>
+
+<!-- Modal PATIENT-->
+<div
+  class="modal fade"
+  id="staticBackdrop2"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel2"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <section class="login_container modal-content">
+      <form class="form-container">
+        <div class="text-end">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="form">
+          <div class="logo">
+            <img
+              alt="logo Amazon"
+              src="assets/doctor dashboard assets/dashboard logo.png"
+            />
+            <h3 class="logo_text">Please login to your "Patient" account</h3>
+          </div>
+          <div class="login_row">
+            <label class="login_label">Username</label>
+            <input type="text" class="form-control" placeholder="Username" />
+          </div>
+          <div class="login_row">
+            <label class="login_label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+            />
+          </div>
+          <div class="login_row">
+            <button class="btn loginSubmitbtn ml-0" routerLink="/demopage">
+              Sign in
+            </button>
+          </div>
+          <div class="login_row">
+            <p class="login-row-p" routerLink="" data-bs-dismiss="modal">
+              Don't Have An Account?,<a
+                class="login-row-a"
+                routerLink="/patient-registration"
+                >Register Here.</a
+              >
+            </p>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>
+
+<!-- Modal LAB-->
+<div
+  class="modal fade"
+  id="staticBackdrop3"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel3"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <section class="login_container modal-content">
+      <form class="form-container">
+        <div class="text-end">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="form">
+          <div class="logo">
+            <img
+              alt="logo Amazon"
+              src="assets/doctor dashboard assets/dashboard logo.png"
+            />
+            <h3 class="logo_text">Please login to your "Lab" account</h3>
+          </div>
+          <div class="login_row">
+            <label class="login_label">Username</label>
+            <input type="text" class="form-control" placeholder="Username" />
+          </div>
+          <div class="login_row">
+            <label class="login_label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+            />
+          </div>
+          <div class="login_row">
+            <button class="btn loginSubmitbtn ml-0" routerLink="/demopage">
+              Sign in
+            </button>
+          </div>
+          <div class="login_row">
+            <p class="login-row-p" routerLink="" data-bs-dismiss="modal">
+              Don't Have An Account?,<a
+                class="login-row-a"
+                routerLink="/lab-registration"
+                >Register Here.</a
+              >
+            </p>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>

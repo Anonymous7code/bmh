@@ -1,3 +1,111 @@
+.login_container {
+  // background-image: linear-gradient(to bottom right, #170a81, #3fabf3);
+  /*   width: 100%;
+  display: flex;
+  height: 100vh;
+  align-items: center; */
+  /* padding-left: 60px; */
+  justify-content: center;
+  .form-container {
+    background: white;
+    padding: 3rem 4rem;
+    border-radius: 6px;
+    box-shadow: 0px 0px 13px 6px #00000075;
+    .form {
+      // width: 100%;
+      .logo {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 30px;
+        align-items: center;
+        img {
+          width: 230px;
+        }
+        .logo_text {
+          font-size: 18px;
+          color: #a2a2a2;
+          margin: 15px 0px 0px 0px;
+          display: inline-block;
+        }
+      }
+      .login_row {
+        width: 100%;
+        margin-bottom: 15px;
+        font-size: 14px;
+        color: #666666;
+        .login_label {
+          font-weight: 600;
+          letter-spacing: 1px;
+        }
+        .form-control {
+          font-size: 14px;
+          padding-left: 10px;
+          margin-top: 3px;
+          outline: none !important;
+          font-family: "Poppins", Arial, Helvetica, sans-serif;
+        }
+        .login-row-p {
+          text-align: center;
+          font-family: "Poppins", Arial, Helvetica, sans-serif;
+          .login-row-a {
+            cursor: pointer;
+            color: #3fabf3;
+            text-decoration: none;
+            font-family: "Poppins", Arial, Helvetica, sans-serif;
+            &:hover {
+              color: #003fff;
+            }
+          }
+        }
+      }
+      .loginotherRow {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        align-items: center;
+        font-size: 14px;
+        .remamberBlock {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .rememberCheckbox {
+            width: 16px;
+            height: 14px;
+            margin-right: 5px;
+            cursor: pointer;
+          }
+        }
+      }
+      .forgotpassBlock {
+        cursor: pointer;
+        color: #dd0000;
+        transition: 0.5s all;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .loginSubmitbtn {
+        background-color: white;
+        border: 1px solid #3fabf3;
+        opacity: 0.9;
+        color: black;
+        font-family: "Poppins", Arial, Helvetica, sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        width: 100%;
+        &:hover {
+          opacity: 1;
+          background-color: #3fabf3;
+          color: white;
+          box-shadow: 0px 0px 13px 0px #3fabf3;
+        }
+      }
+    }
+  }
+}
+
 .dc-btn {
   text-decoration: none;
 }

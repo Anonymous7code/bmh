@@ -49,13 +49,6 @@ import { ProductMedicinesComponent } from './pages/product-medicines/product-med
 import { LabRegistrationComponent } from './pages/lab-registration/lab-registration.component';
 
 const routes: Routes = [
-  {
-    path: 'auth',
-    loadChildren: () =>
-      import('./authentication/authentication.module').then(
-        (m) => m.AuthenticationModule
-      ),
-  },
   { path: '', component: HomeComponent },
   { path: 'doctor', component: DoctorComponent },
   { path: 'doctor-detail', component: DoctorDetailComponent },
