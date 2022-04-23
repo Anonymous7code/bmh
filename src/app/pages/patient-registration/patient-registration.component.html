@@ -27,6 +27,18 @@
                   <div
                     class="form-group dc-form-group-dropdown form-group-full"
                   >
+                    <span class="dc-select">
+                      <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        formControlName="gender"
+                        placeholder="Gender"
+                      >
+                        <option selected disabled>Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                    </span>
                     <input
                       formControlName="user_name"
                       type="text"
@@ -58,7 +70,7 @@
                     <input
                       formControlName="mobile"
                       type="number"
-                      name="Email"
+                      name="mobile"
                       class="form-control"
                       placeholder="mobile"
                     />
@@ -66,7 +78,7 @@
                   <div class="form-group">
                     <input
                       formControlName="email"
-                      type="text"
+                      type="email"
                       name="Email"
                       class="form-control"
                       placeholder="Email"

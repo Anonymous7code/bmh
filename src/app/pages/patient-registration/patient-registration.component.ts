@@ -8,16 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./patient-registration.component.scss'],
 })
 export class PatientRegistrationComponent implements OnInit {
+  patientForm = new FormGroup({});
   constructor(
     private fb: FormBuilder,
-    private api: ApiService,
+    private _ApiService: ApiService,
     private route: Router
   ) {}
-  patientForm: FormGroup;
 
   ngOnInit() {
     this.patientForm = this.fb.group({
-      gender: ['gender', [Validators.required]],
+      gender: ['', [Validators.required]],
       user_name: ['', [Validators.required]],
       first_name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
@@ -30,6 +30,16 @@ export class PatientRegistrationComponent implements OnInit {
   }
 
   patientRegistration() {
+    console.log(this.patientForm.value);
+    this._ApiService.RegistrationForPatient(
+      this.patientForm.value.email,
+      this.patientForm.value.password
+    );
+
+    this._ApiService.PatientRegistration(this.patientForm.value);
+    console.log(this.patientForm.value);
+    this.route.navigate(['/patient-dashboard']);
+
     console.log('patientForm', this.patientForm.value);
     let obj = {
       user_name: this.patientForm.value.user_name,
@@ -40,11 +50,11 @@ export class PatientRegistrationComponent implements OnInit {
       password: this.patientForm.value.password,
       'interface-id': 2835,
     };
-    this.api.patientRegistration(obj).subscribe((res) => {
+    this._ApiService.patientRegistration(obj).subscribe((res) => {
       if (res) {
         console.log('res', res);
-        this.api.setpatientlist(res)
-        this.api.setpatientDetail(obj.mobile)
+        this._ApiService.setpatientlist(res);
+        this._ApiService.setpatientDetail(obj.mobile);
         this.route.navigate(['doctor-dashboard/patient-list']);
       }
     });

@@ -21,6 +21,8 @@ export class LabRegistrationComponent implements OnInit {
       lab_name: '',
       mobile_number: '',
       email: '',
+      lab_password: '',
+      lab_cpassword: '',
       country: '',
       city: '',
       state: '',
@@ -29,8 +31,12 @@ export class LabRegistrationComponent implements OnInit {
   }
 
   RegisterLab() {
+    this._ApiService.RegistrationForLab(
+      this.LabForm.value.email,
+      this.LabForm.value.lab_password
+    );
     this._ApiService.LabRegistration(this.LabForm.value);
     console.log(this.LabForm.value);
-    this.Route.navigate(['/lab-dashboard']);
+    // this.Route.navigate(['/lab-dashboard']);
   }
 }

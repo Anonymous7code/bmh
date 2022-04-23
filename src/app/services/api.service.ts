@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, from } from 'rxjs';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
-
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -13,10 +14,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
+  User: any;
   DoctorCollection!: AngularFirestoreCollection<any>;
-  Docs: Observable<any[]>;
-  Lab: Observable<any[]>;
+  PatientCollection!: AngularFirestoreCollection<any>;
   LabCollection!: AngularFirestoreCollection<any>;
+  Docs: Observable<any[]>;
+  Patient: Observable<any[]>;
+  Lab: Observable<any[]>;
   rootUrl;
   baseUrl;
   doctor_array: any = [];
@@ -25,11 +29,22 @@ export class ApiService {
   doctor_list = new BehaviorSubject(this.doctor_array);
   hospital_list = new BehaviorSubject(this.hospital_array);
   treatment_detail = new BehaviorSubject(this.treatment_detail_obj);
-  constructor(private _FireStore: AngularFirestore, private http: HttpClient) {
+  constructor(
+    private _FireStore: AngularFirestore,
+    private http: HttpClient,
+    private _FireAuth: AngularFireAuth,
+    private _Route: Router
+  ) {
     this.DoctorCollection = this._FireStore.collection('Doctors');
+    this.PatientCollection = this._FireStore.collection('Patients');
     this.LabCollection = this._FireStore.collection('Labs');
     this.Docs = this._FireStore.collection('Doctors').valueChanges();
+    this.Patient = this._FireStore.collection('Patients').valueChanges();
     this.Lab = this._FireStore.collection('Labs').valueChanges();
+    this._FireAuth.authState.subscribe((auth) => {
+      this.User = auth.uid;
+      console.log(this.User);
+    });
 
     this.rootUrl =
       'https://auth.whitecoats.com/auth/realms/whitecoats/protocol/openid-connect/token';
@@ -41,6 +56,100 @@ export class ApiService {
     this.baseUrl = 'https://appointments-sandbox.whitecoats.com/';
   }
 
+  // LOGIN FOR DOCTOR METHOD
+  LogInForDoc(email: string, password: string) {
+    this._FireAuth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        // localStorage.setItem('token', 'true');
+        this._Route.navigate(['/doctor-dashboard']);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
+
+  // REGISTER FOR DOCTOR METHOD
+  RegistrationForDoc(email: string, password: string) {
+    this._FireAuth
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        // localStorage.setItem('token', 'true');
+        this._Route.navigate(['/doctor-dashboard']);
+        alert('registration success');
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
+  // LOGIN FOR PATIENT METHOD
+  LogInForPatient(email: string, password: string) {
+    this._FireAuth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        // localStorage.setItem('token', 'true');
+        this._Route.navigate(['/patient-dashboard']);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
+
+  // REGISTER FOR PATIENT METHOD
+  RegistrationForPatient(email: string, password: string) {
+    this._FireAuth
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        // localStorage.setItem('token', 'true');
+        this._Route.navigate(['/patient-dashboard']);
+        alert('registration success');
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
+
+  // LOGIN FOR LAB METHOD
+  LogInForLab(email: string, password: string) {
+    this._FireAuth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        // localStorage.setItem('token', 'true');
+        this._Route.navigate(['/lab-dashboard']);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
+
+  // REGISTER FOR LAB METHOD
+  RegistrationForLab(email: string, password: string) {
+    this._FireAuth
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        // localStorage.setItem('token', 'true');
+        this._Route.navigate(['/lab-dashboard']);
+        alert('registration success');
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
+
+  // SIGNOUT METHOD
+
+  LogOut() {
+    this._FireAuth
+      .signOut()
+      .then(() => {
+        // localStorage.removeItem('token');
+        this._Route.navigate(['']);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
+
   GetDocDetails() {
     return this.Docs;
   }
@@ -50,6 +159,9 @@ export class ApiService {
 
   DocRegistration(data: any) {
     return this.DoctorCollection.add(data);
+  }
+  PatientRegistration(data: any) {
+    return this.PatientCollection.add(data);
   }
   LabRegistration(data: any) {
     return this.LabCollection.add(data);
@@ -78,8 +190,8 @@ export class ApiService {
 
   getDoctordata() {
     let doctorlist = sessionStorage.getItem('doctorlist');
-    console.log("docid" ,doctorlist[0]);
-    
+    console.log('docid', doctorlist[0]);
+
     return doctorlist;
   }
 
@@ -128,12 +240,11 @@ export class ApiService {
 
   parientlistApi(): any {
     return this.http.get(
-      this.baseUrl + `v1/patients/list?phone=${this.patientDetail}interfaceId?=55112`,
+      this.baseUrl +
+        `v1/patients/list?phone=${this.patientDetail}interfaceId?=55112`,
       this.headers()
     );
   }
-
- 
 
   DoctorSearch(object?: any): any {
     return this.http.post(this.baseUrl + 'v1/search', object, this.headers());
@@ -163,7 +274,7 @@ export class ApiService {
     return patientDetail;
   }
 
-  patientlist:any
+  patientlist: any;
   setpatientlist(x) {
     // sessionStorage.setItem('patientlist', x);
     this.patientlist = x;
@@ -173,8 +284,6 @@ export class ApiService {
     // let patientlist = sessionStorage.getItem('patientlist');
     return this.patientlist;
   }
-
-
 
   // ObtendoToken(): Observable<string> {
   //   const headers = new Headers();
