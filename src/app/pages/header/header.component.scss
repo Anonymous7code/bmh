@@ -273,6 +273,7 @@ body {
 
 .dropdown {
   border-radius: 6px 0px 0px 6px;
+
   .dropdown-toggle {
     color: #47cacc;
     font-family: "Jost", sans-serif !important;
@@ -359,7 +360,8 @@ body {
   }
 }
 .profile-container {
-  .dropdown {
+  .dropdown .show {
+    box-shadow: 0 3px 6px #00000029;
     a {
       color: black;
     }
