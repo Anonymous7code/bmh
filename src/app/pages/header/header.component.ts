@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   DoctorLoginForm = new FormGroup({});
   PatientLoginForm = new FormGroup({});
   LabLoginForm = new FormGroup({});
+
   constructor(
     private _ApiService: ApiService,
     private _FormBuilder: FormBuilder
@@ -19,6 +20,7 @@ export class HeaderComponent implements OnInit {
       doc_email: [''],
       doc_password: [''],
     });
+
     this.PatientLoginForm = this._FormBuilder.group({
       patient_email: [''],
       patient_password: [''],
@@ -28,6 +30,7 @@ export class HeaderComponent implements OnInit {
       lab_password: [''],
     });
   }
+
   LogInDoc() {
     if (this.DoctorLoginForm.value.doc_email == '') {
       alert('Please enter email');
@@ -38,6 +41,7 @@ export class HeaderComponent implements OnInit {
       );
     }
   }
+
   LogInPatient() {
     if (this.PatientLoginForm.value.patient_email == '') {
       alert('Please enter email');
@@ -49,6 +53,7 @@ export class HeaderComponent implements OnInit {
     }
     // console.log(this.PatientLoginForm.value);
   }
+
   LogInLab() {
     if (this.LabLoginForm.value.lab_email == '') {
       alert('Please enter email');

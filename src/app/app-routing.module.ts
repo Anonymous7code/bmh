@@ -27,12 +27,6 @@ import { PatientInvoiceComponent } from './patient-dashboard/patient-invoice/pat
 import { PatientProfileSettingsComponent } from './patient-dashboard/patient-profile-settings/patient-profile-settings.component';
 import { PatientMedicinesComponent } from './patient-dashboard/patient-medicines/patient-medicines.component';
 import { AppointmentViewDetailsComponent } from './patient-dashboard/patient-dashboard-home/appointment-view-details/appointment-view-details.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { AdminDashboardHomeComponent } from './admin-dashboard/admin-dashboard-home/admin-dashboard-home.component';
-import { MedicinesComponent } from './admin-dashboard/medicines/medicines.component';
-import { TransactionComponent } from './admin-dashboard/transaction/transaction.component';
-import { UserPurchasingDetailsComponent } from './admin-dashboard/user-purchasing-details/user-purchasing-details.component';
-import { AdminTransactionDetailsComponent } from './admin-dashboard/admin-dashboard-home/admin-transaction-details/admin-transaction-details.component';
 import { AppoinmentsComponent } from './lab-dashboard/appoinments/appoinments.component';
 import { LabInvoiceComponent } from './lab-dashboard/lab-invoice/lab-invoice.component';
 import { LabDashboardHomeComponent } from './lab-dashboard/lab-dashboard-home/lab-dashboard-home.component';
@@ -101,123 +95,32 @@ const routes: Routes = [
   },
   {
     path: 'doctor-dashboard',
-    component: DoctorDashboardComponent,
-    children: [
-      {
-        redirectTo: 'doctor-dashboard-home',
-        path: '',
-        pathMatch: 'full',
-      },
-      {
-        path: 'doctor-dashboard-home',
-        component: DoctorDashboardHomeComponent,
-      },
-      {
-        path: 'service',
-        component: ServiceComponent,
-      },
-      { path: 'patient-list', component: PatientListComponent },
-      { path: 'appointment-list', component: AppointmentListComponent },
-      { path: 'clinic-setting', component: ClinicSettingComponent },
-      { path: 'hospital-setting', component: HospitalSettingComponent },
-      { path: 'invoice', component: InvoiceComponent },
-      { path: 'payout-setting', component: PayoutSettingComponent },
-      { path: 'profile-setting', component: ProfileSettingComponent },
-      { path: 'service', component: ServiceComponent },
-    ],
+    loadChildren: () =>
+      import('./doctor-dashboard/doctor-dashboard.module').then(
+        (m) => m.DoctorDashboardModule
+      ),
   },
   {
     path: 'patient-dashboard',
-    component: PatientDashboardComponent,
-    children: [
-      {
-        redirectTo: 'patient-dashboard-home',
-        path: '',
-        pathMatch: 'full',
-      },
-      {
-        path: 'patient-dashboard-home',
-        component: PatientDashboardHomeComponent,
-      },
-      {
-        path: 'appointment-view-details',
-        component: AppointmentViewDetailsComponent,
-      },
-
-      {
-        path: 'your-appointment',
-        component: YourAppointmentComponent,
-      },
-      { path: 'invoice', component: PatientInvoiceComponent },
-      {
-        path: 'patient-profile-setting',
-        component: PatientProfileSettingsComponent,
-      },
-      {
-        path: 'patient-medicine',
-        component: PatientMedicinesComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./patient-dashboard/patient-dashboard.module').then(
+        (m) => m.PatientDashboardModule
+      ),
   },
+
   {
     path: 'admin-dashboard',
-    component: AdminDashboardComponent,
-    children: [
-      {
-        path: 'admin-list',
-        loadChildren: () =>
-          import('./admin-dashboard/admin-list/admin-list.module').then(
-            (m) => m.AdminListModule
-          ),
-      },
-      {
-        redirectTo: 'admin-dashboard-home',
-        path: '',
-        pathMatch: 'full',
-      },
-      {
-        path: 'admin-dashboard-home',
-        component: AdminDashboardHomeComponent,
-      },
-      {
-        path: 'admin-transaction-details',
-        component: AdminTransactionDetailsComponent,
-      },
-      {
-        path: 'medicines',
-        component: MedicinesComponent,
-      },
-      { path: 'transaction', component: TransactionComponent },
-      {
-        path: 'user-purchasing-details',
-        component: UserPurchasingDetailsComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./admin-dashboard/admin-dashboard.module').then(
+        (m) => m.AdminDashboardModule
+      ),
   },
   {
     path: 'lab-dashboard',
-    component: LabDashboardComponent,
-    children: [
-      {
-        redirectTo: 'lab-dashboard-home',
-        path: '',
-        pathMatch: 'full',
-      },
-      {
-        path: 'lab-dashboard-home',
-        component: LabDashboardHomeComponent,
-      },
-      {
-        path: 'lab-view-details',
-        component: LabViewDetailsComponent,
-      },
-
-      { path: 'lab-invoice', component: LabInvoiceComponent },
-      {
-        path: 'appointments',
-        component: AppoinmentsComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./lab-dashboard/lab-dashboard.module').then(
+        (m) => m.LabDashboardModule
+      ),
   },
 ];
 
