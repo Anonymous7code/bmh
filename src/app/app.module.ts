@@ -119,10 +119,7 @@ import { LabRegistrationComponent } from './pages/lab-registration/lab-registrat
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
-    ApiService,
-  ],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
