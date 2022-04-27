@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+
 import {
   CanActivate,
   ActivatedRouteSnapshot,
@@ -37,7 +37,6 @@ export class CanActivateGuard implements CanActivate {
           toast.addEventListener('mouseleave', Swal.resumeTimer);
         },
       });
-
       Toast.fire({
         icon: 'error',
         title: 'Insufficient Permission!!',

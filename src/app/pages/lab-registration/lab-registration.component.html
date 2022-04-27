@@ -18,8 +18,19 @@
                 <fieldset class="dc-registerformgroup">
                   <div
                     class="form-group dc-form-group-dropdown form-group-full"
-                  ></div>
-                  <div class="form-group form-group-full">
+                  >
+                    <span class="dc-select">
+                      <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        formControlName="lab_type"
+                        placeholder="Labs"
+                      >
+                        <option selected disabled>Lab</option>
+                        <option value="pathology">Pathology</option>
+                        <option value="radiology">Radiology</option>
+                      </select>
+                    </span>
                     <input
                       formControlName="lab_name"
                       type="text"

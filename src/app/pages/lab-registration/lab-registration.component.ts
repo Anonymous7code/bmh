@@ -19,6 +19,7 @@ export class LabRegistrationComponent implements OnInit {
   ngOnInit(): void {
     this.LabForm = this._FormBuilder.group({
       lab_name: '',
+      lab_type: 'Lab',
       mobile_number: '',
       email: '',
       lab_password: '',

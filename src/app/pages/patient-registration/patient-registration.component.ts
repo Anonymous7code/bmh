@@ -17,7 +17,7 @@ export class PatientRegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.patientForm = this.fb.group({
-      gender: ['', [Validators.required]],
+      gender: ['Gender', [Validators.required]],
       user_name: ['', [Validators.required]],
       first_name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],

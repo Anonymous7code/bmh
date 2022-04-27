@@ -11,6 +11,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -103,7 +104,6 @@ export class ApiService {
         let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
         let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
         localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
-        this._Route.navigate(['/doctor-dashboard']);
         // REGISTRATION ALERT
         const Toast = Swal.mixin({
           toast: true,
@@ -120,6 +120,7 @@ export class ApiService {
           icon: 'success',
           title: 'Registered Successfully!',
         });
+        this._Route.navigate(['/doctor-dashboard']);
       })
       .catch((error) => {
         alert(error.message);
@@ -171,7 +172,6 @@ export class ApiService {
         let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
         localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
 
-        this._Route.navigate(['/patient-dashboard']);
         // REGISTRATION ALERT
         const Toast = Swal.mixin({
           toast: true,
@@ -188,6 +188,7 @@ export class ApiService {
           icon: 'success',
           title: 'Registered Successfully!',
         });
+        this._Route.navigate(['/patient-dashboard']);
       })
       .catch((error) => {
         alert(error.message);
@@ -239,7 +240,7 @@ export class ApiService {
         let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
         let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
         localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
-        this._Route.navigate(['/lab-dashboard']);
+
         // REGISTRATION ALERT
         const Toast = Swal.mixin({
           toast: true,
@@ -256,6 +257,7 @@ export class ApiService {
           icon: 'success',
           title: 'Registered Successfully!',
         });
+        this._Route.navigate(['/lab-dashboard']);
       })
       .catch((error) => {
         alert(error.message);
