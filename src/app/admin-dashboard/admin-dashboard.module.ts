@@ -8,6 +8,4 @@ import { AdminDashboardHomeComponent } from './admin-dashboard-home/admin-dashbo
   declarations: [AdminDashboardComponent, AdminDashboardHomeComponent],
   imports: [CommonModule, AdminDashboardRoutingModule],
 })
-export class AdminDashboardModule {
-  constructor() {}
-}
+export class AdminDashboardModule {}

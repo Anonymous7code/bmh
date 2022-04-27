@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CanActivateGuard } from '../services/can-activate.guard';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { ClinicSettingComponent } from './clinic-setting/clinic-setting.component';
 import { DoctorDashboardHomeComponent } from './doctor-dashboard-home/doctor-dashboard-home.component';
@@ -14,6 +15,7 @@ import { ServiceComponent } from './service/service.component';
 const routes: Routes = [
   {
     path: '',
+    canActivate: [CanActivateGuard],
     component: DoctorDashboardComponent,
     children: [
       {

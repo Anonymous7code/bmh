@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -33,7 +33,12 @@ export class HeaderComponent implements OnInit {
 
   LogInDoc() {
     if (this.DoctorLoginForm.value.doc_email == '') {
-      alert('Please enter email');
+      //  EMPTY FIELD ERROR ALERT
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please Enter Login Credentials,Then Submit!',
+      });
     } else {
       this._ApiService.LogInForDoc(
         this.DoctorLoginForm.value.doc_email,
@@ -44,7 +49,12 @@ export class HeaderComponent implements OnInit {
 
   LogInPatient() {
     if (this.PatientLoginForm.value.patient_email == '') {
-      alert('Please enter email');
+      //  EMPTY FIELD ERROR ALERT
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please Enter Login Credentials,Then Submit!',
+      });
     } else {
       this._ApiService.LogInForPatient(
         this.PatientLoginForm.value.patient_email,
@@ -56,7 +66,12 @@ export class HeaderComponent implements OnInit {
 
   LogInLab() {
     if (this.LabLoginForm.value.lab_email == '') {
-      alert('Please enter email');
+      //  EMPTY FIELD ERROR ALERT
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please Enter Login Credentials,Then Submit!',
+      });
     } else {
       this._ApiService.LogInForLab(
         this.LabLoginForm.value.lab_email,

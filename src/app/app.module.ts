@@ -29,7 +29,6 @@ import { DoctorRegistrationComponent } from './pages/doctor-registration/doctor-
 import { PatientRegistrationComponent } from './pages/patient-registration/patient-registration.component';
 import { environment } from 'src/environments/environment';
 import { LabRegistrationComponent } from './pages/lab-registration/lab-registration.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +58,6 @@ import { LabRegistrationComponent } from './pages/lab-registration/lab-registrat
     AngularFirestoreModule,
     AppRoutingModule,
     HttpClientModule,
-    // RouterModule,
     ReactiveFormsModule,
     FormsModule,
   ],

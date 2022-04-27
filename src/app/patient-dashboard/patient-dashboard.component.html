@@ -57,7 +57,7 @@
             <a href="#" class="dropdown-item">Settings</a>
             <a href="#" class="dropdown-item">Billing</a>
             <hr class="dropdown-divider" />
-            <a href="#" class="dropdown-item">Logout</a>
+            <a href="#" class="dropdown-item" (click)="logOut()">Logout</a>
           </div>
         </div>
       </div>
@@ -108,7 +108,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#" (click)="logOut()">
               <i class="bi bi-box-arrow-left"></i> Logout
             </a>
           </li>

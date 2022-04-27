@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 @Injectable({
   providedIn: 'root',
 })
@@ -42,7 +43,7 @@ export class ApiService {
     this.Patient = this._FireStore.collection('Patients').valueChanges();
     this.Lab = this._FireStore.collection('Labs').valueChanges();
     this._FireAuth.authState.subscribe((auth) => {
-      this.User = auth.uid;
+      this.User = auth;
       console.log(this.User);
     });
 
@@ -61,11 +62,36 @@ export class ApiService {
     this._FireAuth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        // localStorage.setItem('token', 'true');
+        let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
+        let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
+        localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
+
+        // LOGIN ALERT
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Signed in successfully',
+        });
         this._Route.navigate(['/doctor-dashboard']);
       })
       .catch((error) => {
-        alert(error.message);
+        //  LOGIN ERROR ALERT
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error,
+        });
       });
   }
 
@@ -74,9 +100,26 @@ export class ApiService {
     this._FireAuth
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        // localStorage.setItem('token', 'true');
+        let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
+        let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
+        localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
         this._Route.navigate(['/doctor-dashboard']);
-        alert('registration success');
+        // REGISTRATION ALERT
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'success',
+          title: 'Registered Successfully!',
+        });
       })
       .catch((error) => {
         alert(error.message);
@@ -87,11 +130,35 @@ export class ApiService {
     this._FireAuth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        // localStorage.setItem('token', 'true');
+        let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
+        let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
+        localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
+        // LOGIN ALERT
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Signed in successfully',
+        });
         this._Route.navigate(['/patient-dashboard']);
       })
       .catch((error) => {
-        alert(error.message);
+        //  LOGIN ERROR ALERT
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error,
+        });
       });
   }
 
@@ -100,9 +167,27 @@ export class ApiService {
     this._FireAuth
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        // localStorage.setItem('token', 'true');
+        let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
+        let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
+        localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
+
         this._Route.navigate(['/patient-dashboard']);
-        alert('registration success');
+        // REGISTRATION ALERT
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'success',
+          title: 'Registered Successfully!',
+        });
       })
       .catch((error) => {
         alert(error.message);
@@ -114,11 +199,35 @@ export class ApiService {
     this._FireAuth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        // localStorage.setItem('token', 'true');
+        let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
+        let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
+        localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
+        // LOGIN ALERT
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Signed in successfully',
+        });
         this._Route.navigate(['/lab-dashboard']);
       })
       .catch((error) => {
-        alert(error.message);
+        //  LOGIN ERROR ALERT
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error,
+        });
       });
   }
 
@@ -127,9 +236,26 @@ export class ApiService {
     this._FireAuth
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        // localStorage.setItem('token', 'true');
+        let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
+        let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
+        localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
         this._Route.navigate(['/lab-dashboard']);
-        alert('registration success');
+        // REGISTRATION ALERT
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+        Toast.fire({
+          icon: 'success',
+          title: 'Registered Successfully!',
+        });
       })
       .catch((error) => {
         alert(error.message);
@@ -142,7 +268,14 @@ export class ApiService {
     this._FireAuth
       .signOut()
       .then(() => {
-        // localStorage.removeItem('token');
+        localStorage.removeItem('cYpheRConCeAl');
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Log Out Successfully!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         this._Route.navigate(['']);
       })
       .catch((error) => {
