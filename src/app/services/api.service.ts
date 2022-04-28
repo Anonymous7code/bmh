@@ -11,11 +11,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
+import firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
+  test: any;
   User: any;
   DoctorCollection!: AngularFirestoreCollection<any>;
   PatientCollection!: AngularFirestoreCollection<any>;
@@ -45,8 +47,23 @@ export class ApiService {
     this.Lab = this._FireStore.collection('Labs').valueChanges();
     this._FireAuth.authState.subscribe((auth) => {
       this.User = auth;
-      console.log(this.User);
+      console.log('USER', this.User);
     });
+
+    /*  const db = firebase.firestore();
+    db.collection('Doctors')
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          this.test = doc.data();
+          console.log('DATABASE DOC', this.test);
+          if (this.test.email != 'Rajulverma7@gmail.com') {
+            alert('its same');
+          } else {
+            alert('its not same');
+          } 
+        });
+      }); */
 
     this.rootUrl =
       'https://auth.whitecoats.com/auth/realms/whitecoats/protocol/openid-connect/token';
@@ -58,11 +75,16 @@ export class ApiService {
     this.baseUrl = 'https://appointments-sandbox.whitecoats.com/';
   }
 
+  GetLabs() {
+    return this.Lab;
+  }
+
   // LOGIN FOR DOCTOR METHOD
-  LogInForDoc(email: string, password: string) {
+  LogInForDoc(Doc_Email: string, Doc_Password: string) {
     this._FireAuth
-      .signInWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(Doc_Email, Doc_Password)
       .then(() => {
+        console.log(Doc_Email, Doc_Password);
         let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
         let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
         localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
@@ -171,7 +193,6 @@ export class ApiService {
         let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
         let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
         localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
-
         // REGISTRATION ALERT
         const Toast = Swal.mixin({
           toast: true,
