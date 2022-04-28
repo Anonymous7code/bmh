@@ -629,9 +629,9 @@
           ></button>
         </div>
         <div class="card-body">
-          <form class="forms-sample">
+          <form class="forms-sample" [formGroup]="patientForm">
             <div class="form-group">
-              <input
+              <input formControlName="name"
                 type="text"
                 class="form-control"
                 id="exampleInputUsername1"
@@ -639,25 +639,25 @@
               />
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
               <input
                 type="text"
                 class="form-control"
                 id="exampleInputUsername1"
                 placeholder="Last Name"
               />
-            </div>
+            </div> -->
             <div class="form-group">
-              <input
-                type="email"
+              <input formControlName="email   "
+                type="text"
                 class="form-control"
                 id="exampleInputEmail1"
                 placeholder="Email"
               />
             </div>
             <div class="form-group">
-              <input
-                type="text"
+              <input formControlName="mobile"
+                type="number"
                 class="form-control"
                 id="exampleInputUsername1"
                 placeholder="Phone"
@@ -737,7 +737,7 @@
               </div>
               <div>
                 <div class="form-group">
-                  <textarea
+                  <textarea formControlName="comment"
                     class="form-control"
                     id="exampleTextarea1"
                     rows="4"
@@ -755,19 +755,33 @@
                   <div class="row">
                     <div class="col-md-3">
                       <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckChecked"
-                          checked
-                        />
-                        <label class="form-check-label" for="flexCheckChecked">
-                          Checked checkbox
+                        <label class="form-check-label">
+                         Start time
                         </label>
+                        <input formControlName="startTime"
+                          class="form"
+                          type="time"
+                         
+                        />
+                      
                       </div>
                     </div>
                     <div class="col-md-3">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          End time
+                         </label>
+                        <input formControlName="endTime"
+                          class="form"
+                          type="time"
+                        />
+                        <!-- <label class="form-check-label" for="flexCheckChecked">
+                          Checked checkbox
+                        </label> -->
+                      </div>
+                    </div>
+                  
+                    <!-- <div class="col-md-3">
                       <div class="form-check">
                         <input
                           class="form-check-input"
@@ -780,8 +794,8 @@
                           Checked checkbox
                         </label>
                       </div>
-                    </div>
-                    <div class="col-md-3">
+                    </div> -->
+                    <!-- <div class="col-md-3">
                       <div class="form-check">
                         <input
                           class="form-check-input"
@@ -794,21 +808,7 @@
                           Checked checkbox
                         </label>
                       </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckChecked"
-                          checked
-                        />
-                        <label class="form-check-label" for="flexCheckChecked">
-                          Checked checkbox
-                        </label>
-                      </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
                 <div class="col-9">
@@ -833,8 +833,8 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" data-bs-dismiss="modal" class="btn btn-primary">
-            Continue
+          <button type="button" data-bs-dismiss="modal" class="btn btn-primary" (click)="bookAppoiment()">
+            Book Now
           </button>
         </div>
       </div>

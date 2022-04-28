@@ -70,6 +70,8 @@ export class ApiService {
     return this.LabTests;
   }
 
+  
+
   openmodal(x) {
     let value = '#' + x;
     $(value).modal('show');
@@ -343,15 +345,16 @@ export class ApiService {
   }
 
   setDoctordata(x) {
-    sessionStorage.setItem('doctorlist', x);
-    this.doctorlist = x;
+    sessionStorage.setItem('doctorId', JSON.stringify(x));
+    // this.doctorlist = x;
   }
-
+  doctorId:any
   getDoctordata() {
-    let doctorlist = sessionStorage.getItem('doctorlist');
-    console.log('docid', doctorlist[0]);
+  
+    this.doctorId = JSON.parse(sessionStorage.getItem('doctorId'));
+    console.log('docid', this.doctorId);
 
-    return doctorlist;
+    return this.doctorId;
   }
 
   headersDef() {
@@ -387,12 +390,20 @@ export class ApiService {
     );
   }
 
+  bookAppoiment(object): any {
+    return this.http.post(
+      this.baseUrl + 'v1/appointment/book',
+      object,
+      this.headers()
+    );
+  }
+
   // getHeader(x): any {
   //   return this.http.get(this.rootUrl + x, this.headersDef())
   // }
   DoctorServiceApi(): any {
     return this.http.get(
-      this.baseUrl + `v1/doctor/services/list?doctorId=${this.docId.id}`,
+      this.baseUrl + `v1/doctor/services/list?doctorId=55112`,
       this.headers()
     );
   }
