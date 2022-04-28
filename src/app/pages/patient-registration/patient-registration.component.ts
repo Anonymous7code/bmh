@@ -54,6 +54,7 @@ export class PatientRegistrationComponent implements OnInit {
       if (res) {
         console.log('res', res);
         this._ApiService.setpatientlist(res);
+        localStorage.setItem("patientlist", JSON.stringify(res));
         this._ApiService.setpatientDetail(obj.mobile);
         this.route.navigate(['doctor-dashboard/patient-list']);
       }

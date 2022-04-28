@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import firebase from 'firebase';
-
+declare const $;
 @Injectable({
   providedIn: 'root',
 })
@@ -68,6 +68,16 @@ export class ApiService {
   }
   GetLabsTest() {
     return this.LabTests;
+  }
+
+  openmodal(x) {
+    let value = '#' + x
+    $(value).modal('show');
+  }
+
+  closemodal(x) {
+    let value = '#' + x
+    $(value).modal('hide');
   }
   // LOGIN FOR DOCTOR METHOD
   LogInForDoc(Doc_Email: string, Doc_Password: string) {

@@ -11,6 +11,7 @@ import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 export class DoctorComponent implements OnInit {
   @ViewChild('search') search!: ElementRef;
   doctorList: any;
+  patientlist: any;
   constructor(
     private api: ApiService,
     private router: Router,
@@ -20,6 +21,14 @@ export class DoctorComponent implements OnInit {
   ngOnInit(): void {
     this.get_doctor_data();
     this.doctorList = JSON.parse(localStorage.getItem("doctorlist"));
+    this.patientlist = JSON.parse(localStorage.getItem("patientlist"));
+    this.api.GetPatientDetails().subscribe(res=>{
+      this.patientlist = res
+      console.log("this.patient", this.patientlist);
+      
+    })
+
+   
   }
   // routerLink="/doctor-detail"
   searchDoctors() {
@@ -41,6 +50,15 @@ export class DoctorComponent implements OnInit {
   doctorDetail(id) {
     this.api.setDocId(id);
     this.router.navigate(['/doctor-detail']);
+  }
+
+  openModel(){
+    if(this.patientlist){
+      this.api.openmodal('exampleModal')
+    }else{
+      this.router.navigate(['/patient-registration'])
+    }
+   
   }
 
   doctor_list: any = [];
