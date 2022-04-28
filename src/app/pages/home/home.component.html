@@ -59,6 +59,7 @@
     </div>
   </div>
   <!-- SLIDER SECTION END  -->
+
   <!-- OUR SPECIALIST START   -->
   <section class="dc-haslayout dc-main-section">
     <div class="container">
@@ -205,7 +206,7 @@
   </section>
   <!-- OUR SPECIALIST END  -->
 
-  <!-- Our Rated Start -->
+  <!-- FREQ LAB TEST SECTION -->
   <section class="dc-haslayout dc-main-section">
     <div class="container-fluid">
       <div class="row">
@@ -233,270 +234,40 @@
               class="dc-docpostslider owl-carousel owl-stage-outer"
             >
               <div class="item" style="border: 1px solid #f2f2f2">
-                <div class="dc-docpostholder">
-                  <figure class="dc-docpostimg" style="background: none">
-                    <img
-                      src="assets/frequent book lab test/lab_e.png"
-                      alt="img description"
-                    />
-                    <figcaption>
-                      <span class="dc-featuredtag"
-                        ><i class="fa fa-bolt"></i
-                      ></span>
-                    </figcaption>
-                  </figure>
-                  <div class="dc-docpostcontent">
-                    <div class="dc-title">
-                      <a href="javascript:void(0)" class="dc-docstatus"
-                        >Available at 1 Certified Lab Throid Profile (T3, T4,
-                        TSH)</a
-                      >
-                      <h3>
-                        <a href="javascript:void(0);">Throid Profile </a>
-                        <i class="fa fa-award dc-awardtooltip"><em></em></i>
-                        <i class="fa fa-check-circle dc-awardtooltip"
-                          ><em></em
-                        ></i>
-                      </h3>
-                      <ul class="dc-docinfo">
-                        <li>
-                          <em>Includes 3 Tests </em>
-                        </li>
-                        <li>
-                          <span class="dc-stars"><span></span></span
-                          ><em>2100 Feedback</em>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="dc-doclocation">
-                      <h5>&#8377; 199 Onwards</h5>
-                      <a href="javascript:void(0);" class="dc-btn">Book Now</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item" style="border: 1px solid #f2f2f2">
-                <div class="dc-docpostholder">
-                  <figure class="dc-docpostimg" style="background: none">
-                    <img
-                      src="assets/frequent book lab test/lab_e.png"
-                      alt="img description"
-                    />
-                    <figcaption>
-                      <span class="dc-featuredtag"
-                        ><i class="fa fa-bolt"></i
-                      ></span>
-                    </figcaption>
-                  </figure>
-                  <div class="dc-docpostcontent">
-                    <div class="dc-title">
-                      <a href="javascript:void(0)" class="dc-docstatus"
-                        >Available at 1 Certified Lab Throid Profile (T3, T4,
-                        TSH)</a
-                      >
-                      <h3>
-                        <a href="javascript:void(0);"
-                          >Complete Blood Count(CBC)
-                        </a>
-                        <i class="fa fa-award dc-awardtooltip"><em></em></i>
-                        <i class="fa fa-check-circle dc-awardtooltip"
-                          ><em></em
-                        ></i>
-                      </h3>
-                      <ul class="dc-docinfo">
-                        <li>
-                          <em>Includes 3 Tests </em>
-                        </li>
-                        <li>
-                          <span class="dc-stars"><span></span></span
-                          ><em>2100 Feedback</em>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="dc-doclocation">
-                      <h5>&#8377; 299 Onwards</h5>
-                      <a href="javascript:void(0);" class="dc-btn">Book Now</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item" style="border: 1px solid #f2f2f2">
-                <div class="dc-docpostholder">
-                  <figure class="dc-docpostimg" style="background: none">
-                    <img
-                      src="assets/frequent book lab test/lab_e.png"
-                      alt="img description"
-                    />
-                    <figcaption>
-                      <span class="dc-featuredtag"
-                        ><i class="fa fa-bolt"></i
-                      ></span>
-                    </figcaption>
-                  </figure>
-                  <div class="dc-docpostcontent">
-                    <div class="dc-title">
-                      <a href="javascript:void(0)" class="dc-docstatus"
-                        >Available at 1 Certified Lab Throid Profile (T3, T4,
-                        TSH)</a
-                      >
-                      <h3>
-                        <a href="javascript:void(0);"
-                          >Covid-19 RTPCS (Coronavirus)</a
+                <ng-container *ngFor="let data of LabTests">
+                  <div class="dc-docpostholder">
+                    <figure class="dc-docpostimg" style="background: none">
+                      <img
+                        src="assets/frequent book lab test/lab_e.png"
+                        alt="img description"
+                      />
+                      <figcaption>
+                        <span class="dc-featuredtag"
+                          ><i class="fa fa-bolt"></i
+                        ></span>
+                      </figcaption>
+                    </figure>
+                    <div class="dc-docpostcontent">
+                      <div class="dc-title">
+                        <h3>
+                          <h5 href="javascript:void(0);">
+                            {{ data.test_name }}
+                            <i class="fa fa-check-circle dc-awardtooltip"> </i>
+                          </h5>
+                        </h3>
+                        <div class="dc-docinfo">
+                          {{ data.test_desc }}
+                        </div>
+                      </div>
+                      <div class="dc-doclocation">
+                        <h6>{{ data.test_price | currency: "INR" }}</h6>
+                        <a href="javascript:void(0);" class="dc-btn"
+                          >Book Now</a
                         >
-                        <i class="fa fa-award dc-awardtooltip"><em></em></i>
-                        <i class="fa fa-check-circle dc-awardtooltip"
-                          ><em></em
-                        ></i>
-                      </h3>
-                      <ul class="dc-docinfo">
-                        <li>
-                          <em>Includes 3 Tests </em>
-                        </li>
-                        <li>
-                          <span class="dc-stars"><span></span></span
-                          ><em>2100 Feedback</em>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="dc-doclocation">
-                      <h5>&#8377; 700 Onwards</h5>
-                      <a href="javascript:void(0);" class="dc-btn">Book Now</a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="item" style="border: 1px solid #f2f2f2">
-                <div class="dc-docpostholder">
-                  <figure class="dc-docpostimg" style="background: none">
-                    <img
-                      src="assets/frequent book lab test/lab_e.png"
-                      alt="img description"
-                    />
-                    <figcaption>
-                      <span class="dc-featuredtag"
-                        ><i class="fa fa-bolt"></i
-                      ></span>
-                    </figcaption>
-                  </figure>
-                  <div class="dc-docpostcontent">
-                    <div class="dc-title">
-                      <a href="javascript:void(0)" class="dc-docstatus"
-                        >Available at 1 Certified Lab Throid Profile (T3, T4,
-                        TSH)</a
-                      >
-                      <h3>
-                        <a href="javascript:void(0);">Throid Profile </a>
-                        <i class="fa fa-award dc-awardtooltip"><em></em></i>
-                        <i class="fa fa-check-circle dc-awardtooltip"
-                          ><em></em
-                        ></i>
-                      </h3>
-                      <ul class="dc-docinfo">
-                        <li>
-                          <em>Includes 3 Tests </em>
-                        </li>
-                        <li>
-                          <span class="dc-stars"><span></span></span
-                          ><em>2100 Feedback</em>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="dc-doclocation">
-                      <h5>&#8377; 199 Onwards</h5>
-                      <a href="javascript:void(0);" class="dc-btn">Book Now</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item" style="border: 1px solid #f2f2f2">
-                <div class="dc-docpostholder">
-                  <figure class="dc-docpostimg" style="background: none">
-                    <img
-                      src="assets/frequent book lab test/lab_e.png"
-                      alt="img description"
-                    />
-                    <figcaption>
-                      <span class="dc-featuredtag"
-                        ><i class="fa fa-bolt"></i
-                      ></span>
-                    </figcaption>
-                  </figure>
-                  <div class="dc-docpostcontent">
-                    <div class="dc-title">
-                      <a href="javascript:void(0)" class="dc-docstatus"
-                        >Available at 1 Certified Lab Throid Profile (T3, T4,
-                        TSH)</a
-                      >
-                      <h3>
-                        <a href="javascript:void(0);"
-                          >Complete Blood Count(CBC)</a
-                        >
-                        <i class="fa fa-award dc-awardtooltip"><em></em></i>
-                        <i class="fa fa-check-circle dc-awardtooltip"
-                          ><em></em
-                        ></i>
-                      </h3>
-                      <ul class="dc-docinfo">
-                        <li>
-                          <em>Includes 3 Tests </em>
-                        </li>
-                        <li>
-                          <span class="dc-stars"><span></span></span
-                          ><em>2100 Feedback</em>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="dc-doclocation">
-                      <h5>&#8377; 299 Onwards</h5>
-                      <a href="javascript:void(0);" class="dc-btn">Book Now</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item" style="border: 1px solid #f2f2f2">
-                <div class="dc-docpostholder">
-                  <figure class="dc-docpostimg" style="background: none">
-                    <img
-                      src="assets/frequent book lab test/lab_e.png"
-                      alt="img description"
-                    />
-                    <figcaption>
-                      <span class="dc-featuredtag"
-                        ><i class="fa fa-bolt"></i
-                      ></span>
-                    </figcaption>
-                  </figure>
-                  <div class="dc-docpostcontent">
-                    <div class="dc-title">
-                      <a href="javascript:void(0)" class="dc-docstatus"
-                        >Available at 1 Certified Lab Throid Profile (T3, T4,
-                        TSH)</a
-                      >
-                      <h3>
-                        <a href="javascript:void(0);"
-                          >Covid-19 RTPCS (Coronavirus)</a
-                        >
-                        <i class="fa fa-award dc-awardtooltip"><em></em></i>
-                        <i class="fa fa-check-circle dc-awardtooltip"
-                          ><em></em
-                        ></i>
-                      </h3>
-                      <ul class="dc-docinfo">
-                        <li>
-                          <em>Includes 3 Tests </em>
-                        </li>
-                        <li>
-                          <span class="dc-stars"><span></span></span
-                          ><em>2100 Feedback</em>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="dc-doclocation">
-                      <h5>&#8377; 700 Onwards</h5>
-                      <a href="javascript:void(0);" class="dc-btn">Book Now</a>
-                    </div>
-                  </div>
-                </div>
+                </ng-container>
               </div>
             </div>
           </div>
@@ -504,7 +275,8 @@
       </div>
     </div>
   </section>
-  <!-- Our Rated End -->
+  <!-- FREQ LAB TEST SECTION END -->
+  <!-- CUSTOMER REVIEW SECTION -->
   <section class="dc-haslayout dc-bgcolor" style="margin-block-end: 50px">
     <div class="container testimonial-inner">
       <div class="row d-flex justify-content-center">
@@ -594,6 +366,7 @@
       </div>
     </div>
   </section>
+  <!-- CUSTOMER REVIEW SECTION END-->
   <!--  <section
     class="dc-haslayout dc-main-section"
     style="padding: 50px; margin-bottom: 50px"

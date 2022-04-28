@@ -17,11 +17,12 @@ import firebase from 'firebase';
   providedIn: 'root',
 })
 export class ApiService {
-  test: any;
   User: any;
   DoctorCollection!: AngularFirestoreCollection<any>;
   PatientCollection!: AngularFirestoreCollection<any>;
   LabCollection!: AngularFirestoreCollection<any>;
+  LabTestsCollection!: AngularFirestoreCollection<any>;
+  LabTests: Observable<any[]>;
   Docs: Observable<any[]>;
   Patient: Observable<any[]>;
   Lab: Observable<any[]>;
@@ -42,6 +43,8 @@ export class ApiService {
     this.DoctorCollection = this._FireStore.collection('Doctors');
     this.PatientCollection = this._FireStore.collection('Patients');
     this.LabCollection = this._FireStore.collection('Labs');
+    this.LabTestsCollection = this._FireStore.collection('Labs Tests');
+    this.LabTests = this._FireStore.collection('Labs Tests').valueChanges();
     this.Docs = this._FireStore.collection('Doctors').valueChanges();
     this.Patient = this._FireStore.collection('Patients').valueChanges();
     this.Lab = this._FireStore.collection('Labs').valueChanges();
@@ -49,8 +52,6 @@ export class ApiService {
       this.User = auth;
       console.log('USER', this.User);
     });
-
-    
 
     this.rootUrl =
       'https://auth.whitecoats.com/auth/realms/whitecoats/protocol/openid-connect/token';
@@ -65,7 +66,9 @@ export class ApiService {
   GetLabs() {
     return this.Lab;
   }
-
+  GetLabsTest() {
+    return this.LabTests;
+  }
   // LOGIN FOR DOCTOR METHOD
   LogInForDoc(Doc_Email: string, Doc_Password: string) {
     this._FireAuth

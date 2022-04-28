@@ -29,13 +29,25 @@
                   <th scope="col">Name</th>
                   <th scope="col">Mobile Number</th>
                   <th scope="col">Email</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>{{patientlist.name}}</td>
-                  <td>{{patientlist.mobile}}</td>
-                  <td>{{patientlist.email}}</td>
+                  <td>{{ patientlist.name }}</td>
+                  <td>{{ patientlist.mobile }}</td>
+                  <td>{{ patientlist.email }}</td>
+                  <td class="options-td" *ng-if="patientlist.name == ''">
+                    <button class="btn-sm btn-danger options-btns">
+                      Cancel
+                    </button>
+                    <button class="btn-sm btn-success options-btns">
+                      Confirm
+                    </button>
+                    <button class="btn-sm btn-warning options-btns">
+                      Reschedule
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>

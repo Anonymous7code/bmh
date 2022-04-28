@@ -38,7 +38,7 @@ export class PatientRegistrationComponent implements OnInit {
 
     this._ApiService.PatientRegistration(this.patientForm.value);
     console.log(this.patientForm.value);
-    this.route.navigate(['/patient-dashboard']);
+    //  this.route.navigate(['/patient-dashboard']);
 
     console.log('patientForm', this.patientForm.value);
     let obj = {
