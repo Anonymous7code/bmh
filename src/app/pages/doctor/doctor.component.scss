@@ -307,6 +307,17 @@ body {
   }
 }
 
+.dc-docsingle-header {
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  padding: 15px;
+  transition-property: all;
+  transition-duration: 0.3s;
+  &:hover {
+    box-shadow: 0 9px 20px 0 rgb(165 165 165 / 50%);
+  }
+}
+
 //SLIDER SECTION
 
 .slider-section-container {

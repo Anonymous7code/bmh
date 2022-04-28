@@ -25,89 +25,89 @@
           <div
             class="dc-searchresult-grid dc-searchresult-list dc-searchvlistvtwo"
           >
-          <ng-container *ngFor="let lab of radiology">
-            <div class="dc-docpostholder">
-              <div class="dc-docpostcontent row">
-                <div class="dc-searchvtwo col-md-8">
-                  <figure class="dc-docpostimg">
-                    <img
-                      src="assets/images/doctors/img-12.jpg"
-                      alt="img description"
-                    />
-                    <figcaption>
-                      <span class="dc-featuredtag"
-                        ><i class="fa fa-bolt"></i
-                      ></span>
-                    </figcaption>
-                  </figure>
-                  <div class="dc-title">
-                    <a href="javascript:void(0)" class="dc-docstatus"
-                      >Neurosurgeon</a
+            <ng-container *ngFor="let lab of radiology">
+              <div class="dc-docpostholder">
+                <div class="dc-docpostcontent row">
+                  <div class="dc-searchvtwo col-md-8">
+                    <figure class="dc-docpostimg">
+                      <img
+                        src="assets/images/doctors/img-12.jpg"
+                        alt="img description"
+                      />
+                      <figcaption>
+                        <span class="dc-featuredtag"
+                          ><i class="fa fa-bolt"></i
+                        ></span>
+                      </figcaption>
+                    </figure>
+                    <div class="dc-title">
+                      <a href="javascript:void(0)" class="dc-docstatus"
+                        >Neurosurgeon</a
+                      >
+                      <h3>
+                        <a href="assets/images/doctors/img-12.jpg"
+                          >{{ lab.lab_name }}
+                        </a>
+                        <i class="fa fa-award dc-awardtooltip"
+                          ><em>Medical Registration Verified</em></i
+                        >
+                        <i class="fa fa-check-circle dc-awardtooltip"
+                          ><em>Medical Registration Verified</em></i
+                        >
+                      </h3>
+                    </div>
+                    <div class="dc-tags">
+                      <ul>
+                        <h6 class="pathology-test-title">Tests</h6>
+                        <li>
+                          <a href="javascript:void(0);">Artificial Teeth</a>
+                        </li>
+                        <li>
+                          <a href="javascript:void(0);"
+                            >Conservative Dentistry</a
+                          >
+                        </li>
+                        <li>
+                          <a href="javascript:void(0);"
+                            >Crowns and Bridges Fixing</a
+                          >
+                        </li>
+                        <li>
+                          <a href="javascript:void(0);">Endosurgery</a>
+                        </li>
+                        <li>
+                          <a href="javascript:void(0);"
+                            >Fixed Partial Denture (FPD)</a
+                          >
+                        </li>
+                        <li>
+                          <a href="javascript:void(0);">Flap Surgery</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="dc-doclocation dc-doclocationvtwo col-md-4">
+                    <span
+                      ><i class="ti-direction-alt"></i>{{ lab.address }}</span
                     >
-                    <h3>
-                      <a href="assets/images/doctors/img-12.jpg"
-                        >{{ lab.lab_name }}
-                      </a>
-                      <i class="fa fa-award dc-awardtooltip"
-                        ><em>Medical Registration Verified</em></i
-                      >
-                      <i class="fa fa-check-circle dc-awardtooltip"
-                        ><em>Medical Registration Verified</em></i
-                      >
-                    </h3>
-                  </div>
-                  <div class="dc-tags">
-                    <ul>
-                      <h6 class="pathology-test-title">Tests</h6>
-                      <li>
-                        <a href="javascript:void(0);">Artificial Teeth</a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0);"
-                          >Conservative Dentistry</a
-                        >
-                      </li>
-                      <li>
-                        <a href="javascript:void(0);"
-                          >Crowns and Bridges Fixing</a
-                        >
-                      </li>
-                      <li>
-                        <a href="javascript:void(0);">Endosurgery</a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0);"
-                          >Fixed Partial Denture (FPD)</a
-                        >
-                      </li>
-                      <li>
-                        <a href="javascript:void(0);">Flap Surgery</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="dc-doclocation dc-doclocationvtwo col-md-4">
-                  <span
-                    ><i class="ti-direction-alt"></i>{{ lab.address }}</span
-                  >
 
-                  <span><i class="ti-wallet"></i> Starting From $50</span>
-                  <span
-                    ><i class="ti-calendar"></i>
-                    <em class="dc-available">Available Today</em></span
-                  >
-                  <div class="dc-btnarea">
-                    <a routerLink="../view-pathology" class="dc-btn"
-                      >Book Now</a
+                    <span><i class="ti-wallet"></i> Starting From $50</span>
+                    <span
+                      ><i class="ti-calendar"></i>
+                      <em class="dc-available">Available Today</em></span
                     >
-                    <a href="javascript:void(0);" class="dc-like dc-liked"
-                      ><i class="fa fa-heart"></i
-                    ></a>
+                    <div class="dc-btnarea">
+                      <a routerLink="../view-pathology" class="dc-btn"
+                        >Book Now</a
+                      >
+                      <a href="javascript:void(0);" class="dc-like dc-liked"
+                        ><i class="fa fa-heart"></i
+                      ></a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </ng-container>
+            </ng-container>
 
             <!-- <div class="dc-docpostholder">
               <div class="dc-docpostcontent">
@@ -294,7 +294,7 @@
                 </div>
               </div>
             </div> -->
-            <!-- <nav class="dc-pagination">
+            <nav class="dc-pagination">
               <ul>
                 <li class="dc-prevpage">
                   <a href="javascrip:void(0);"
@@ -311,7 +311,7 @@
                   <a href=""><i class="lnr lnr-chevron-right"></i></a>
                 </li>
               </ul>
-            </nav> -->
+            </nav>
           </div>
         </div>
       </div>

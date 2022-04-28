@@ -50,20 +50,7 @@ export class ApiService {
       console.log('USER', this.User);
     });
 
-    /*  const db = firebase.firestore();
-    db.collection('Doctors')
-      .get()
-      .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          this.test = doc.data();
-          console.log('DATABASE DOC', this.test);
-          if (this.test.email != 'Rajulverma7@gmail.com') {
-            alert('its same');
-          } else {
-            alert('its not same');
-          } 
-        });
-      }); */
+    
 
     this.rootUrl =
       'https://auth.whitecoats.com/auth/realms/whitecoats/protocol/openid-connect/token';

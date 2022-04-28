@@ -17,8 +17,10 @@ export class PathologyHomeComponent implements OnInit {
     this._ApiService.GetLabs().subscribe((res) => {
       this.LabDetails = res;
       console.log(this.LabDetails);
-this.pathologyData= this.LabDetails.filter(res=>res.lab_type=='pathology')
-console.log("this.pathologyData",this.pathologyData);
+      this.pathologyData = this.LabDetails.filter(
+        (res) => res.lab_type == 'pathology'
+      );
+      console.log('this.pathologyData', this.pathologyData);
     });
   }
   ngOnInit(): void {}
