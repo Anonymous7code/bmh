@@ -554,13 +554,15 @@
                     item.speciality
                   }}</a>
                   <h2>
-                    <a href="javascript:void(0);">{{ item.name }} </a>
-                    <i class="fa fa-award dc-awardtooltip"
-                      ><em>Medical Registration Verified</em></i
-                    >
-                    <i class="fa fa-check-circle dc-awardtooltip"
-                      ><em>Medical Registration Verified</em></i
-                    >
+                    <a href="javascript:void(0);"
+                      >{{ item.name }}
+                      <i class="fa fa-award dc-awardtooltip"
+                        ><em>Medical Registration Verified</em></i
+                      >
+                      <i class="fa fa-check-circle dc-awardtooltip"
+                        ><em>Medical Registration Verified</em></i
+                      >
+                    </a>
                   </h2>
                   <ul class="dc-docinfo">
                     <li>
@@ -601,6 +603,13 @@
                     data-target="#appointment"
                     >Doctor Details</a
                   >
+
+                  <a
+                    class="dc-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                    >test</a
+                  >
                 </div>
               </div>
             </div>
@@ -611,8 +620,198 @@
     <!-- User Listing End-->
   </div>
   <!-- Emerging Clients End -->
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content book-appointment-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Book Appointment</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="card-body">
+          <form class="forms-sample">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="exampleInputUsername1"
+                placeholder="First Name"
+              />
+            </div>
+
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="exampleInputUsername1"
+                placeholder="Last Name"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                placeholder="Email"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="exampleInputUsername1"
+                placeholder="Phone"
+              />
+            </div>
+            <!-- <div
+                          class="form-check form-check-flat form-check-primary"
+                        >
+                          <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" />
+                            Create New User
+                  </label>
+            </div> -->
+
+            <div class="mt-4">
+              <div class="row align-items-center justify-content-between">
+                <div class="col-md-6">
+                  <p style="margin: 0px">Who Is Visiting To Doctor?</p>
+                </div>
+
+                <div class="col-md-2">
+                  <button
+                    onclick="RelationClose()"
+                    class="btn btn-sm btn-outline-primary"
+                    type="button"
+                  >
+                    Myself
+                  </button>
+                </div>
+                <div class="col-md-3">
+                  <button
+                    onclick="RelationOpen()"
+                    class="btn btn-sm btn-outline-primary"
+                    type="button"
+                  >
+                    Someone Else
+                  </button>
+                </div>
+              </div>
+
+              <div class="mt-4" id="relation-container" style="display: none">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleInputUsername1"
+                        placeholder="Name"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 bg-grey">
+                    <div class="form-group">
+                      <select class="form-control">
+                        <option>Relation With You?</option>
+                        <option>Son</option>
+                        <option>Mother</option>
+                        <option>Father</option>
+                        <option>Grand Father</option>
+                        <option>Grand Mother</option>
+                        <option>Others</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <div class="form-group">
+                <select class="form-control">
+                  <option>Where To Visit?</option>
+                  <option>Dashboard</option>
+                  <option>Ensore Waka</option>
+                </select>
+              </div>
+              <div>
+                <div class="form-group">
+                  <textarea
+                    class="form-control"
+                    id="exampleTextarea1"
+                    rows="4"
+                    placeholder="Comments:"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <h5>Select best time for appointment with time zone</h5>
+              <p>*These time slots are based on the timezone Asia/Kolkata</p>
+              <div class="row flex-column align-items-center">
+                <div class="col-6 mb-4">
+                  <div class="card">
+                    <div class="card-body text-center">
+                      <div>
+                        <input
+                          style="
+                            border-radius: 5px;
+                            border-color: blueviolet;
+                            padding: 10px;
+                            width: 100%;
+                            max-width: 170px;
+                          "
+                          type="date"
+                          name=""
+                          id=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-9">
+                  <div class="card">
+                    <div class="card-body">
+                      <div>
+                        <blockquote
+                          class="blockquote mb-0 recent-apt-container"
+                          style="border: 1px dashed grey"
+                        >
+                          <div class="apt-list-recent-apt-img-container"></div>
+                          <p style="text-align: center">
+                            No Recent Appointments
+                          </p>
+                        </blockquote>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" data-bs-dismiss="modal" class="btn btn-primary">
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 <!-- Main End -->
 <!-- Footer Start -->
 <app-footer></app-footer>
-<!-- Footer End -->
