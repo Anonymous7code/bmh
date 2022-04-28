@@ -21,6 +21,7 @@ export class DoctorComponent implements OnInit {
   ngOnInit(): void {
     this.get_doctor_data();
     this.doctorList = JSON.parse(localStorage.getItem('doctorlist'));
+    this.patientlist = JSON.parse(localStorage.getItem('patientlist'));
   }
   // routerLink="/doctor-detail"
   searchDoctors() {
