@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class PathologyHomeComponent implements OnInit {
   LabDetails: any;
+  pathologyData: any;
   constructor(private _ApiService: ApiService) {
     this.LabsData();
   }
@@ -16,6 +17,8 @@ export class PathologyHomeComponent implements OnInit {
     this._ApiService.GetLabs().subscribe((res) => {
       this.LabDetails = res;
       console.log(this.LabDetails);
+this.pathologyData= this.LabDetails.filter(res=>res.lab_type=='pathology')
+console.log("this.pathologyData",this.pathologyData);
     });
   }
   ngOnInit(): void {}
