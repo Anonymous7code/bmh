@@ -19,6 +19,7 @@ export class DoctorComponent implements OnInit {
 
   ngOnInit(): void {
     this.get_doctor_data();
+    this.doctorList = JSON.parse(localStorage.getItem("doctorlist"));
   }
   // routerLink="/doctor-detail"
   searchDoctors() {
@@ -32,7 +33,7 @@ export class DoctorComponent implements OnInit {
       if (res) {
         this.doctorList = res;
         console.log('doctorlist', this.doctorList);
-        this.api.setDoctordata(res[0].id);
+        localStorage.setItem("doctorlist", JSON.stringify(this.doctorList));
       }
     });
   }
