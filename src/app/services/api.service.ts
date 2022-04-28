@@ -71,12 +71,12 @@ export class ApiService {
   }
 
   openmodal(x) {
-    let value = '#' + x
+    let value = '#' + x;
     $(value).modal('show');
   }
 
   closemodal(x) {
-    let value = '#' + x
+    let value = '#' + x;
     $(value).modal('hide');
   }
   // LOGIN FOR DOCTOR METHOD
