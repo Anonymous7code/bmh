@@ -276,7 +276,6 @@ export class ApiService {
   }
 
   // SIGNOUT METHOD
-
   LogOut() {
     this._FireAuth
       .signOut()
@@ -302,6 +301,10 @@ export class ApiService {
   GetLabDetails() {
     return this.Lab;
   }
+  GetPatientDetails() {
+    return this.Patient;
+  }
+  AddTest() {}
 
   DocRegistration(data: any) {
     return this.DoctorCollection.add(data);
