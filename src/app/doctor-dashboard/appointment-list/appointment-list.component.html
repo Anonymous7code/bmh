@@ -122,22 +122,38 @@
                             </div>
 
                             <div class="col-auto">
-                              <button
-                                onclick="RelationClose()"
-                                class="btn btn-primary"
-                                type="button"
-                              >
-                                Patient Only
-                              </button>
+                              <div class="form-check">
+                                <input
+                                  class="form-check-input"
+                                  type="radio"
+                                  value="my self"
+                                  name="who_is_visiting"
+                                  id="flexRadioDefault1"
+                                />
+                                <label
+                                  class="form-check-label"
+                                  for="flexRadioDefault1"
+                                >
+                                  My Self
+                                </label>
+                              </div>
                             </div>
                             <div class="col-auto">
-                              <button
-                                onclick="RelationOpen()"
-                                class="btn btn-primary"
-                                type="button"
-                              >
-                                Someone Else
-                              </button>
+                              <div class="form-check">
+                                <input
+                                  class="form-check-input"
+                                  type="radio"
+                                  value="my self"
+                                  name="who_is_visiting"
+                                  id="flexRadioDefault1"
+                                />
+                                <label
+                                  class="form-check-label"
+                                  for="flexRadioDefault1"
+                                >
+                                  Someone Else
+                                </label>
+                              </div>
                             </div>
                           </div>
 
@@ -267,13 +283,67 @@
       <div class="card">
         <div class="card-body">
           <div>
-            <blockquote
-              class="blockquote mb-0 recent-apt-container"
-              style="height: 40rem; border: 1px dashed grey"
-            >
-              <span class="apt-list-recent-apt-img-container"></span>
-              <h5>No Recent Appointments</h5>
-            </blockquote>
+            <div class="content-wrapper">
+              <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card">
+                      <h4 class="card-header p-4">Patient Appointments</h4>
+
+                      <div class="p-4 table-responsive">
+                        <table class="table border">
+                          <thead>
+                            <tr>
+                              <!-- <th scope="col">Patient Id</th> -->
+                              <th scope="col">Patient Name</th>
+                              <th scope="col">Patient Email</th>
+                              <th scope="col">Phone Number</th>
+                              <th scope="col">Who Is Visiting</th>
+                              <th scope="col">Comments</th>
+                              <th scope="col">Time Slots</th>
+                              <th scope="col">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <ng-container *ngFor="let data of AppointmentsData">
+                              <tr>
+                                <!-- <td>{{ data.id }}</td> -->
+                                <td>{{ data.name }}</td>
+                                <td>{{ data.email }}</td>
+                                <td>{{ data.mobile }}</td>
+                                <td>{{ data.who_is_visiting }}</td>
+                                <td>{{ data.comment }}</td>
+                                <td>
+                                  Start Time {{ data.startTime }} | End Time{{
+                                    data.endTime
+                                  }}
+                                </td>
+                                <td>
+                                  <button
+                                    formControlName="confirm"
+                                    (click)="ConfirmStatus(data)"
+                                    class="btn-sm btn-outline-success"
+                                  >
+                                    Confirm
+                                  </button>
+                                  <button
+                                    (click)="CancelStatus(data)"
+                                    formControlName="cancel"
+                                    class="btn-sm btn-outline-danger"
+                                  >
+                                    Cancel
+                                  </button>
+                                </td>
+                              </tr>
+                            </ng-container>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

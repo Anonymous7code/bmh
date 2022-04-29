@@ -3,7 +3,8 @@ import { ApiService } from '../../services/api.service';
 import { SharedataService } from '../../services/sharedata.service';
 import { HtmlParser, XmlParser } from '@angular/compiler';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
-import { FormGroup,Validators,FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-doctor',
   templateUrl: './doctor.component.html',
@@ -14,54 +15,70 @@ export class DoctorComponent implements OnInit {
   doctorList: any;
   patientlist: any;
   patientForm: FormGroup;
+  TestPatientData: any;
+
   constructor(
     private api: ApiService,
     private router: Router,
     private share: SharedataService,
-    private fb:FormBuilder
-  ) {}
+    private fb: FormBuilder
+  ) {
+    this.api.GetPatientDetails().subscribe((res) => {
+      this.TestPatientData = res;
+    });
+  }
 
-  docService:any
+  docService: any;
   ngOnInit(): void {
     this.get_doctor_data();
     this.doctorList = JSON.parse(localStorage.getItem('doctorlist'));
     this.patientlist = JSON.parse(localStorage.getItem('patientlist'));
-    this.api.DoctorServiceApi().subscribe(res=>{
-      console.log("res",res);
-      this.docService=res.data
-    })
-    if(this.patientlist){
-      this.Form()
+    this.api.DoctorServiceApi().subscribe((res) => {
+      console.log('res', res);
+      this.docService = res.data;
+    });
+    if (this.patientlist) {
+      this.Form();
     }
   }
 
-  Form(){
-    this.patientForm= this.fb.group({
-      name:[this.patientlist.name],
-      email:[this.patientlist.email],
-      mobile:[this.patientlist.mobile],
-      startTime:['',Validators.required],
-      endTime:['',Validators.required],
-      comment:['',Validators.required],
-    })
-
+  Form() {
+    this.patientForm = this.fb.group({
+      name: [this.patientlist.name],
+      email: [this.patientlist.email],
+      mobile: [this.patientlist.mobile],
+      who_is_visiting: [''],
+      where_to_visit: [''],
+      date: [''],
+      startTime: [''],
+      endTime: [''],
+      comment: [''],
+      status: [2],
+    });
+    console.log(this.patientForm.value);
   }
 
-  bookAppoiment(){
-    console.log("form",this.patientForm.value);
-    let obj={
-        patientId: this.patientlist.id,
-        productId: this.docService[1].productId,
-        startTime:  "2022-04-18 05:00:00",
-        endTime: "2022-04-18 05:10:00"
-    }
-
-    this.api.bookAppoiment(obj).subscribe(res=>{
-      if(res){
-        console.log("resbook",res);
-        
+  bookAppoiment() {
+    this.api.BookAppointments(this.patientForm.value);
+    console.log('form', this.patientForm.value);
+    let obj = {
+      patientId: this.patientlist.id,
+      productId: this.docService[1].productId,
+      startTime: '2022-04-18 05:00:00',
+      endTime: '2022-04-18 05:10:00',
+    };
+    this.api.bookAppoiment(obj).subscribe((res) => {
+      if (res) {
+        console.log('resbook', res);
       }
-    })
+    });
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Booking Request Sent',
+      showConfirmButton: false,
+      timer: 1500,
+    });
   }
   // routerLink="/doctor-detail"
   searchDoctors() {
@@ -75,7 +92,7 @@ export class DoctorComponent implements OnInit {
       if (res) {
         this.doctorList = res;
         console.log('doctorlist', this.doctorList);
-        this.api.setDoctordata(res[0].id)
+        this.api.setDoctordata(res[0].id);
         localStorage.setItem('doctorlist', JSON.stringify(this.doctorList));
       }
     });

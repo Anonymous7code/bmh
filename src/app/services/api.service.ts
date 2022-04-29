@@ -22,10 +22,14 @@ export class ApiService {
   PatientCollection!: AngularFirestoreCollection<any>;
   LabCollection!: AngularFirestoreCollection<any>;
   LabTestsCollection!: AngularFirestoreCollection<any>;
+  BookAppointmentCollection!: AngularFirestoreCollection<any>;
+  BookAppointmentStatus: AngularFirestoreDocument<any>;
   LabTests: Observable<any[]>;
   Docs: Observable<any[]>;
   Patient: Observable<any[]>;
   Lab: Observable<any[]>;
+  test: any;
+  BookAppointment: Observable<any[]>;
   rootUrl;
   baseUrl;
   doctor_array: any = [];
@@ -44,14 +48,34 @@ export class ApiService {
     this.PatientCollection = this._FireStore.collection('Patients');
     this.LabCollection = this._FireStore.collection('Labs');
     this.LabTestsCollection = this._FireStore.collection('Labs Tests');
+    this.BookAppointmentCollection =
+      this._FireStore.collection('Book Appointments');
     this.LabTests = this._FireStore.collection('Labs Tests').valueChanges();
     this.Docs = this._FireStore.collection('Doctors').valueChanges();
     this.Patient = this._FireStore.collection('Patients').valueChanges();
     this.Lab = this._FireStore.collection('Labs').valueChanges();
-    this._FireAuth.authState.subscribe((auth) => {
+    this.BookAppointment = this._FireStore
+      .collection('Book Appointments')
+      .valueChanges();
+    /* this._FireAuth.authState.subscribe((auth) => {
       this.User = auth;
       console.log('USER', this.User);
-    });
+    }); */
+
+    this.BookAppointment = this._FireStore
+      .collection('Book Appointments')
+      .snapshotChanges()
+      .pipe(
+        map((res) => {
+          return res.map((a) => {
+            const data = a.payload.doc.data() as any;
+            data.id = a.payload.doc.id;
+
+            return data;
+          });
+        })
+      );
+    console.log('BOOK APPOINTMENT', this.BookAppointment);
 
     this.rootUrl =
       'https://auth.whitecoats.com/auth/realms/whitecoats/protocol/openid-connect/token';
@@ -69,8 +93,29 @@ export class ApiService {
   GetLabsTest() {
     return this.LabTests;
   }
+  GetBookedAppointments() {
+    return this.BookAppointment;
+  }
 
-  
+  UpdateAppointmentsStatus(status: any) {
+    this.BookAppointmentStatus = this._FireStore.doc(
+      `Book Appointments/${status.id}`
+    );
+    this.BookAppointmentStatus.update({
+      status: 1,
+    });
+    if (status.status == 1) {
+      this.BookAppointmentStatus.update({
+        status: 0,
+      });
+    }
+    if (status.status == 0) {
+      this.BookAppointmentStatus = this._FireStore.doc(
+        `Book Appointments/${status.id}`
+      );
+      this.BookAppointmentStatus.delete();
+    }
+  }
 
   openmodal(x) {
     let value = '#' + x;
@@ -316,7 +361,9 @@ export class ApiService {
   GetPatientDetails() {
     return this.Patient;
   }
-  AddTest() {}
+  BookAppointments(data: any) {
+    return this.BookAppointmentCollection.add(data);
+  }
 
   DocRegistration(data: any) {
     return this.DoctorCollection.add(data);
@@ -348,9 +395,8 @@ export class ApiService {
     sessionStorage.setItem('doctorId', JSON.stringify(x));
     // this.doctorlist = x;
   }
-  doctorId:any
+  doctorId: any;
   getDoctordata() {
-  
     this.doctorId = JSON.parse(sessionStorage.getItem('doctorId'));
     console.log('docid', this.doctorId);
 

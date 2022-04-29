@@ -631,7 +631,8 @@
         <div class="card-body">
           <form class="forms-sample" [formGroup]="patientForm">
             <div class="form-group">
-              <input formControlName="name"
+              <input
+                formControlName="name"
                 type="text"
                 class="form-control"
                 id="exampleInputUsername1"
@@ -648,7 +649,8 @@
               />
             </div> -->
             <div class="form-group">
-              <input formControlName="email   "
+              <input
+                formControlName="email"
                 type="text"
                 class="form-control"
                 id="exampleInputEmail1"
@@ -656,7 +658,8 @@
               />
             </div>
             <div class="form-group">
-              <input formControlName="mobile"
+              <input
+                formControlName="mobile"
                 type="number"
                 class="form-control"
                 id="exampleInputUsername1"
@@ -674,27 +677,39 @@
 
             <div class="mt-4">
               <div class="row align-items-center justify-content-between">
-                <div class="col-md-6">
+                <div class="col-md-12 mb-3">
                   <p style="margin: 0px">Who Is Visiting To Doctor?</p>
                 </div>
 
-                <div class="col-md-2">
-                  <button
-                    onclick="RelationClose()"
-                    class="btn btn-sm btn-outline-primary"
-                    type="button"
-                  >
-                    Myself
-                  </button>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input
+                      formControlName="who_is_visiting"
+                      class="form-check-input"
+                      type="radio"
+                      value="my self"
+                      name="who_is_visiting"
+                      id="flexRadioDefault1"
+                    />
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      My Self
+                    </label>
+                  </div>
                 </div>
-                <div class="col-md-3">
-                  <button
-                    onclick="RelationOpen()"
-                    class="btn btn-sm btn-outline-primary"
-                    type="button"
-                  >
-                    Someone Else
-                  </button>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input
+                      formControlName="who_is_visiting"
+                      class="form-check-input"
+                      type="radio"
+                      value="someone else"
+                      name="who_is_visiting"
+                      id="flexRadioDefault1"
+                    />
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Someone Else
+                    </label>
+                  </div>
                 </div>
               </div>
 
@@ -729,17 +744,18 @@
 
             <div class="mt-4">
               <div class="form-group">
-                <select class="form-control">
-                  <option>Where To Visit?</option>
-                  <option>Dashboard</option>
-                  <option>Ensore Waka</option>
+                <select formControlName="where_to_visit" class="form-control">
+                  <option selected disabled>Where To Visit?</option>
+                  <option value="clinic">Dashboard</option>
+                  <option value="hospital">Ensore Waka</option>
                 </select>
               </div>
               <div>
                 <div class="form-group">
-                  <textarea formControlName="comment"
+                  <textarea
+                    formControlName="comment"
                     class="form-control"
-                    id="exampleTextarea1"
+                    id="comment"
                     rows="4"
                     placeholder="Comments:"
                   ></textarea>
@@ -753,25 +769,39 @@
               <div class="row flex-column align-items-center">
                 <div class="col-md-12 mb-4">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div class="form-check">
-                        <label class="form-check-label">
-                         Start time
-                        </label>
-                        <input formControlName="startTime"
-                          class="form"
-                          type="time"
-                         
+                        <label class="form-check-label">Select Date </label>
+                        <input
+                          formControlName="date"
+                          style="
+                            border-radius: 5px;
+                            border-color: blueviolet;
+                            padding: 10px;
+                            width: 100%;
+                            max-width: 170px;
+                          "
+                          type="date"
+                          name=""
+                          id=""
                         />
-                      
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-check">
-                        <label class="form-check-label">
-                          End time
-                         </label>
-                        <input formControlName="endTime"
+                        <label class="form-check-label"> Start time </label>
+                        <input
+                          formControlName="startTime"
+                          class="form"
+                          type="time"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-check">
+                        <label class="form-check-label"> End time </label>
+                        <input
+                          formControlName="endTime"
                           class="form"
                           type="time"
                         />
@@ -780,7 +810,7 @@
                         </label> -->
                       </div>
                     </div>
-                  
+
                     <!-- <div class="col-md-3">
                       <div class="form-check">
                         <input
@@ -833,7 +863,12 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" data-bs-dismiss="modal" class="btn btn-primary" (click)="bookAppoiment()">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-primary"
+            (click)="bookAppoiment()"
+          >
             Book Now
           </button>
         </div>
