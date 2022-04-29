@@ -105,11 +105,11 @@ export class DoctorComponent implements OnInit {
 
   openModel() {
     console.log(this.patientlist);
-    if (this.patientlist) {
-      this.api.openmodal('exampleModal');
+    this.api.openmodal('exampleModal');
+    /*  if (this.patientlist) {
     } else {
       this.router.navigate(['/patient-registration']);
-    }
+    } */
   }
 
   doctor_list: any = [];
