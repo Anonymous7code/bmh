@@ -11,12 +11,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
-import firebase from 'firebase';
+
 declare const $;
+function _window(): any {
+  // return the global native browser window object
+  return window;
+}
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
+  get nativeWindow(): any {
+    return _window();
+  }
+  OrderIdUrl: any;
+  testing: any;
   User: any;
   DoctorCollection!: AngularFirestoreCollection<any>;
   PatientCollection!: AngularFirestoreCollection<any>;
@@ -75,7 +84,6 @@ export class ApiService {
           });
         })
       );
-    console.log('BOOK APPOINTMENT', this.BookAppointment);
 
     this.rootUrl =
       'https://auth.whitecoats.com/auth/realms/whitecoats/protocol/openid-connect/token';
@@ -85,6 +93,22 @@ export class ApiService {
     //   'https://appointments-sandbox.whitecoats.com/';
     // this.baseUrl = 'http://13.234.100.92:9999/';
     this.baseUrl = 'https://appointments-sandbox.whitecoats.com/';
+
+    let testingheader = new Headers({});
+
+    this.OrderIdUrl = 'https://api.razorpay.com/v1/orders ';
+    this.http
+      .post(this.OrderIdUrl, {
+        amount: 500,
+        currency: 'INR',
+        receipt: 'qwsaq1',
+        partial_payment: true,
+        first_payment_min_amount: 230,
+      })
+      .toPromise()
+      .then((response) => {
+        console.log(response);
+      });
   }
 
   GetLabs() {
@@ -127,33 +151,35 @@ export class ApiService {
     $(value).modal('hide');
   }
   // LOGIN FOR DOCTOR METHOD
-  LogInForDoc(Doc_Email: string, Doc_Password: string) {
+  LogInForAllIn(Login_For_All_Email: string, Login_For_All_Password: string) {
     this._FireAuth
-      .signInWithEmailAndPassword(Doc_Email, Doc_Password)
+      .signInWithEmailAndPassword(Login_For_All_Email, Login_For_All_Password)
       .then(() => {
-        console.log(Doc_Email, Doc_Password);
         let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
         let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
         localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
-
         // LOGIN ALERT
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-end',
           showConfirmButton: false,
-          timer: 3000,
+          timer: 2000,
           timerProgressBar: true,
           didOpen: (toast) => {
             toast.addEventListener('mouseenter', Swal.stopTimer);
             toast.addEventListener('mouseleave', Swal.resumeTimer);
           },
         });
-
+        localStorage.setItem('Doc_Dashboard', 'Doctor Dashboard');
+        localStorage.setItem('Doc_Dashboard_Link', '/doctor-dashboard');
+        localStorage.setItem('Patient_Dashboard', 'Patient Dashboard');
+        localStorage.setItem('Patient_Dashboard_Link', '/patient-dashboard');
+        localStorage.setItem('Lab_Dashboard', 'Lab Dashboard');
+        localStorage.setItem('Lab_Dashboard_Link', '/lab-dashboard');
         Toast.fire({
           icon: 'success',
           title: 'Signed in successfully',
         });
-        this._Route.navigate(['/doctor-dashboard']);
       })
       .catch((error) => {
         //  LOGIN ERROR ALERT
@@ -166,9 +192,9 @@ export class ApiService {
   }
 
   // REGISTER FOR DOCTOR METHOD
-  RegistrationForDoc(email: string, password: string) {
+  RegistrationForDoc(Doc_Email_Reg: string, Doc_Password_Reg: string) {
     this._FireAuth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(Doc_Email_Reg, Doc_Password_Reg)
       .then(() => {
         let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
         let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
@@ -195,7 +221,7 @@ export class ApiService {
         alert(error.message);
       });
   }
-  // LOGIN FOR PATIENT METHOD
+  /* // LOGIN FOR PATIENT METHOD
   LogInForPatient(email: string, password: string) {
     this._FireAuth
       .signInWithEmailAndPassword(email, password)
@@ -230,12 +256,15 @@ export class ApiService {
           text: error,
         });
       });
-  }
+  } */
 
   // REGISTER FOR PATIENT METHOD
-  RegistrationForPatient(email: string, password: string) {
+  RegistrationForPatient(
+    Patient_Email_Reg: string,
+    Patient_Password_Reg: string
+  ) {
     this._FireAuth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(Patient_Email_Reg, Patient_Password_Reg)
       .then(() => {
         let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
         let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
@@ -263,7 +292,7 @@ export class ApiService {
       });
   }
 
-  // LOGIN FOR LAB METHOD
+  /* // LOGIN FOR LAB METHOD
   LogInForLab(email: string, password: string) {
     this._FireAuth
       .signInWithEmailAndPassword(email, password)
@@ -298,12 +327,12 @@ export class ApiService {
           text: error,
         });
       });
-  }
+  } */
 
   // REGISTER FOR LAB METHOD
-  RegistrationForLab(email: string, password: string) {
+  RegistrationForLab(Lab_Email_Reg: string, Lab_Password_Reg: string) {
     this._FireAuth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(Lab_Email_Reg, Lab_Password_Reg)
       .then(() => {
         let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
         let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();

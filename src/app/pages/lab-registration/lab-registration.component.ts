@@ -38,6 +38,6 @@ export class LabRegistrationComponent implements OnInit {
     );
     this._ApiService.LabRegistration(this.LabForm.value);
     console.log(this.LabForm.value);
-    // this.Route.navigate(['/lab-dashboard']);
+    this.Route.navigate(['']);
   }
 }

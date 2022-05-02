@@ -39,6 +39,6 @@ export class DoctorRegistrationComponent implements OnInit {
 
     this._ApiService.DocRegistration(this.DoctorForm.value);
     console.log(this.DoctorForm.value);
-    this.Route.navigate(['/doctor-dashboard']);
+    this.Route.navigate(['']);
   }
 }

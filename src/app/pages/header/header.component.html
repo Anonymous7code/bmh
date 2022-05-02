@@ -23,27 +23,62 @@
         </div>
         <div class="profile-container" style="margin-right: 10px">
           <span class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <img
-                src="assets/icons/person-circle.svg"
-                class="navbar-icons"
-                alt=""
-              />
-              Profile
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <!--   <li>
+            <ng-container *ngIf="IsLoggedIn; else ElseLogOut">
+              <a
+                class="nav-link dropdown-item"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+                aria-expanded="false"
+              >
+                <img
+                  src="assets/icons/person-circle.svg"
+                  class="navbar-icons"
+                  alt=""
+                />
+                Log In
+              </a>
+            </ng-container>
+            <ng-template #ElseLogOut>
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="assets/icons/gear-fill.svg"
+                  class="navbar-icons"
+                  alt=""
+                />
+                Profile
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    [routerLink]="IsDashboardLink"
+                    class="dropdown-item"
+                    >{{ IsDashboardName }}
+                  </a>
+                </li>
+                <li (click)="LogOut()">
+                  <a class="dropdown-item" routerLink="" class="dropdown-item"
+                    >Log Out
+                  </a>
+                </li>
+              </ul>
+            </ng-template>
+
+            <!--  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+             <li>
                 <a routerLink="admin-dashboard" class="dropdown-item"
                   >ADMIN DASHBOARD
                 </a>
-              </li> -->
+              </li> 
               <li>
                 <a
                   class="dropdown-item"
@@ -51,31 +86,10 @@
                   data-bs-toggle="modal"
                   data-bs-target="#staticBackdrop"
                   class="dropdown-item"
-                  >Login Doctor
+                  >Login
                 </a>
               </li>
-
-              <li>
-                <a
-                  class="dropdown-item"
-                  href=""
-                  data-bs-toggle="modal"
-                  data-bs-target="#staticBackdrop2"
-                  class="dropdown-item"
-                  >Login Patient</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href=""
-                  data-bs-toggle="modal"
-                  data-bs-target="#staticBackdrop3"
-                  class="dropdown-item"
-                  >Login Lab</a
-                >
-              </li>
-            </ul>
+            </ul> -->
           </span>
         </div>
         <button
@@ -247,7 +261,7 @@
 >
   <div class="modal-dialog modal-dialog-centered">
     <section class="login_container modal-content">
-      <form [formGroup]="DoctorLoginForm" class="form-container">
+      <form [formGroup]="LoginForm" class="form-container">
         <div class="text-end">
           <button
             type="button"
@@ -263,12 +277,54 @@
               alt="logo Amazon"
               src="assets/doctor dashboard assets/dashboard logo.png"
             />
-            <h3 class="logo_text">Please login to your "Doctors" account</h3>
+            <h3 class="logo_text">Login As</h3>
+            <div class="mt-4">
+              <div class="form-check form-check-inline">
+                <input
+                  formControlName="doc_login"
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
+                  checked
+                  value="1"
+                />
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Doctor
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  formControlName="patient_login"
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault2"
+                  value="2"
+                />
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Patient
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  formControlName="lab_login"
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault3"
+                  value="3"
+                />
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Lab
+                </label>
+              </div>
+            </div>
           </div>
           <div class="login_row">
             <label class="login_label">Email</label>
             <input
-              formControlName="doc_email"
+              formControlName="login_email"
               type="text"
               class="form-control"
               placeholder="Email"
@@ -277,7 +333,7 @@
           <div class="login_row">
             <label class="login_label">Password</label>
             <input
-              formControlName="doc_password"
+              formControlName="login_password"
               type="password"
               class="form-control"
               placeholder="Password"
@@ -287,17 +343,28 @@
             <button
               class="btn loginSubmitbtn ml-0"
               data-bs-dismiss="modal"
-              (click)="LogInDoc()"
+              (click)="LogIn()"
             >
               Sign in
             </button>
           </div>
           <div class="login_row">
-            <p class="login-row-p" data-bs-dismiss="modal">
-              Don't Have An Account?,<a
-                class="login-row-a"
-                routerLink="/doctor-registration"
-                >Register Here.</a
+            <p class="login-row-p">Register As</p>
+            <p class="login-row-p">
+              <span data-bs-dismiss="modal"
+                ><a class="login-row-a" routerLink="/doctor-registration"
+                  >Doctor</a
+                ></span
+              >
+              <span data-bs-dismiss="modal"
+                ><a class="login-row-a" routerLink="/patient-registration"
+                  >Patient</a
+                ></span
+              >
+              <span data-bs-dismiss="modal"
+                ><a class="login-row-a" routerLink="/lab-registration"
+                  >Lob</a
+                ></span
               >
             </p>
           </div>
@@ -308,7 +375,7 @@
 </div>
 
 <!-- Modal PATIENT-->
-<div
+<!-- <div
   class="modal fade"
   id="staticBackdrop2"
   data-bs-backdrop="static"
@@ -377,10 +444,10 @@
       </form>
     </section>
   </div>
-</div>
+</div> -->
 
 <!-- Modal LAB-->
-<div
+<!-- <div
   class="modal fade"
   id="staticBackdrop3"
   data-bs-backdrop="static"
@@ -449,4 +516,4 @@
       </form>
     </section>
   </div>
-</div>
+</div> -->

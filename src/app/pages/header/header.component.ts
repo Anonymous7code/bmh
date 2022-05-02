@@ -1,38 +1,87 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  DoctorLoginForm = new FormGroup({});
-  PatientLoginForm = new FormGroup({});
-  LabLoginForm = new FormGroup({});
+  LoginForm = new FormGroup({});
+  IsLoggedIn = true;
+  IsDashboardName = '';
+  IsDashboardLink = '';
+  /*  PatientLoginForm = new FormGroup({});
+  LabLoginForm = new FormGroup({}); */
 
   constructor(
+    private _Route: Router,
     private _ApiService: ApiService,
     private _FormBuilder: FormBuilder
   ) {
-    this.DoctorLoginForm = this._FormBuilder.group({
-      doc_email: [''],
-      doc_password: [''],
+    this.LoginForm = this._FormBuilder.group({
+      doc_login: [''],
+      patient_login: [''],
+      lab_login: [''],
+      login_email: [''],
+      login_password: [''],
     });
 
-    this.PatientLoginForm = this._FormBuilder.group({
+    /* this.PatientLoginForm = this._FormBuilder.group({
       patient_email: [''],
       patient_password: [''],
     });
     this.LabLoginForm = this._FormBuilder.group({
       lab_email: [''],
       lab_password: [''],
-    });
-  }
+    }); */
 
-  LogInDoc() {
-    if (this.DoctorLoginForm.value.doc_email == '') {
+    if (localStorage.getItem('cYpheRConCeAl')) {
+      this.IsLoggedIn = false;
+    } else {
+      this.IsLoggedIn = true;
+    }
+    console.log(this.IsDashboardName, this.IsDashboardLink);
+  }
+  ngOnInit() {}
+
+  LogIn() {
+    if (this.LoginForm.value.doc_login == 1) {
+      this._ApiService.LogInForAllIn(
+        this.LoginForm.value.login_email,
+        this.LoginForm.value.login_password
+      );
+      this.IsDashboardName = localStorage.getItem('Doc_Dashboard');
+      this.IsDashboardLink = localStorage.getItem('Doc_Dashboard_Link');
+      this.IsLoggedIn = false;
+      console.log(this.LoginForm.value);
+    } else if (this.LoginForm.value.patient_login == 2) {
+      this._ApiService.LogInForAllIn(
+        this.LoginForm.value.login_email,
+        this.LoginForm.value.login_password
+      );
+      this.IsDashboardName = localStorage.getItem('Patient_Dashboard');
+      this.IsDashboardLink = localStorage.getItem('Patient_Dashboard_Link');
+      this.IsLoggedIn = false;
+
+      console.log(this.LoginForm.value);
+    } else if (this.LoginForm.value.lab_login == 3) {
+      this._ApiService.LogInForAllIn(
+        this.LoginForm.value.login_email,
+        this.LoginForm.value.login_password
+      );
+      this.IsDashboardName = localStorage.getItem('Lab_Dashboard');
+      this.IsDashboardLink = localStorage.getItem('Lab_Dashboard_Link');
+      this.IsLoggedIn = false;
+      console.log(this.LoginForm.value);
+    } else {
+      alert('please select login');
+    }
+
+    /*  if (this.LoginForm.value.login_email == '') {
       //  EMPTY FIELD ERROR ALERT
       Swal.fire({
         icon: 'error',
@@ -40,13 +89,18 @@ export class HeaderComponent implements OnInit {
         text: 'Please Enter Login Credentials,Then Submit!',
       });
     } else {
-      this._ApiService.LogInForDoc(
-        this.DoctorLoginForm.value.doc_email,
-        this.DoctorLoginForm.value.doc_password
+      this._ApiService.LogInForAllIn(
+        this.LoginForm.value.login_email,
+        this.LoginForm.value.login_password
       );
-    }
+    } */
   }
-
+  LogOut() {
+    this.IsLoggedIn = true;
+    this._ApiService.LogOut();
+    this.LoginForm.reset();
+  }
+  /* 
   LogInPatient() {
     if (this.PatientLoginForm.value.patient_email == '') {
       //  EMPTY FIELD ERROR ALERT
@@ -79,7 +133,5 @@ export class HeaderComponent implements OnInit {
       );
     }
     // console.log(this.LabLoginForm.value);
-  }
-
-  ngOnInit(): void {}
+  }  */
 }

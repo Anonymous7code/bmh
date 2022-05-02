@@ -17,6 +17,9 @@
                   <th scope="col">Date</th>
                   <th scope="col">Time Slots</th>
                   <th scope="col">Status</th>
+                  <ng-container *ngFor="let data of AppointmentsData">
+                    <th scope="col" *ngIf="data.status == 1">Payment</th>
+                  </ng-container>
                 </tr>
               </thead>
               <tbody>
@@ -37,6 +40,16 @@
                     <td *ngIf="data.status == 1" class="text-success">
                       Confirmed
                     </td>
+                    <td *ngIf="data.status == 1">
+                      <button
+                        class="btn-sm btn-outline-primary"
+                        (click)="pay(data)"
+                      >
+                        Pay
+                      </button>
+                      <div *ngIf="IsPaid" class="text-success">Paid</div>
+                    </td>
+
                     <td *ngIf="data.status == 2" class="text-warning">
                       Pending
                     </td>
