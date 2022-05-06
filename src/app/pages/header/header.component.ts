@@ -57,7 +57,6 @@ export class HeaderComponent implements OnInit {
         this.IsLoggedIn = false;
       } else {
         this.IsLoggedIn = true;
-        // localStorage.removeItem('cYpheRConCeAl');
       }
       console.log('logged state', data);
     });
