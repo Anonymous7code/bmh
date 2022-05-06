@@ -45,11 +45,11 @@ export class HeaderComponent implements OnInit {
       lab_password: [''],
     }); */
 
-    /*   if (localStorage.getItem('cYpheRConCeAl')) {
+    if (localStorage.getItem('cYpheRConCeAl')) {
       this.IsLoggedIn = false;
     } else {
       this.IsLoggedIn = true;
-    } */
+    }
 
     // USER LOGGED STATE
     this._ApiService.User.subscribe((data) => {
@@ -57,6 +57,7 @@ export class HeaderComponent implements OnInit {
         this.IsLoggedIn = false;
       } else {
         this.IsLoggedIn = true;
+        // localStorage.removeItem('cYpheRConCeAl');
       }
       console.log('logged state', data);
     });

@@ -473,7 +473,8 @@ export class ApiService {
   LogOut() {
     this._FireAuth
       .signOut()
-      .then(() => {
+      .then((res) => {
+        console.log(res);
         localStorage.removeItem('cYpheRConCeAl');
         Swal.fire({
           position: 'center',
