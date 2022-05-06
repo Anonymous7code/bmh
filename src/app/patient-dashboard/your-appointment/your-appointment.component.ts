@@ -18,7 +18,7 @@ export class YourAppointmentComponent implements OnInit {
   ngOnInit() {
     this._ApiService.GetBookedAppointments().subscribe((data) => {
       this.AppointmentsData = data;
-      console.log(this.AppointmentsData);
+      // console.log(this.AppointmentsData);
     });
   }
 
@@ -31,6 +31,8 @@ export class YourAppointmentComponent implements OnInit {
   // keysecrete = dD6I2hXOMw4OMl9h6BmA1GSC
 
   pay(data) {
+    console.log(data);
+
     let options = {
       key: 'rzp_test_iMvNDXDXgLoZ8B', // Enter the Key ID generated from the Dashboard
       amount: '100', // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -74,8 +76,5 @@ export class YourAppointmentComponent implements OnInit {
       alert(response.error.metadata.payment_id);
     });
     this.rzp1.open();
-    if (options) {
-      this.IsPaid = true;
-    }
   }
 }

@@ -8,13 +8,14 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class HomeComponent implements OnInit {
   LabTests: any;
+
   constructor(private _ApiService: ApiService) {
     this._ApiService.GetLabsTest().subscribe((lab) => {
       this.LabTests = lab;
     });
   }
   // reactiveForm:FormGrop
-  ngOnInit(): void {
+  ngOnInit() {
     const body = new URLSearchParams();
     body.set('grant_type', 'password');
     body.set('client_id', '05e7bbe7-19ce-4175-b2cc-4b407bc825f9');

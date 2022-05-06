@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class DoctorRegistrationComponent implements OnInit {
   DoctorForm: FormGroup;
+  DocAuthUID: any;
 
   constructor(
     private Route: Router,
@@ -28,17 +29,28 @@ export class DoctorRegistrationComponent implements OnInit {
       country: '',
       state: '',
       city: '',
+      docuid: '',
     });
   }
 
+  SetDocAuthUID(authuid) {
+    this.DoctorForm.patchValue({
+      docuid: authuid,
+    });
+    this._ApiService.DocRegistration(this.DoctorForm.value);
+    this.Route.navigate(['']);
+    console.log(this.DoctorForm.value);
+  }
+
   RegisterDoc() {
+    this._ApiService.DocAuthUID.subscribe((AuthUID) => {
+      this.DocAuthUID = AuthUID;
+      this.SetDocAuthUID(this.DocAuthUID);
+      console.log('AUTH UID DOC', this.DocAuthUID);
+    });
     this._ApiService.RegistrationForDoc(
       this.DoctorForm.value.email,
       this.DoctorForm.value.password
     );
-
-    this._ApiService.DocRegistration(this.DoctorForm.value);
-    console.log(this.DoctorForm.value);
-    this.Route.navigate(['']);
   }
 }

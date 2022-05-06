@@ -5,6 +5,7 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   UrlTree,
+  Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { take, map } from 'rxjs/operators';
@@ -14,6 +15,7 @@ import Swal from 'sweetalert2';
   providedIn: 'root',
 })
 export class CanActivateGuard implements CanActivate {
+  constructor(private _Route: Router) {}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -42,6 +44,7 @@ export class CanActivateGuard implements CanActivate {
         title: 'Insufficient Permission!!',
         text: "You Don't Have Permission To View This Page,Login First!!",
       });
+      this._Route.navigate(['']);
       return false;
     }
   }

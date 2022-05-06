@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, from } from 'rxjs';
+import { BehaviorSubject, from, Subject } from 'rxjs';
+
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -24,9 +25,24 @@ export class ApiService {
   get nativeWindow(): any {
     return _window();
   }
-  OrderIdUrl: any;
-  testing: any;
-  User: any;
+
+  DocSubject = new Subject();
+  PatientSubject = new Subject();
+  LabSubject = new Subject();
+
+  // AUTH UIDS
+  DocAuthUID = new Subject();
+  LabAuthUID = new Subject();
+
+  DocRegisterUID: any;
+  PatientRegisterUID: any;
+  LabRegisterUID: any;
+
+  DocLoginUID: any;
+  PatientLoginUID: any;
+  LabLoginUID: any;
+
+  User = new Subject();
   DoctorCollection!: AngularFirestoreCollection<any>;
   PatientCollection!: AngularFirestoreCollection<any>;
   LabCollection!: AngularFirestoreCollection<any>;
@@ -34,6 +50,8 @@ export class ApiService {
   BookAppointmentCollection!: AngularFirestoreCollection<any>;
   BookAppointmentStatus: AngularFirestoreDocument<any>;
   LabTests: Observable<any[]>;
+  LabTestsDelete: AngularFirestoreDocument<any>;
+
   Docs: Observable<any[]>;
   Patient: Observable<any[]>;
   Lab: Observable<any[]>;
@@ -66,13 +84,47 @@ export class ApiService {
     this.BookAppointment = this._FireStore
       .collection('Book Appointments')
       .valueChanges();
-    /* this._FireAuth.authState.subscribe((auth) => {
-      this.User = auth;
-      console.log('USER', this.User);
-    }); */
+
+    //USER LOGIN STATE
+    this._FireAuth.authState.subscribe((auth) => {
+      this.UserState(auth);
+      // console.log('USER STATE', this.User);
+    });
+
+    // GETTING DOCTORS UID
+
+    /* this.BookAppointment = this._FireStore
+      .collection('Book Appointments')
+      .snapshotChanges()
+      .pipe(
+        map((res) => {
+          return res.map((a) => {
+            const data = a.payload.doc.data() as any;
+            data.id = a.payload.doc.id;
+            return data;
+          });
+        })
+      ); */
+
+    // GETTING BOOK APPOINTMENT UID
 
     this.BookAppointment = this._FireStore
       .collection('Book Appointments')
+      .snapshotChanges()
+      .pipe(
+        map((res) => {
+          return res.map((a) => {
+            const data = a.payload.doc.data() as any;
+            data.id = a.payload.doc.id;
+            return data;
+          });
+        })
+      );
+
+    // LAB TEST UID
+
+    this.LabTests = this._FireStore
+      .collection('Labs Tests')
       .snapshotChanges()
       .pipe(
         map((res) => {
@@ -94,7 +146,7 @@ export class ApiService {
     // this.baseUrl = 'http://13.234.100.92:9999/';
     this.baseUrl = 'https://appointments-sandbox.whitecoats.com/';
 
-    let testingheader = new Headers({});
+    /*   let testingheader = new Headers({});
 
     this.OrderIdUrl = 'https://api.razorpay.com/v1/orders ';
     this.http
@@ -108,7 +160,7 @@ export class ApiService {
       .toPromise()
       .then((response) => {
         console.log(response);
-      });
+      }); */
   }
 
   GetLabs() {
@@ -117,6 +169,21 @@ export class ApiService {
   GetLabsTest() {
     return this.LabTests;
   }
+
+  DeleteLabTests(id: any) {
+    this.LabTestsDelete = this._FireStore.doc(`Labs Tests/${id}`);
+    this.LabTestsDelete.delete();
+  }
+  EditingLabTests(id: any, FormVal: any) {
+    this.LabTestsDelete = this._FireStore.doc(`Labs Tests/${id}`);
+
+    this.LabTestsDelete.update({
+      test_name: FormVal.test_name,
+      test_desc: FormVal.test_desc,
+      test_price: FormVal.test_price,
+    });
+  }
+
   GetBookedAppointments() {
     return this.BookAppointment;
   }
@@ -150,11 +217,54 @@ export class ApiService {
     let value = '#' + x;
     $(value).modal('hide');
   }
+
+  // REGISTER FOR DOCTOR METHOD
+  RegistrationForDoc(Doc_Email_Reg: string, Doc_Password_Reg: string) {
+    this._FireAuth
+      .createUserWithEmailAndPassword(Doc_Email_Reg, Doc_Password_Reg)
+      .then((response) => {
+        this.DocRegisterUID = response.user.uid;
+        this.TestingAuthDocUID(this.DocRegisterUID);
+        console.log('response from doc reg', response);
+        let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
+        let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
+        localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
+        // REGISTRATION ALERT
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Registered Successfully!',
+        });
+        // this._Route.navigate(['/doctor-dashboard']);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
+
+  TestingAuthDocUID(authuid) {
+    this.DocAuthUID.next(authuid);
+  }
+
   // LOGIN FOR DOCTOR METHOD
-  LogInForAllIn(Login_For_All_Email: string, Login_For_All_Password: string) {
+  LogInForDoc(Login_For_All_Email: string, Login_For_All_Password: string) {
     this._FireAuth
       .signInWithEmailAndPassword(Login_For_All_Email, Login_For_All_Password)
-      .then(() => {
+      .then((response) => {
+        this.DocLoginUID = response.user.uid;
+        this.testinguidoflogindoc(this.DocLoginUID);
+        console.log('response from LOGIN FOR DOC ', this.DocLoginUID);
         let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
         let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
         localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
@@ -163,7 +273,7 @@ export class ApiService {
           toast: true,
           position: 'top-end',
           showConfirmButton: false,
-          timer: 2000,
+          timer: 1500,
           timerProgressBar: true,
           didOpen: (toast) => {
             toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -191,73 +301,6 @@ export class ApiService {
       });
   }
 
-  // REGISTER FOR DOCTOR METHOD
-  RegistrationForDoc(Doc_Email_Reg: string, Doc_Password_Reg: string) {
-    this._FireAuth
-      .createUserWithEmailAndPassword(Doc_Email_Reg, Doc_Password_Reg)
-      .then(() => {
-        let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
-        let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
-        localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
-        // REGISTRATION ALERT
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer);
-            toast.addEventListener('mouseleave', Swal.resumeTimer);
-          },
-        });
-        Toast.fire({
-          icon: 'success',
-          title: 'Registered Successfully!',
-        });
-        this._Route.navigate(['/doctor-dashboard']);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  }
-  /* // LOGIN FOR PATIENT METHOD
-  LogInForPatient(email: string, password: string) {
-    this._FireAuth
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
-        let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
-        localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
-        // LOGIN ALERT
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer);
-            toast.addEventListener('mouseleave', Swal.resumeTimer);
-          },
-        });
-
-        Toast.fire({
-          icon: 'success',
-          title: 'Signed in successfully',
-        });
-        this._Route.navigate(['/patient-dashboard']);
-      })
-      .catch((error) => {
-        //  LOGIN ERROR ALERT
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: error,
-        });
-      });
-  } */
-
   // REGISTER FOR PATIENT METHOD
   RegistrationForPatient(
     Patient_Email_Reg: string,
@@ -265,7 +308,8 @@ export class ApiService {
   ) {
     this._FireAuth
       .createUserWithEmailAndPassword(Patient_Email_Reg, Patient_Password_Reg)
-      .then(() => {
+      .then((response) => {
+        console.log('response from REG FOR PATIENT ', response);
         let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
         let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
         localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
@@ -274,7 +318,7 @@ export class ApiService {
           toast: true,
           position: 'top-end',
           showConfirmButton: false,
-          timer: 3000,
+          timer: 1500,
           timerProgressBar: true,
           didOpen: (toast) => {
             toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -285,18 +329,21 @@ export class ApiService {
           icon: 'success',
           title: 'Registered Successfully!',
         });
-        this._Route.navigate(['/patient-dashboard']);
+        // this._Route.navigate(['/patient-dashboard']);
       })
       .catch((error) => {
         alert(error.message);
       });
   }
 
-  /* // LOGIN FOR LAB METHOD
-  LogInForLab(email: string, password: string) {
+  // LOGIN FOR PATIENT METHOD
+  LogInForPatient(email: string, password: string) {
     this._FireAuth
       .signInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then((response) => {
+        this.PatientLoginUID = response.user.uid;
+        this.testinguidofloginpatient(this.PatientLoginUID);
+        console.log('response from LOGIN FOR PATIENT ', this.PatientLoginUID);
         let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
         let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
         localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
@@ -305,7 +352,7 @@ export class ApiService {
           toast: true,
           position: 'top-end',
           showConfirmButton: false,
-          timer: 3000,
+          timer: 1500,
           timerProgressBar: true,
           didOpen: (toast) => {
             toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -317,7 +364,7 @@ export class ApiService {
           icon: 'success',
           title: 'Signed in successfully',
         });
-        this._Route.navigate(['/lab-dashboard']);
+        // this._Route.navigate(['/patient-dashboard']);
       })
       .catch((error) => {
         //  LOGIN ERROR ALERT
@@ -327,13 +374,16 @@ export class ApiService {
           text: error,
         });
       });
-  } */
+  }
 
   // REGISTER FOR LAB METHOD
   RegistrationForLab(Lab_Email_Reg: string, Lab_Password_Reg: string) {
     this._FireAuth
       .createUserWithEmailAndPassword(Lab_Email_Reg, Lab_Password_Reg)
-      .then(() => {
+      .then((response) => {
+        this.LabRegisterUID = response.user.uid;
+        this.TestingAuthLabUID(this.LabRegisterUID);
+        console.log('response from REG FOR LAB ', response);
         let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
         let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
         localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
@@ -343,7 +393,7 @@ export class ApiService {
           toast: true,
           position: 'top-end',
           showConfirmButton: false,
-          timer: 3000,
+          timer: 1500,
           timerProgressBar: true,
           didOpen: (toast) => {
             toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -354,14 +404,72 @@ export class ApiService {
           icon: 'success',
           title: 'Registered Successfully!',
         });
-        this._Route.navigate(['/lab-dashboard']);
+        // this._Route.navigate(['/lab-dashboard']);
       })
       .catch((error) => {
         alert(error.message);
       });
   }
 
-  // SIGNOUT METHOD
+  TestingAuthLabUID(authuid) {
+    this.LabAuthUID.next(authuid);
+  }
+
+  // LOGIN FOR LAB METHOD
+  LogInForLab(email: string, password: string) {
+    this._FireAuth
+      .signInWithEmailAndPassword(email, password)
+      .then((response) => {
+        this.LabLoginUID = response.user.uid;
+        this.testinguidofloginlab(this.LabLoginUID);
+        console.log('response from LOGIN FOR LAB ', this.LabLoginUID);
+        let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
+        let EncodedcYErGGDRNUU3563JJ = cYpheRConCs28428eAl.toString();
+        localStorage.setItem('cYpheRConCeAl', EncodedcYErGGDRNUU3563JJ);
+        // LOGIN ALERT
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: 'success',
+          title: 'Signed in successfully',
+        });
+        // this._Route.navigate(['/lab-dashboard']);
+      })
+      .catch((error) => {
+        //  LOGIN ERROR ALERT
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error,
+        });
+      });
+  }
+
+  UserState(data) {
+    this.User.next(data);
+  }
+
+  testinguidoflogindoc(data) {
+    this.DocSubject.next(data);
+  }
+  testinguidofloginpatient(data) {
+    this.PatientSubject.next(data);
+  }
+  testinguidofloginlab(data) {
+    this.LabSubject.next(data);
+  }
+
+  // SIGN OUT METHOD
   LogOut() {
     this._FireAuth
       .signOut()
@@ -392,6 +500,10 @@ export class ApiService {
   }
   BookAppointments(data: any) {
     return this.BookAppointmentCollection.add(data);
+  }
+
+  AddingTest(data: any) {
+    return this.LabTestsCollection.add(data);
   }
 
   DocRegistration(data: any) {

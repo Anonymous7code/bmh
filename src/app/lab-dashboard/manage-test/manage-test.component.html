@@ -6,34 +6,42 @@
           <h4 class="card-header p-4">Manage Test</h4>
 
           <div class="p-4 table-responsive">
-            <div class="row mb-5 align-items-center">
-              <div class="col-md-3 mb-3">
-                <input
-                  type="text"
-                  placeholder="Test Name"
-                  class="form-control"
-                />
+            <form [formGroup]="TestForm">
+              <div class="row mb-5 align-items-center">
+                <div class="col-md-3 mb-3">
+                  <input
+                    formControlName="test_name"
+                    type="text"
+                    placeholder="Test Name"
+                    class="form-control"
+                  />
+                </div>
+                <div class="col-md-3 mb-3">
+                  <input
+                    formControlName="test_desc"
+                    type="email"
+                    placeholder="Test Description"
+                    class="form-control"
+                  />
+                </div>
+                <div class="col-md-3 mb-3">
+                  <input
+                    formControlName="test_price"
+                    type="text"
+                    placeholder="Test Price (INR)"
+                    class="form-control"
+                  />
+                </div>
+                <div class="col-md-3 mb-3">
+                  <button
+                    (click)="AddTest()"
+                    class="btn-sm btn-success options-btns"
+                  >
+                    {{ IsUpdateBtn ? "Update" : "Add Tests" }}
+                  </button>
+                </div>
               </div>
-              <div class="col-md-3 mb-3">
-                <input
-                  type="email"
-                  placeholder="Test Description"
-                  class="form-control"
-                />
-              </div>
-              <div class="col-md-3 mb-3">
-                <input
-                  type="text"
-                  placeholder="Test Price"
-                  class="form-control"
-                />
-              </div>
-              <div class="col-md-3 mb-3">
-                <button class="btn-sm btn-success options-btns">
-                  Add Tests
-                </button>
-              </div>
-            </div>
+            </form>
 
             <table class="table border">
               <thead>
@@ -45,19 +53,28 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>
-                    <button class="btn-sm btn-success options-btns">
-                      Edit
-                    </button>
-                    <button class="btn-sm btn-danger options-btns">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
+                <ng-container *ngFor="let data of LabsTestsData">
+                  <tr>
+                    <td>{{ data.test_name }}</td>
+                    <td>{{ data.test_desc }}</td>
+                    <td>{{ data.test_price }}</td>
+                    <td>
+                      <button
+                        (click)="EditTests(data)"
+                        class="btn-sm btn-success options-btns"
+                      >
+                        Edit
+                      </button>
+
+                      <button
+                        (click)="DeleteTests(data.id)"
+                        class="btn-sm btn-danger options-btns"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                </ng-container>
               </tbody>
             </table>
           </div>
