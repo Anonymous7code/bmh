@@ -528,7 +528,6 @@
       </div>
     </div>
   </div>
-
   <!-- SEARCH BAR END  -->
 
   <div class="dc-haslayout dc-main-section">
@@ -537,7 +536,102 @@
       <div class="row">
         <div id="dc-twocolumns" class="dc-twocolumns dc-haslayout">
           <div class="col-12">
-            <div class="dc-docsingle-header" *ngFor="let item of doctorList">
+            <div class="dc-searchresult-grid">
+              <div class="row">
+                <div
+                  class="col-12 col-sm-6 col-md-12 col-lg-6 col-xl-4"
+                  *ngFor="let item of doctorList"
+                >
+                  <div class="dc-docpostholder">
+                    <figure class="dc-docpostimg">
+                      <img src="{{ item.image_url }}" alt="img description" />
+                      <figcaption>
+                        <span class="dc-featuredtag"
+                          ><i class="fa fa-bolt"></i
+                        ></span>
+                      </figcaption>
+                    </figure>
+                    <div class="dc-docpostcontent">
+                      <a href="javascript:void(0);" class="dc-like dc-liked"
+                        ><i class="fa fa-heart"></i
+                      ></a>
+                      <div class="dc-title">
+                        <a href="javascript:void(0)" class="dc-docstatus">{{
+                          item.speciality
+                        }}</a>
+                        <h3>
+                          <a href="javascript:void(0);">{{ item.name }}</a>
+                          <i class="fa fa-award dc-awardtooltip"
+                            ><em>Medical Registration Verified</em></i
+                          >
+                          <i class="fa fa-check-circle dc-awardtooltip"
+                            ><em>Medical Registration Verified</em></i
+                          >
+                        </h3>
+                        <ul class="dc-docinfo">
+                          <li>
+                            <em>{{ item.qualification }}</em>
+                          </li>
+                          <li>
+                            <span class="dc-stars"><span></span></span
+                            ><em>2100 Feedback</em>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="dc-doclocation text-center">
+                        <button
+                          class="doctor-card-btns btn-sm"
+                          data-toggle="modal"
+                          (click)="openModel()"
+                        >
+                          Book Now
+                        </button>
+                        <button
+                          href="javascript:void(0);"
+                          class="doctor-card-btns btn-sm"
+                          data-toggle="modal"
+                          data-target="#feedbackmodal"
+                        >
+                          Add Feedback</button
+                        ><button
+                          (click)="doctorDetail(item)"
+                          class="doctor-card-btns btn-sm"
+                          data-toggle="modal"
+                          data-target="#appointment"
+                        >
+                          Doctor Details
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                  <nav class="dc-pagination">
+                    <ul>
+                      <li class="dc-prevpage">
+                        <a href="javascrip:void(0);"
+                          ><i class="lnr lnr-chevron-left"></i
+                        ></a>
+                      </li>
+                      <li><a href="javascrip:void(0);">1</a></li>
+                      <li><a href="javascrip:void(0);">2</a></li>
+                      <li><a href="javascrip:void(0);">3</a></li>
+                      <li><a href="javascrip:void(0);">4</a></li>
+                      <li><a href="javascrip:void(0);">...</a></li>
+                      <li><a href="javascrip:void(0);">50</a></li>
+                      <li class="dc-nextpage">
+                        <a href="javascrip:void(0);"
+                          ><i class="lnr lnr-chevron-right"></i
+                        ></a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+            <!--  <div class="dc-docsingle-header" *ngFor="let item of doctorList">
               <figure class="dc-docsingleimg">
                 <img
                   style="height: 100px; width: 100px"
@@ -592,7 +686,8 @@
                   >
                   <a class="dc-btn" data-toggle="modal" (click)="openModel()"
                     >Book Now</a
-                  ><a
+                  >
+                  <a
                     (click)="doctorDetail(item)"
                     class="dc-btn"
                     data-toggle="modal"
@@ -601,7 +696,7 @@
                   >
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

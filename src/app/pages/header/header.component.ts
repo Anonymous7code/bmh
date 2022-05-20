@@ -77,7 +77,6 @@ export class HeaderComponent implements OnInit {
         this.LoginForm.value.login_email,
         this.LoginForm.value.login_password
       );
-
       this.IsDashboardName = localStorage.getItem('Doc_Dashboard');
       this.IsDashboardLink = localStorage.getItem('Doc_Dashboard_Link');
 

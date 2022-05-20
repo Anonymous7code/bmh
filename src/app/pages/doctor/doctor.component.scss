@@ -1,3 +1,16 @@
+.doctor-card-btns {
+  background: transparent;
+  padding: 0.5rem;
+  margin: 5px;
+  transition: all 0.25s ease;
+  border-radius: 5px;
+  border: 1px solid #0e9fff;
+  &:hover {
+    background: #0e9fff;
+    color: white !important;
+  }
+}
+
 .dc-navdocsingletab {
   width: 100%;
   float: left;
@@ -48,7 +61,7 @@ ul {
 }
 .dc-docpostcontent .dc-title h3 a {
   float: left;
-  width: 175px;
+  margin-right: 5px;
   overflow: hidden;
   white-space: nowrap;
   line-height: inherit;

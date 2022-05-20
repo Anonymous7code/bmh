@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-doctor-registration',
   templateUrl: './doctor-registration.component.html',
@@ -30,6 +31,7 @@ export class DoctorRegistrationComponent implements OnInit {
       state: '',
       city: '',
       docuid: '',
+      role: 'Doctor',
     });
   }
 

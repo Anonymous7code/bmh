@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, from, Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
+
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -93,8 +94,8 @@ export class ApiService {
 
     // GETTING DOCTORS UID
 
-    /* this.BookAppointment = this._FireStore
-      .collection('Book Appointments')
+    this.Docs = this._FireStore
+      .collection('Doctors')
       .snapshotChanges()
       .pipe(
         map((res) => {
@@ -104,7 +105,7 @@ export class ApiService {
             return data;
           });
         })
-      ); */
+      );
 
     // GETTING BOOK APPOINTMENT UID
 
@@ -122,7 +123,6 @@ export class ApiService {
       );
 
     // LAB TEST UID
-
     this.LabTests = this._FireStore
       .collection('Labs Tests')
       .snapshotChanges()
@@ -262,7 +262,7 @@ export class ApiService {
     this._FireAuth
       .signInWithEmailAndPassword(Login_For_All_Email, Login_For_All_Password)
       .then((response) => {
-        this.DocLoginUID = response.user.uid;
+        this.DocLoginUID = response.user;
         this.testinguidoflogindoc(this.DocLoginUID);
         console.log('response from LOGIN FOR DOC ', this.DocLoginUID);
         let cYpheRConCs28428eAl = Math.floor(Math.random() * 9999999999);
@@ -474,7 +474,6 @@ export class ApiService {
     this._FireAuth
       .signOut()
       .then((res) => {
-        console.log(res);
         localStorage.removeItem('cYpheRConCeAl');
         Swal.fire({
           position: 'center',
