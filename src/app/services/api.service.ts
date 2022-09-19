@@ -137,6 +137,16 @@ export class ApiService {
         })
       );
 
+    /* // GETTING SINGLE DOCUMENT FROM DB 
+      SingleDocument(){
+         const snapshot = this._FireStore.collection('Doctors').doc(id).get();
+    const data = snapshot.pipe(
+      map((data) => {
+        console.log('specific document from database', data);
+      })
+    );
+      } */
+
     this.rootUrl =
       'https://auth.whitecoats.com/auth/realms/whitecoats/protocol/openid-connect/token';
     // this.baseUrl =

@@ -32,6 +32,7 @@ export class DoctorComponent implements OnInit {
   ngOnInit(): void {
     this.get_doctor_data();
     this.doctorList = JSON.parse(localStorage.getItem('doctorlist'));
+    console.log(this.doctorList);
     this.patientlist = JSON.parse(localStorage.getItem('patientlist'));
     this.api.DoctorServiceApi().subscribe((res) => {
       console.log('res', res);
